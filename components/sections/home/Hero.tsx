@@ -30,7 +30,7 @@ export function Hero() {
             delay={0.35}
             className="max-w-xl text-lg leading-relaxed text-muted md:col-span-6 md:text-xl"
           >
-            {site.positioning} AI automations, voice agents, websites, apps, brand, media and creators — engineered as one system.
+            {site.positioning} AI automations, voice agents, websites, apps, brand, media and creators, engineered as one system.
           </RevealText>
           <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
             <Button href="/contact" size="lg">

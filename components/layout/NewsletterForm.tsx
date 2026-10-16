@@ -30,7 +30,7 @@ export function NewsletterForm({ className }: { className?: string }) {
       <p className="label-mono text-signature" role="status">
         {state === "saved"
           ? "✓ You're on the list. The digest lands every morning."
-          : "✓ Almost there — send the email that just opened and you're on the list."}
+          : "✓ Almost there. Send the email that just opened and you're on the list."}
       </p>
     );
 

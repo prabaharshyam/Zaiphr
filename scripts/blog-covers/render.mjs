@@ -31,7 +31,7 @@ function rng(seed) {
 const LIME = "#C8FF2E";
 
 const motifs = {
-  // Orbits with nodes — "intelligence" around a core
+  // Orbits with nodes - "intelligence" around a core
   "AI for Business": (r) => {
     const rings = [120, 200, 285, 370];
     let s = `<circle cx="0" cy="0" r="46" fill="${LIME}"/><circle cx="0" cy="0" r="80" fill="none" stroke="${LIME}" stroke-opacity=".35"/>`;

@@ -22,7 +22,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <p className="label-mono mb-4 text-muted">The AI digest</p>
           <p className="mb-6 max-w-sm text-lg leading-snug">
-            The 10 AI stories that matter for founders — every morning, in 3 minutes.
+            The 10 AI stories that matter for founders. Every morning, in 3 minutes.
           </p>
           <NewsletterForm />
         </div>

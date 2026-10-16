@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Suspense } from "react";
 import { aiTools, toolCategories } from "@/config/ai-tools";
@@ -9,11 +10,12 @@ import { StackFinder } from "@/components/tools/StackFinder";
 import { Faq } from "@/components/sections/service/Faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 
-export const metadata: Metadata = {
-  title: "AI Stack Finder — which AI tools should my business use?",
-  description: `Describe your business problem in plain words and get the best AI tools to solve it — a practical stack from ${aiTools.length} vetted tools, how they connect, costs in ₹ and $, and setup steps. Free.`,
-  alternates: { canonical: "/tools/ai-stack-finder" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "AI Stack Finder: which AI tools should my business use?",
+  description: `Describe your business problem in plain words and get the best AI tools to solve it: a practical stack from ${aiTools.length} vetted tools, how they connect, costs in ₹ and $, and setup steps. Free.`,
+  path: "/tools/ai-stack-finder",
+  image: "/og/ai-stack-finder.jpg",
+});
 
 const faqs = [
   { q: "Is the AI Stack Finder really free?", a: "Yes. You get the diagnosis and top tools instantly with no sign-up. The full plan, with every tool, setup steps, workflow and estimates, is free too: just tell us where to email it." },

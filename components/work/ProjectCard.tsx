@@ -19,7 +19,7 @@ export function ProjectCard({ p, className, sizes = "(min-width: 1024px) 45vw, 9
       <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-bg-2">
         <Image
           src={p.cover}
-          alt={`${p.client} — ${p.title} (concept mockup)`}
+          alt={`${p.client}: ${p.title} (concept mockup)`}
           fill
           sizes={sizes}
           className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out)] group-hover:scale-[1.04]"

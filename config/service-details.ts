@@ -1,6 +1,6 @@
 /**
  * Long-form content for each service page. Edit freely.
- * Pricing is "starting from" guidance — excl. GST and third-party/usage costs.
+ * Pricing is "starting from" guidance - excl. GST and third-party/usage costs.
  */
 
 export const industries = {
@@ -39,7 +39,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "ai-automations": {
     headline: "Your busywork, running on autopilot.",
     intro:
-      "We design workflows and AI agents that move data, follow up with leads, draft documents and report back — so your team spends its hours on work only humans can do.",
+      "We design workflows and AI agents that move data, follow up with leads, draft documents and report back, so your team spends its hours on work only humans can do.",
     problems: [
       "Leads sit in inboxes and spreadsheets for hours before anyone replies",
       "The same data is typed into three tools by three people",
@@ -49,12 +49,12 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     solutions: [
       "Every lead captured, enriched and routed in seconds",
       "One source of truth synced across CRM, sheets, accounting and chat",
-      "AI agents that draft, summarise, classify and chase — with a human in the loop",
+      "AI agents that draft, summarise, classify and chase, with a human in the loop",
       "Documented, monitored workflows with alerts when anything fails",
     ],
     deliverables: [
       { title: "Process audit", text: "We map how work actually flows today and rank automations by hours saved and revenue impact." },
-      { title: "Workflow builds", text: "n8n, Make or custom code — whatever fits your stack, budget and data-privacy needs." },
+      { title: "Workflow builds", text: "n8n, Make or custom code: whatever fits your stack, budget and data-privacy needs." },
       { title: "AI agents", text: "Claude- or GPT-powered agents for triage, drafting, research and data extraction, with guardrails." },
       { title: "CRM & ops wiring", text: "HubSpot, Zoho, Salesforce, Google Workspace, Tally, Razorpay, WhatsApp and more, connected properly." },
       { title: "Dashboards & alerts", text: "Live views of pipeline, operations and automation health, with Slack, email or WhatsApp alerts." },
@@ -75,7 +75,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       { title: "Scale", text: "We roll out the rest of the map in priority order, measuring hours saved as we go." },
     ],
     faqs: [
-      { q: "Which tools do you use — n8n, Make or Zapier?", a: "Whatever fits. We default to n8n (self-hostable, cheaper at scale) or Make for speed, and write custom code when reliability or data privacy demands it." },
+      { q: "Which tools do you use: n8n, Make or Zapier?", a: "Whatever fits. We default to n8n (self-hostable, cheaper at scale) or Make for speed, and write custom code when reliability or data privacy demands it." },
       { q: "Is my data safe with AI agents?", a: "We use API tiers that don't train on your data, minimise what's sent to models, mask personal data where possible and can self-host the workflow engine in your cloud." },
       { q: "What happens when a flow breaks?", a: "Every workflow has error branches and alerts. On a support plan we monitor, fix and improve flows for you; otherwise your team gets docs and a runbook." },
       { q: "How fast will we see results?", a: "Most teams see the first automation live within 2 weeks. We pick the first flow specifically for quick, visible wins." },
@@ -91,7 +91,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "ai-voice-agents": {
     headline: "A receptionist that never misses a call.",
     intro:
-      "Human-sounding voice agents that answer, qualify, book and follow up in English, Hindi and regional languages — plus WhatsApp and website chat agents that share the same brain.",
+      "Human-sounding voice agents that answer, qualify, book and follow up in English, Hindi and regional languages, plus WhatsApp and website chat agents that share the same brain.",
     problems: [
       "Calls go unanswered at peak hours, at night and on weekends",
       "Staff repeat the same 20 answers all day",
@@ -351,7 +351,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "influencer-marketing": {
     headline: "Creators who move product, not just likes.",
     intro:
-      "We find the right creators, brief them well, handle the logistics and track every post to revenue — from 10-creator pilots to always-on programmes.",
+      "We find the right creators, brief them well, handle the logistics and track every post to revenue, from 10-creator pilots to always-on programmes.",
     problems: [
       "Celebrity posts cost a lot and sell little",
       "Finding authentic creators in your niche takes weeks",

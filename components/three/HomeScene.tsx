@@ -12,7 +12,11 @@ import { CipherCore } from "./CipherCore";
  */
 export default function HomeScene({ count, onReady }: { count: number; onReady: () => void }) {
   const [active, setActive] = useState(true);
-  const [dpr, setDpr] = useState(() => Math.min(window.devicePixelRatio || 1, 1.75));
+  // Phones have 3x screens and a small canvas: render near native density so particles stay crisp.
+  const small = window.matchMedia("(max-width: 767px)").matches;
+  const maxDpr = Math.min(window.devicePixelRatio || 1, small ? 2.5 : 1.75);
+  const minDpr = small ? 1.5 : 0.75;
+  const [dpr, setDpr] = useState(maxDpr);
 
   useEffect(() => {
     const zone = document.getElementById("scene-zone");
@@ -40,8 +44,8 @@ export default function HomeScene({ count, onReady }: { count: number; onReady: 
         onCreated={() => requestAnimationFrame(onReady)}
       >
         <PerformanceMonitor
-          onDecline={() => setDpr((d) => Math.max(0.75, d - 0.25))}
-          onIncline={() => setDpr((d) => Math.min(window.devicePixelRatio || 1, 1.75, d + 0.25))}
+          onDecline={() => setDpr((d) => Math.max(minDpr, d - 0.25))}
+          onIncline={() => setDpr((d) => Math.min(maxDpr, d + 0.25))}
         />
         <CipherCore count={count} />
       </Canvas>

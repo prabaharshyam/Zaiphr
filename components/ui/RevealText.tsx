@@ -16,6 +16,8 @@ interface Props {
   trigger?: "scroll" | "ready";
   delay?: number;
   stagger?: number;
+  /** Put ids here, not on a child: splitting would duplicate a child's id. */
+  id?: string;
 }
 
 export function RevealText({
@@ -26,13 +28,16 @@ export function RevealText({
   trigger = "scroll",
   delay = 0,
   stagger,
+  id,
 }: Props) {
   const ref = useRef<HTMLElement>(null);
+  const visual = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
       const el = ref.current;
-      if (!el) return;
+      const art = visual.current;
+      if (!el || !art) return;
       const reveal = () => el.classList.add("is-revealed");
 
       if (prefersReducedMotion()) {
@@ -42,10 +47,12 @@ export function RevealText({
       }
 
       let cleanupReady = () => {};
-      const s = SplitText.create(el, {
+      // Split the decorative copy only; screen readers get the plain sr-only copy.
+      const s = SplitText.create(art, {
         type: split === "chars" ? "lines,words,chars" : split === "words" ? "lines,words" : "lines",
         mask: "lines",
         linesClass: "split-line",
+        aria: "none",
         autoSplit: true,
         onSplit(self) {
           const targets = split === "chars" ? self.chars : split === "words" ? self.words : self.lines;
@@ -81,8 +88,11 @@ export function RevealText({
   );
 
   return (
-    <Tag ref={ref} data-reveal className={cn(className)}>
-      {children}
+    <Tag ref={ref} id={id} data-reveal className={cn(className)}>
+      <span className="sr-only">{children}</span>
+      <span ref={visual} aria-hidden className="block">
+        {children}
+      </span>
     </Tag>
   );
 }

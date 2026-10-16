@@ -1,3 +1,5 @@
+import { noEmDash } from "@/lib/text";
+
 /** Shared (client + server) shapes for AI News. */
 
 export const NEWS_CATEGORIES = {
@@ -36,9 +38,9 @@ export function toNewsItem(r: Record<string, unknown>): NewsItem {
     id: String(r.id),
     slug: String(r.slug),
     briefDate: String(r.brief_date),
-    headline: String(r.headline),
-    summary: String(r.summary),
-    whyItMatters: (r.why_it_matters as string | null) ?? null,
+    headline: noEmDash(String(r.headline)),
+    summary: noEmDash(String(r.summary)),
+    whyItMatters: r.why_it_matters ? noEmDash(String(r.why_it_matters)) : null,
     category: (cat in NEWS_CATEGORIES ? cat : "business") as NewsCategory,
     tags: (r.tags as string[] | null) ?? [],
     sources: Array.isArray(r.sources) ? (r.sources as NewsSourceLink[]) : [],

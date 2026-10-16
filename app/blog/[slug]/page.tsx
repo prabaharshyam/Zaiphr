@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
@@ -21,13 +22,15 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
   const { slug } = await params;
   const p = getPost(slug);
   if (!p) return {};
-  return {
+  return pageMeta({
     title: p.title,
     description: p.description,
-    alternates: { canonical: `/blog/${p.slug}` },
-    openGraph: { type: "article", title: p.title, description: p.description, images: [p.cover], publishedTime: p.date, modifiedTime: p.updated ?? p.date, tags: p.tags },
-    twitter: { card: "summary_large_image", title: p.title, description: p.description, images: [p.cover] },
-  };
+    path: `/blog/${p.slug}`,
+    image: p.cover,
+    imageSize: { width: 1600, height: 900 },
+    type: "article",
+    article: { publishedTime: p.date, modifiedTime: p.updated ?? p.date, tags: p.tags },
+  });
 }
 
 export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {

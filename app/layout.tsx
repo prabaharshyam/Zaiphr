@@ -24,10 +24,19 @@ const archivo = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} — ${site.tagline}`, template: `%s — ${site.name}` },
+  title: { default: `${site.name} | ${site.tagline}`, template: `%s | ${site.name}` },
   description: site.description,
-  openGraph: { siteName: site.name, type: "website", locale: "en_IN" },
-  twitter: { card: "summary_large_image" },
+  applicationName: site.name,
+  // Default link preview for pages that don't set their own (see lib/seo.ts).
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    locale: "en_IN",
+    title: `${site.name} | ${site.tagline}`,
+    description: site.description,
+    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: site.name }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og/home.jpg"] },
 };
 
 export const viewport: Viewport = {

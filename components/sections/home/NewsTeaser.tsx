@@ -78,7 +78,7 @@ function SwipeCard({ card, onDone, depth }: { card: Card; onDone: (dir: 1 | -1) 
       dragSnapToOrigin={false}
       onDragEnd={end}
       data-cursor={top ? "Drag" : undefined}
-      tabIndex={top ? 0 : -1}
+      tabIndex={top ? 0 : undefined}
       aria-hidden={!top}
       onKeyDown={(e) => {
         if (!top) return;
@@ -94,7 +94,7 @@ function SwipeCard({ card, onDone, depth }: { card: Card; onDone: (dir: 1 | -1) 
         className="relative h-full w-full [transform-style:preserve-3d]"
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ type: "spring", stiffness: 120, damping: 18 }}
-        onTap={() => top && setFlipped((f) => !f)}
+        onTap={top ? () => setFlipped((f) => !f) : undefined}
       >
         {/* front */}
         <div className={`absolute inset-0 flex flex-col overflow-hidden rounded-3xl border border-line-strong bg-gradient-to-b ${card.hue} p-7 [backface-visibility:hidden]`}>
@@ -149,11 +149,11 @@ export function NewsTeaser({ stories = [] }: { stories?: TeaserStory[] }) {
       <div className="container-x grid grid-cols-1 items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <Eyebrow index="05">AI News · Daily</Eyebrow>
-          <RevealText as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
-            <span id="news-heading">All of AI, in your morning chai break.</span>
+          <RevealText id="news-heading" as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
+            All of AI, in your morning chai break.
           </RevealText>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
-            The 10-odd AI stories that matter each day, picked from the labs, the tech press and India&apos;s startup media —
+            The 10-odd AI stories that matter each day, picked from the labs, the tech press and India&apos;s startup media,
             each in 60 words with a founder&apos;s takeaway. Swipe through it like a deck of cards.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">

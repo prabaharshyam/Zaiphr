@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { about } from "@/config/about";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
@@ -6,12 +7,12 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { LogoMark } from "@/components/ui/Logo";
 import { Testimonials } from "@/components/sections/Testimonials";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About",
-  description:
-    "Zaiphr Labs is an AI-native tech studio building the engines that let small teams move like big companies.",
-  alternates: { canonical: "/about" },
-};
+  description: "Zaiphr Labs is an AI-native tech studio. A crew of tech nerds, creative heads and camera geeks building the engines that let small teams move like big companies.",
+  path: "/about",
+  image: "/og/about.jpg",
+});
 
 export default function AboutPage() {
   const { team } = about;
@@ -46,7 +47,7 @@ export default function AboutPage() {
           <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {about.values.map((v, i) => (
               <GlassCard key={v.title} as="li" tilt className="flex min-h-[18rem] flex-col justify-between p-7">
-                <span className="font-display-wide text-4xl text-text/15">0{i + 1}</span>
+                <span aria-hidden data-n={`0${i + 1}`} className="font-display-wide text-4xl text-text/15 before:content-[attr(data-n)]" />
                 <div>
                   <h3 className="text-xl font-medium">{v.title}</h3>
                   <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{v.text}</p>
@@ -81,8 +82,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Eyebrow index="04">The team</Eyebrow>
-              <RevealText as="h2" className="font-display-tight mt-5 text-[clamp(2.2rem,4.2vw,4rem)]">
-                <span id="team-heading">{team.headline}</span>
+              <RevealText id="team-heading" as="h2" className="font-display-tight mt-5 text-[clamp(2.2rem,4.2vw,4rem)]">
+                {team.headline}
               </RevealText>
             </div>
             <p className="text-lg leading-relaxed text-muted lg:col-span-6 lg:col-start-7 lg:pt-12">{team.body}</p>

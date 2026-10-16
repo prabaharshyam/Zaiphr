@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { useCases } from "@/config/use-cases";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { UseCaseExplorer } from "@/components/sections/UseCaseExplorer";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "AI use cases by industry",
-  description:
-    "Practical AI and automation use cases for real estate, D2C, clinics, education, SaaS and restaurants — with how they work, tools used and estimated time saved.",
-  alternates: { canonical: "/use-cases" },
-};
+  description: "Practical AI and automation use cases for real estate, D2C, clinics, education, SaaS and restaurants, with how they work, the tools used and estimated time saved.",
+  path: "/use-cases",
+  image: "/og/use-cases.jpg",
+});
 
 export default function UseCasesPage() {
   return (

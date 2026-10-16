@@ -83,7 +83,7 @@ export function ProjectBriefForm() {
 
   const validate = (i: number) => {
     if (i === 0 && !brief.services.length) return "Pick at least one service.";
-    if (i === 1 && !brief.budget) return "Choose a budget range — a rough guess is fine.";
+    if (i === 1 && !brief.budget) return "Choose a budget range. A rough guess is fine.";
     if (i === 2 && !brief.timeline) return "When would you like to start?";
     if (i === 3 && brief.details.trim().length < 10) return "A sentence or two about the project helps us prepare.";
     if (i === 4) {
@@ -136,7 +136,7 @@ export function ProjectBriefForm() {
         source: "contact_form",
         consent: true,
       },
-      { subject: `Project brief — ${brief.name}${brief.company ? ` (${brief.company})` : ""}`, body },
+      { subject: `Project brief: ${brief.name}${brief.company ? ` (${brief.company})` : ""}`, body },
     );
     setLoading(false);
     if (r.status === "error") return setError(r.message);
@@ -148,7 +148,7 @@ export function ProjectBriefForm() {
       <div role="status" className="rounded-3xl border border-signature/40 bg-bg-2 p-8 md:p-12">
         <p className="label-mono text-signature">{sent === "saved" ? "Brief received" : "Almost done"}</p>
         <p className="font-display-tight mt-4 text-4xl">
-          {sent === "saved" ? "Thank you — we'll be in touch within one business day." : "Your email app should be open — hit send."}
+          {sent === "saved" ? "Thank you. We'll be in touch within one business day." : "Your email app should be open. Hit send."}
         </p>
         <p className="mt-4 max-w-lg text-muted">
           We reply within one business day. Want to skip the wait? Pick a time for a free 30-minute strategy call below.
@@ -270,7 +270,7 @@ export function ProjectBriefForm() {
               {step === 3 && (
                 <>
                   <legend className="font-display-tight text-[clamp(1.8rem,3.4vw,3rem)]">Tell us about the project.</legend>
-                  <p className="mt-2 text-muted">Goals, current tools, what success looks like — whatever you know so far.</p>
+                  <p className="mt-2 text-muted">Goals, current tools, what success looks like. Whatever you know so far.</p>
                   <div className="mt-8 space-y-5">
                     <Field label="Project details" htmlFor="b-details">
                       <textarea id="b-details" rows={6} value={brief.details} onChange={(e) => set("details", e.target.value)} className={cn(inputCls, "resize-none")} placeholder="We want to stop missing calls at our 3 clinics and…" />
@@ -302,7 +302,7 @@ export function ProjectBriefForm() {
                   <label className="mt-6 flex cursor-pointer items-start gap-3 text-sm text-muted">
                     <input type="checkbox" checked={brief.consent} onChange={(e) => set("consent", e.target.checked)} className="mt-0.5 h-4 w-4 accent-[var(--signature)]" />
                     <span>
-                      I agree that Zaiphr Labs may contact me about this enquiry. We use your details only to respond — see our{" "}
+                      I agree that Zaiphr Labs may contact me about this enquiry. We use your details only to respond. See our{" "}
                       <Link href="/legal/privacy" target="_blank" className="text-text underline underline-offset-4">
                         privacy policy
                       </Link>

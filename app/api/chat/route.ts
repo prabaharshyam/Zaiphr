@@ -59,7 +59,7 @@ export async function POST(req: Request) {
   const messages = normalise(parsed.data.messages);
   if (!messages.length || messages[messages.length - 1].role !== "user") return NextResponse.json({ error: "Invalid request" }, { status: 422 });
   if (messages.filter((m) => m.role === "user").length > MAX_USER_TURNS) {
-    return NextResponse.json({ error: "This chat has reached its length limit — start a new chat, or contact the team directly." }, { status: 429 });
+    return NextResponse.json({ error: "This chat has reached its length limit. Start a new chat, or contact the team directly." }, { status: 429 });
   }
 
   const ip = ipHash(req);
@@ -70,12 +70,12 @@ export async function POST(req: Request) {
     else {
       const since = new Date(Date.now() - 3600_000).toISOString();
       const { count } = await db().from("tool_runs").select("id", { count: "exact", head: true }).eq("tool", TOOL).eq("ip_hash", ip).gte("created_at", since);
-      if ((count ?? 0) >= CONVERSATIONS_PER_HOUR) return NextResponse.json({ error: "Lots of chats from your network — please try again later, or contact us directly." }, { status: 429 });
+      if ((count ?? 0) >= CONVERSATIONS_PER_HOUR) return NextResponse.json({ error: "Lots of chats from your network. Please try again later, or contact us directly." }, { status: 429 });
       const { data } = await db().from("tool_runs").insert({ tool: TOOL, input_hash: conversationId, ip_hash: ip, inputs: { startPage }, status: "ok" }).select("id").single();
       rowId = data?.id ?? null;
     }
   } else if (memoryLimited(ip)) {
-    return NextResponse.json({ error: "Too many messages — please try again later, or contact us directly." }, { status: 429 });
+    return NextResponse.json({ error: "Too many messages. Please try again later, or contact us directly." }, { status: 429 });
   }
 
   // Page context goes on the first user turn only, so earlier turns stay byte-identical (cache-friendly).
@@ -96,7 +96,7 @@ export async function POST(req: Request) {
         console.error("[chat] failed", err);
         const busy = err instanceof Anthropic.RateLimitError || (err instanceof Anthropic.APIError && (err.status ?? 0) >= 500);
         controller.enqueue(
-          encoder.encode(line({ type: "error", message: busy ? "I'm a bit overloaded right now — please try again in a minute." : "Something went wrong on my side. Please try again, or contact the team directly." })),
+          encoder.encode(line({ type: "error", message: busy ? "I'm a bit overloaded right now. Please try again in a minute." : "Something went wrong on my side. Please try again, or contact the team directly." })),
         );
       } finally {
         controller.close();

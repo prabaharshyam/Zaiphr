@@ -23,8 +23,9 @@ function particleBudget() {
   const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
   if (nav.connection?.saveData) return 0;
   const small = window.matchMedia("(max-width: 767px)").matches;
-  const weak = (nav.hardwareConcurrency ?? 8) <= 4 || (nav.deviceMemory ?? 8) <= 4;
-  if (small) return weak ? 9000 : 16000;
+  // iOS Safari under-reports cores and hides memory, so only treat clearly low-end signals as weak.
+  const weak = (nav.hardwareConcurrency ?? 8) <= 2 || (nav.deviceMemory ?? 8) <= 3;
+  if (small) return weak ? 12000 : 22000;
   return weak ? 24000 : 52000;
 }
 

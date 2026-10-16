@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Suspense } from "react";
 import { site } from "@/config/site";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { ProjectBriefForm } from "@/components/contact/ProjectBriefForm";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Contact",
   description: "Tell us what you're building. Book a free 30-minute strategy call or send a project brief to Zaiphr Labs.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+  image: "/og/contact.jpg",
+});
 
 export default function ContactPage() {
   const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Zaiphr Labs, I'd like to discuss a project.")}`;

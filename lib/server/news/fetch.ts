@@ -35,7 +35,7 @@ const parser = new XMLParser({
   htmlEntities: true,
 });
 
-const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", hellip: "…", mdash: "—", ndash: "–", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“" };
+const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", hellip: "…", mdash: " - ", ndash: "–", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“" };
 
 /** Strips tags and decodes entities from feed HTML. */
 export function plain(html: unknown, max = 600) {
@@ -143,7 +143,7 @@ export const AI_RE =
   /\b(ai|a\.i\.|artificial intelligence|genai|generative|llms?|gpt[-\w.]*|chatgpt|claude|gemini|llama|mistral|openai|anthropic|deepmind|copilot|ai agents?|agentic|machine learning|neural|chatbots?|diffusion|transformer|nvidia|hugging ?face|perplexity|midjourney|sora|deepseek|qwen|grok)\b/i;
 
 /**
- * Fetches every source in parallel. A failing feed never fails the run — it's reported in `results`.
+ * Fetches every source in parallel. A failing feed never fails the run - it's reported in `results`.
  * Returns fresh, AI-relevant, de-duplicated candidates (newest first).
  */
 export async function collect(sources: NewsSource[], windowHours = 30) {

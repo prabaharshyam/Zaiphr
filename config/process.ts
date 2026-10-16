@@ -12,7 +12,7 @@ export const processSteps = [
     title: "Design",
     duration: "Week 1–2",
     summary:
-      "Flows, conversation scripts, interfaces and brand — designed and prototyped so you can click, call or test before we build.",
+      "Flows, conversation scripts, interfaces and brand, designed and prototyped so you can click, call or test before we build.",
     outputs: ["Prototypes", "Conversation design", "Brand system"],
   },
   {
@@ -20,7 +20,7 @@ export const processSteps = [
     title: "Build",
     duration: "Week 2–6",
     summary:
-      "Production-grade engineering in short sprints, with a demo every week. No black boxes — you see progress as it happens.",
+      "Production-grade engineering in short sprints, with a demo every week. No black boxes: you see progress as it happens.",
     outputs: ["Web & apps", "Agents", "Integrations"],
   },
   {
@@ -28,7 +28,7 @@ export const processSteps = [
     title: "Automate",
     duration: "Week 4–8",
     summary:
-      "We wire everything together — CRM, WhatsApp, calendars, payments — so leads, follow-ups and reports run on their own.",
+      "We wire everything together (CRM, WhatsApp, calendars, payments) so leads, follow-ups and reports run on their own.",
     outputs: ["Workflows", "Dashboards", "Alerts"],
   },
   {

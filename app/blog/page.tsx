@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { BLOG_CATEGORIES, formatPostDate, getPosts, type Post } from "@/lib/blog";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
@@ -7,9 +8,12 @@ import { PostCard, type PostCardData } from "@/components/blog/PostCard";
 import { BlogIndex } from "@/components/blog/BlogIndex";
 
 export const metadata: Metadata = {
-  title: "Blog — practical playbooks on AI, automation and growth",
-  description:
-    "Field notes for founders and small businesses: AI automation, voice agents, websites, apps, branding, video ads and influencer marketing — practical, no fluff.",
+  ...pageMeta({
+    title: "Blog: practical playbooks on AI, automation and growth",
+    description: "Field notes for founders and small businesses on AI automation, voice agents, websites, apps, branding, video ads and influencer marketing. Practical, no fluff.",
+    path: "/blog",
+    image: "/og/blog.jpg",
+  }),
   alternates: { canonical: "/blog", types: { "application/rss+xml": "/blog/rss.xml" } },
 };
 
@@ -41,7 +45,7 @@ export default function BlogPage() {
             Field notes.
           </RevealText>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-            Practical playbooks on AI, automation, websites and growth — written for founders and small teams who&apos;d rather do
+            Practical playbooks on AI, automation, websites and growth, written for founders and small teams who&apos;d rather do
             than read about doing.
           </p>
         </div>
@@ -50,7 +54,7 @@ export default function BlogPage() {
       {featured && (
         <section aria-label="Featured post" className="pb-24">
           <div className="container-x">
-            <p className="label-mono mb-6 text-muted">Featured</p>
+            <h2 className="label-mono mb-6 text-muted">Featured</h2>
             <PostCard post={toCard(featured)} large priority />
           </div>
         </section>

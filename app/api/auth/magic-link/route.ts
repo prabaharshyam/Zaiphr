@@ -33,7 +33,7 @@ async function count(column: "ip_hash" | "input_hash", value: string, minutes: n
 async function createLink(email: string) {
   const auth = db().auth.admin;
   let { data, error } = await auth.generateLink({ type: "magiclink", email });
-  // Older auth servers only issue magic links to existing users — create the account first.
+  // Older auth servers only issue magic links to existing users - create the account first.
   if (error && /not found|no user/i.test(error.message)) {
     ({ data, error } = await auth.generateLink({ type: "signup", email, password: randomBytes(24).toString("base64url") }));
   }
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
   const ip = ipHash(req);
   const emailHash = createHash("sha256").update(`${env.ipSalt}:${email}`).digest("hex");
   if ((await count("ip_hash", ip, 60)) >= PER_IP_HOUR) {
-    return NextResponse.json({ ok: false, error: "Too many requests — try again in a little while." }, { status: 429 });
+    return NextResponse.json({ ok: false, error: "Too many requests. Try again in a little while." }, { status: 429 });
   }
   // Same answer whether or not we send, so this can't be used to probe or spam an inbox.
   if ((await count("input_hash", emailHash, 15)) >= PER_EMAIL_15MIN) return NextResponse.json({ ok: true });
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
         "Sign in to Zaiphr Labs",
         p("Tap the button below to sign in and save stories from the daily AI brief. The link works once and expires in 1 hour.") +
           button(link, "Sign in") +
-          p("If you didn't ask for this, you can ignore this email — nobody can sign in without the link."),
+          p("If you didn't ask for this, you can ignore this email. Nobody can sign in without the link."),
       ),
     });
     if (!sent) throw new Error("email not sent");
@@ -83,6 +83,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error("[magic-link] failed", e);
-    return NextResponse.json({ ok: false, error: "Couldn't send the link — please try again." }, { status: 500 });
+    return NextResponse.json({ ok: false, error: "Couldn't send the link. Please try again." }, { status: 500 });
   }
 }

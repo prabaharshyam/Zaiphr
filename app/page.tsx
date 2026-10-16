@@ -1,3 +1,8 @@
+import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { services } from "@/config/services";
+import { site } from "@/config/site";
 import { Hero } from "@/components/sections/home/Hero";
 import { StackMarquee } from "@/components/sections/home/StackMarquee";
 import { ServicesScroll } from "@/components/sections/home/ServicesScroll";
@@ -15,6 +20,14 @@ import { NEWS_CATEGORIES } from "@/lib/news/types";
 
 export const revalidate = 600;
 
+export const metadata: Metadata = pageMeta({
+  title: `${site.name} | ${site.tagline}`,
+  description: site.description,
+  path: "/",
+  image: "/og/home.jpg",
+  absoluteTitle: true,
+});
+
 export default async function HomePage() {
   const { items } = await getLatestBrief();
   const stories = items
@@ -30,6 +43,27 @@ export default async function HomePage() {
     }));
   return (
     <>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": ["Organization", "ProfessionalService"],
+            "@id": `${site.url}/#org`,
+            name: site.name,
+            url: site.url,
+            logo: `${site.url}/icon-512.png`,
+            image: `${site.url}/og/home.jpg`,
+            description: site.description,
+            email: site.email,
+            telephone: site.phone.replace(/\s/g, ""),
+            address: { "@type": "PostalAddress", addressCountry: "IN" },
+            areaServed: ["IN", "Worldwide"],
+            knowsAbout: services.map((x) => x.title),
+            contactPoint: { "@type": "ContactPoint", contactType: "sales", email: site.email, telephone: site.phone.replace(/\s/g, ""), availableLanguage: ["English"] },
+          },
+          { "@context": "https://schema.org", "@type": "WebSite", "@id": `${site.url}/#website`, name: site.name, url: site.url, publisher: { "@id": `${site.url}/#org` }, inLanguage: "en-IN" },
+        ]}
+      />
       <SceneLoader />
       <div id="scene-zone" className="relative">
         <Hero />

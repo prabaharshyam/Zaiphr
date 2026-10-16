@@ -61,7 +61,7 @@ export function Pricing({ packages, serviceSlug }: { packages: Package[]; servic
           ))}
         </ul>
         <p className="mt-6 text-xs text-muted">
-          Guidance only — final quotes follow a free discovery call. Prices exclude GST and third-party costs (ad spend, usage, creator fees).
+          Guidance only. Final quotes follow a free discovery call. Prices exclude GST and third-party costs (ad spend, usage, creator fees).
         </p>
       </div>
     </section>

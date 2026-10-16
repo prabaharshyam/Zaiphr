@@ -4,7 +4,7 @@ import { services } from "@/config/services";
 export const TOOL_ID = "ai_stack_finder";
 
 export const finderInputSchema = z.object({
-  problem: z.string().trim().min(15, "Tell us a little more — at least a sentence.").max(1200),
+  problem: z.string().trim().min(15, "Tell us a little more: at least a sentence.").max(1200),
   industry: z.string().max(60).optional(),
   teamSize: z.enum(["solo", "2-10", "11-50", "50+"]).optional(),
   budget: z.enum(["free", "low", "flexible"]).optional(),
@@ -16,7 +16,7 @@ export type FinderInput = z.infer<typeof finderInputSchema>;
 const serviceSlugs = services.map((s) => s.slug) as [string, ...string[]];
 
 /**
- * Shape Claude must return (structured output). Kept free of length constraints —
+ * Shape Claude must return (structured output). Kept free of length constraints -
  * we trim and validate after parsing.
  */
 export const planSchema = z.object({

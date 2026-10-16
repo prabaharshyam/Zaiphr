@@ -15,7 +15,7 @@ export function ServiceHero({ service, detail }: { service: Service; detail: Ser
       <div className="container-x relative flex flex-1 flex-col justify-end pb-14 md:justify-center md:pb-0">
         <div className="max-w-3xl">
           <Eyebrow index={service.index}>Service</Eyebrow>
-          <RevealText as="h1" trigger="ready" className="font-display-wide mt-6 text-[clamp(3rem,8vw,8.5rem)]">
+          <RevealText as="h1" trigger="ready" className="font-display-wide mt-6 text-[clamp(2.1rem,10.4vw,3rem)] md:text-[clamp(3rem,8vw,8.5rem)]">
             {service.title}
           </RevealText>
           <RevealText

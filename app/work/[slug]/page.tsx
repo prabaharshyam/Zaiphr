@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
@@ -16,11 +17,13 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const { slug } = await params;
   const p = getProject(slug);
   if (!p) return {};
-  return {
-    title: `${p.client} — ${p.title}`,
+  return pageMeta({
+    title: `${p.client}: ${p.title}`,
     description: p.summary,
-    openGraph: { images: [p.cover] },
-  };
+    path: `/work/${p.slug}`,
+    image: p.cover,
+    imageSize: { width: 2000, height: 1250 },
+  });
 }
 
 export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {

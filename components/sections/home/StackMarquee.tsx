@@ -1,6 +1,6 @@
 import { Marquee } from "@/components/ui/Marquee";
 
-// Text only — no third-party logos.
+// Text only - no third-party logos.
 const stack = [
   "Claude",
   "OpenAI",

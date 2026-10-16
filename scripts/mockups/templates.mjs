@@ -57,7 +57,7 @@ const browserBar = (url, dark = false) =>
 
 const status = (color = "#111") => `<div class="status" style="color:${color}"><span>9:41</span><span>●●● ▮</span></div>`;
 
-/* ───────────── 1. Pearlline Dental — AI voice receptionist ───────────── */
+/* ───────────── 1. Pearlline Dental - AI voice receptionist ───────────── */
 const pearlline = () =>
   page(
     `
@@ -74,7 +74,7 @@ const pearlline = () =>
 <div class="abs" style="left:90px;top:96px;color:#073b37">
   <div style="display:flex;align-items:center;gap:12px;font:700 22px 'DM Sans'"><span style="width:36px;height:36px;border-radius:12px;background:#073b37;display:grid;place-items:center;color:#d9f4ef;font-size:20px">◡</span>Pearlline Dental</div>
   <div style="font:400 92px/0.95 'Fraunces';letter-spacing:-.03em;margin-top:70px;width:640px">Every call,<br/><em style="font-style:italic;color:#0f6f66">answered.</em></div>
-  <div style="font:500 20px/1.5 'DM Sans';margin-top:28px;width:470px;color:#0b4e48">Meet Pearl — the AI receptionist that books, reschedules and reminds, 24/7.</div>
+  <div style="font:500 20px/1.5 'DM Sans';margin-top:28px;width:470px;color:#0b4e48">Meet Pearl - the AI receptionist that books, reschedules and reminds, 24/7.</div>
   <div style="display:flex;gap:10px;margin-top:34px">
     <span class="pill" style="background:#073b37;color:#d9f4ef">● Live on 3 clinics</span>
     <span class="pill" style="background:rgba(255,255,255,.6);color:#073b37">English · हिंदी · ಕನ್ನಡ</span>
@@ -113,7 +113,7 @@ const pearlline = () =>
 `,
   );
 
-/* ───────────── 2. Noor & Dew — D2C skincare storefront ───────────── */
+/* ───────────── 2. Noor & Dew - D2C skincare storefront ───────────── */
 const bottle = (x, y, h, c1, c2, cap, rot = 0, label = "") => `
 <div class="abs" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg)">
   <div style="width:${h * 0.18}px;height:${h * 0.16}px;margin:0 auto;border-radius:6px 6px 2px 2px;background:${cap}"></div>
@@ -137,9 +137,9 @@ const noor = () =>
     <div style="padding:64px 0 0 60px;color:#3d2214">
       <div class="mono" style="font-size:12px;opacity:.75">The Morning Glow ritual · 3 steps</div>
       <div style="font:400 76px/0.98 'Fraunces';letter-spacing:-.03em;margin-top:22px">Skin that glows<br/>at <em>golden hour.</em></div>
-      <div style="font:500 18px/1.55 'DM Sans';margin-top:24px;width:430px;color:#5a3420">Kumkumadi, niacinamide and sea-buckthorn — a clean routine for dull, tired skin. Dermatologist reviewed.</div>
+      <div style="font:500 18px/1.55 'DM Sans';margin-top:24px;width:430px;color:#5a3420">Kumkumadi, niacinamide and sea-buckthorn - a clean routine for dull, tired skin. Dermatologist reviewed.</div>
       <div style="display:flex;gap:14px;margin-top:34px;align-items:center">
-        <span class="pill" style="background:#3d2214;color:#fbf6ef;padding:16px 26px;font-size:15px">Shop the ritual — ₹1,890</span>
+        <span class="pill" style="background:#3d2214;color:#fbf6ef;padding:16px 26px;font-size:15px">Shop the ritual - ₹1,890</span>
         <span style="font:600 15px 'DM Sans';text-decoration:underline;text-underline-offset:5px">Find my routine →</span>
       </div>
     </div>
@@ -163,7 +163,7 @@ const noor = () =>
 `,
   );
 
-/* ───────────── 3. Skyhaven Realty — WhatsApp qualifier + CRM ───────────── */
+/* ───────────── 3. Skyhaven Realty - WhatsApp qualifier + CRM ───────────── */
 const lead = (name, meta, score, hot) => `
 <div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 6px 16px -8px rgba(11,31,58,.25)">
   <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 15px 'DM Sans';color:#0b1f3a">${name}</span><span class="pill" style="padding:4px 9px;font-size:11px;background:${hot ? "#fff3cf" : "#eef1f6"};color:${hot ? "#8a6a00" : "#5a6b85"}">${score}</span></div>
@@ -209,7 +209,7 @@ const skyhaven = () =>
   <div style="padding:16px 12px">
     <div class="msg" style="background:#fff">Hi Meera 👋 Thanks for your interest in <b>The Arbor</b>. Looking for 2 or 3 BHK?</div>
     <div class="msg" style="background:#d6f5c9;margin-left:auto">2 BHK. Budget around 1.1 Cr</div>
-    <div class="msg" style="background:#fff">Great fit — 2 BHKs start at ₹1.04 Cr. When are you planning to move?</div>
+    <div class="msg" style="background:#fff">Great fit - 2 BHKs start at ₹1.04 Cr. When are you planning to move?</div>
     <div class="msg" style="background:#d6f5c9;margin-left:auto">In 3 months, home loan is pre-approved</div>
     <div class="msg" style="background:#fff">Perfect! Want a site visit? Sat 11:00 or Sun 4:30 📍</div>
     <div style="display:flex;gap:6px;margin-top:4px"><span class="pill" style="background:#fff;color:#0b5c4b;border:1px solid #0b5c4b">Sat 11:00</span><span class="pill" style="background:#fff;color:#0b5c4b;border:1px solid #0b5c4b">Sun 4:30</span></div>
@@ -218,7 +218,7 @@ const skyhaven = () =>
 `,
   );
 
-/* ───────────── 4. Fynly — invoicing app ───────────── */
+/* ───────────── 4. Fynly - invoicing app ───────────── */
 const fynly = () =>
   page(
     `.stage{background:linear-gradient(140deg,#eef0ff 0%,#dfe3ff 45%,#c7cdfd 100%)}
@@ -283,7 +283,7 @@ const fynly = () =>
 `,
   );
 
-/* ───────────── 5. Kōen Coffee — brand identity board ───────────── */
+/* ───────────── 5. Kōen Coffee - brand identity board ───────────── */
 const koenMark = (size, color, bg) => `
 <svg width="${size}" height="${size}" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="${bg}"/><path d="M50 6 C34 30 66 70 50 94" fill="none" stroke="${color}" stroke-width="7" stroke-linecap="round"/></svg>`;
 const koen = () =>
@@ -344,7 +344,7 @@ const koen = () =>
 `,
   );
 
-/* ───────────── 6. Pulse Athletic — reels & ad creatives ───────────── */
+/* ───────────── 6. Pulse Athletic - reels & ad creatives ───────────── */
 const reel = (x, y, rot, bg, top, big, small, accent) => `
 <div class="phone" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg) scale(.92)"><div class="island"></div><div class="screen" style="background:${bg};color:#fff">
   <div class="abs" style="inset:0;background:radial-gradient(400px 500px at 50% 35%,rgba(255,255,255,.18),transparent 70%)"></div>
@@ -375,7 +375,7 @@ ${reel(1060, 170, 7, "linear-gradient(170deg,#f5f5f2,#bdbdb6)", "Myth vs fact", 
 `,
   );
 
-/* ───────────── 7. Hearthloom — influencer programme ───────────── */
+/* ───────────── 7. Hearthloom - influencer programme ───────────── */
 const creator = (name, handle, niche, f, hue, status) => `
 <div style="background:#fff;border-radius:18px;padding:16px;box-shadow:0 10px 24px -14px rgba(60,50,30,.35)">
   <div style="height:150px;border-radius:12px;background:linear-gradient(150deg,hsl(${hue} 35% 78%),hsl(${hue + 25} 30% 58%));position:relative;overflow:hidden">
@@ -418,7 +418,7 @@ const hearthloom = () =>
 `,
   );
 
-/* ───────────── 8. Learnova — AI tutor ───────────── */
+/* ───────────── 8. Learnova - AI tutor ───────────── */
 const learnova = () =>
   page(
     `.stage{background:radial-gradient(900px 700px at 70% 40%,#8b5cf6 0%,#5b21b6 45%,#2e1065 100%)}`,
@@ -459,7 +459,7 @@ const learnova = () =>
 `,
   );
 
-/* ───────────── 9. Spice Route Kitchens — restaurant site + ordering ───────────── */
+/* ───────────── 9. Spice Route Kitchens - restaurant site + ordering ───────────── */
 const dish = (hue1, hue2) =>
   `<div style="width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 50% 50%,${hue1} 0 38%,${hue2} 39% 52%,#f3ead8 53% 64%,#e6d8bd 65% 70%,transparent 71%);box-shadow:0 30px 40px -20px rgba(0,0,0,.6)"></div>`;
 const spice = () =>
@@ -472,7 +472,7 @@ const spice = () =>
   <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 46px;color:#f6e7c8;font:500 15px 'DM Sans'">
     <div style="font:400 30px 'Instrument Serif';letter-spacing:.02em">Spice Route <em style="color:#f4a300">Kitchens</em></div>
     <div style="display:flex;gap:28px;opacity:.85"><span>Regions</span><span>Menu</span><span>Reserve</span><span>Our story</span></div>
-    <span class="pill" style="background:#f4a300;color:#2a0606;padding:12px 18px;font-size:14px">Order direct — 10% back</span>
+    <span class="pill" style="background:#f4a300;color:#2a0606;padding:12px 18px;font-size:14px">Order direct - 10% back</span>
   </div>
   <div style="position:relative;height:470px;margin:0 46px;border-radius:24px;overflow:hidden;background:radial-gradient(700px 400px at 75% 60%,#7a2a0a,#2a0606 70%)">
     <div class="abs" style="left:56px;top:70px;color:#f6e7c8">

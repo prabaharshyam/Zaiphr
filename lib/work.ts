@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { services } from "@/config/services";
 import type { ProjectCardData } from "@/components/work/ProjectCard";
 /**
- * Case studies live in content/work/*.mdx. Add a file to add a project —
+ * Case studies live in content/work/*.mdx. Add a file to add a project -
  * frontmatter drives cards, filters and the case-study page.
  * Images go in public/work/<slug>/ (cover.jpg is required).
  */

@@ -10,7 +10,7 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import { getTool, pricingLabel } from "@/config/ai-tools";
 import { finderExamples } from "@/config/finder-examples";
 
-/** Illustrative stack for the first example problem — not a live result. */
+/** Illustrative stack for the first example problem - not a live result. */
 const sample = [
   { id: "bolna", role: "Answers every missed call" },
   { id: "zoho-bookings", role: "Books the slot" },
@@ -26,7 +26,7 @@ export function ToolsTeaser() {
   const submit = (e: FormEvent) => {
     e.preventDefault();
     const v = problem.trim();
-    if (v.length < 15) return setError("Tell us a little more — one or two sentences is perfect.");
+    if (v.length < 15) return setError("Tell us a little more. One or two sentences is perfect.");
     setError("");
     router.push(`/tools/ai-stack-finder?q=${encodeURIComponent(v)}`);
   };
@@ -40,11 +40,11 @@ export function ToolsTeaser() {
       <div className="container-x relative grid grid-cols-1 items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <Eyebrow index="04">Free tool</Eyebrow>
-          <RevealText as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
-            <span id="tools-heading">Tell us the problem. Get your AI stack.</span>
+          <RevealText id="tools-heading" as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
+            Tell us the problem. Get your AI stack.
           </RevealText>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
-            There are thousands of AI tools and no time to test them. Describe what&apos;s slowing your business down —
+            There are thousands of AI tools and no time to test them. Describe what&apos;s slowing your business down and
             the AI Stack Finder picks the right tools, shows how they connect and what it&apos;ll cost. Free.
           </p>
           <form onSubmit={submit} className="mt-10 max-w-xl" noValidate>

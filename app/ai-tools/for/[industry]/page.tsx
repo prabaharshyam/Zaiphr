@@ -1,5 +1,6 @@
 import { lowerLabel } from "@/lib/utils";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { finderIndustries, getTool, industryPicks } from "@/config/ai-tools";
@@ -13,11 +14,12 @@ export async function generateMetadata({ params }: PageProps<"/ai-tools/for/[ind
   const { industry } = await params;
   const ind = finderIndustries.find((i) => i.slug === industry);
   if (!ind) return {};
-  return {
+  return pageMeta({
     title: `Best AI tools for ${lowerLabel(ind.label)} (${new Date().getFullYear()})`,
-    description: industryPicks[industry]?.intro,
-    alternates: { canonical: `/ai-tools/for/${industry}` },
-  };
+    description: industryPicks[industry]?.intro ?? `Hand-picked AI tools for ${lowerLabel(ind.label)}.`,
+    path: `/ai-tools/for/${industry}`,
+    image: "/og/ai-tools.jpg",
+  });
 }
 
 export default async function IndustryPage({ params }: PageProps<"/ai-tools/for/[industry]">) {

@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { headingId } from "@/lib/blog-shared";
 
 /**
- * Posts live in content/blog/*.mdx — add a file to publish a post.
+ * Posts live in content/blog/*.mdx - add a file to publish a post.
  * Covers are generated into public/blog/<slug>/cover.jpg by `node scripts/blog-covers/render.mjs`.
  */
 export const BLOG_CATEGORIES = ["AI for Business", "Automation", "Websites & Apps", "Marketing & Growth"] as const;

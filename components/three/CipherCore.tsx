@@ -5,7 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { sceneState } from "@/lib/scene-store";
-import { buildForms } from "./forms";
+import { FORM_COUNT, formLibrary } from "./forms";
 
 const vertex = /* glsl */ `
   uniform float uTime;
@@ -13,6 +13,7 @@ const vertex = /* glsl */ `
   uniform float uScatter;
   uniform float uSize;
   uniform float uPixelRatio;
+  uniform float uScale;
   uniform vec3 uMouse;
   uniform float uMouseForce;
   uniform float uIntro;
@@ -55,7 +56,8 @@ const vertex = /* glsl */ `
 
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
     gl_Position = projectionMatrix * mv;
-    float size = uSize * (0.55 + aRand * 0.9) * (1.0 + burst * 0.6);
+    // uScale shrinks points with the form on small screens, so they don't blur into each other.
+    float size = uSize * uScale * (0.55 + aRand * 0.9) * (1.0 + burst * 0.6);
     gl_PointSize = size * uPixelRatio / -mv.z;
 
     vAccent = step(0.9, aRand);
@@ -66,6 +68,7 @@ const vertex = /* glsl */ `
 
 const fragment = /* glsl */ `
   uniform float uOpacity;
+  uniform float uScale;
   uniform vec3 uBase;
   uniform vec3 uAccent;
   varying float vAlpha;
@@ -79,7 +82,9 @@ const fragment = /* glsl */ `
     float core = smoothstep(0.5, 0.0, r);
     float glow = pow(core, 1.8);
     vec3 col = mix(uBase, uAccent, vAccent);
-    float a = glow * vAlpha * uOpacity * mix(1.0, 0.45, vDepth) * (vAccent > 0.5 ? 1.0 : 0.62);
+    // Smaller points on phones carry less light; lift them so the form stays as bright as desktop.
+    float boost = 1.0 + (1.0 - uScale) * 0.9;
+    float a = glow * vAlpha * uOpacity * boost * mix(1.0, 0.45, vDepth) * (vAccent > 0.5 ? 1.0 : 0.62);
     gl_FragColor = vec4(col * (1.0 + vAccent * 0.6), a);
   }
 `;
@@ -97,17 +102,18 @@ export function CipherCore({ count }: { count: number }) {
   const smoothMorph = useRef(sceneState.morph);
   const intro = useRef(0);
 
-  const { forms, rand } = useMemo(() => buildForms(count), [count]);
+  const lib = useMemo(() => formLibrary(count), [count]);
 
   const geometry = useMemo(() => {
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(count * 3), 3));
-    g.setAttribute("aFrom", new THREE.BufferAttribute(forms[0].slice(), 3));
-    g.setAttribute("aTo", new THREE.BufferAttribute(forms[1].slice(), 3));
-    g.setAttribute("aRand", new THREE.BufferAttribute(rand, 1));
+    // Filled on the first frame with the forms actually in view.
+    g.setAttribute("aFrom", new THREE.BufferAttribute(new Float32Array(count * 3), 3));
+    g.setAttribute("aTo", new THREE.BufferAttribute(new Float32Array(count * 3), 3));
+    g.setAttribute("aRand", new THREE.BufferAttribute(lib.rand, 1));
     g.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 6);
     return g;
-  }, [forms, rand, count]);
+  }, [lib, count]);
 
   const material = useMemo(
     () =>
@@ -122,7 +128,8 @@ export function CipherCore({ count }: { count: number }) {
           uMix: { value: 0 },
           uScatter: { value: 0 },
           uSize: { value: 26 },
-          uPixelRatio: { value: Math.min(gl.getPixelRatio(), 2) },
+          uPixelRatio: { value: gl.getPixelRatio() },
+          uScale: { value: 1 },
           uMouse: { value: new THREE.Vector3(99, 99, 0) },
           uMouseForce: { value: 0 },
           uIntro: { value: 0 },
@@ -138,6 +145,27 @@ export function CipherCore({ count }: { count: number }) {
     geometry.dispose();
     material.dispose();
   }, [geometry, material]);
+
+  // Build the remaining forms one per idle slice, so scrolling never waits on them.
+  useEffect(() => {
+    let cancelled = false;
+    let handle = 0;
+    const idle = (cb: () => void) =>
+      typeof window.requestIdleCallback === "function" ? window.requestIdleCallback(cb, { timeout: 2000 }) : window.setTimeout(cb, 120);
+    const step = () => {
+      if (cancelled) return;
+      const next = Array.from({ length: FORM_COUNT }, (_, i) => i).find((i) => !lib.has(i));
+      if (next === undefined) return;
+      lib.get(next);
+      handle = idle(step);
+    };
+    handle = window.setTimeout(() => (handle = idle(step)), 1500); // after the intro has started
+    return () => {
+      cancelled = true;
+      window.clearTimeout(handle);
+      if (typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(handle);
+    };
+  }, [lib]);
 
   useEffect(() => {
     const move = (e: PointerEvent) => {
@@ -162,12 +190,12 @@ export function CipherCore({ count }: { count: number }) {
 
     // Morph target, smoothed so scroll scrubbing never jitters.
     smoothMorph.current += (sceneState.morph - smoothMorph.current) * Math.min(1, dt * 6);
-    const m = Math.max(0, Math.min(forms.length - 1.0001, smoothMorph.current));
+    const m = Math.max(0, Math.min(FORM_COUNT - 1.0001, smoothMorph.current));
     const seg = Math.floor(m);
     if (seg !== segment.current) {
       segment.current = seg;
-      (geometry.getAttribute("aFrom") as THREE.BufferAttribute).copyArray(forms[seg]).needsUpdate = true;
-      (geometry.getAttribute("aTo") as THREE.BufferAttribute).copyArray(forms[seg + 1]).needsUpdate = true;
+      (geometry.getAttribute("aFrom") as THREE.BufferAttribute).copyArray(lib.get(seg)).needsUpdate = true;
+      (geometry.getAttribute("aTo") as THREE.BufferAttribute).copyArray(lib.get(seg + 1)).needsUpdate = true;
     }
     u.uMix.value = m - seg;
     u.uScatter.value = sceneState.scatter;
@@ -183,7 +211,11 @@ export function CipherCore({ count }: { count: number }) {
     const targetY = desktop ? 0.15 : 1.05;
     g.position.x += (targetX - g.position.x) * Math.min(1, dt * 3);
     g.position.y += (targetY - g.position.y) * Math.min(1, dt * 3);
-    g.scale.setScalar(groupScale(size));
+    const scale = groupScale(size);
+    g.scale.setScalar(scale);
+    u.uScale.value = scale;
+    // Keep point sizes in step with the live pixel ratio (the performance monitor can change it).
+    u.uPixelRatio.value = state.gl.getPixelRatio();
 
     // Pointer tilt + slow auto-rotation (bounded so flat forms never go edge-on).
     const t = state.clock.elapsedTime;

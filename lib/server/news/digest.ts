@@ -21,7 +21,7 @@ export function digestHtml(briefDate: string, items: NewsItem[], token: string) 
 </td></tr>`;
 
   return `<!doctype html><html><body style="margin:0;background:#05060A;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#EDEEF2">
-<div style="display:none;max-height:0;overflow:hidden">${esc(items[0]?.headline ?? "")} — and ${Math.max(0, items.length - 1)} more stories</div>
+<div style="display:none;max-height:0;overflow:hidden">${esc(items[0]?.headline ?? "")}, and ${Math.max(0, items.length - 1)} more stories</div>
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#05060A;padding:32px 16px"><tr><td align="center">
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#0A0C12;border:1px solid #1d2029;border-radius:16px">
 <tr><td style="padding:26px 32px;border-bottom:1px solid #1d2029">
@@ -39,12 +39,12 @@ export function digestHtml(briefDate: string, items: NewsItem[], token: string) 
   <p style="margin:18px 0 0;font-size:14px;line-height:1.6;color:#C9CCD6">Want AI working in your business, not just in the news? <a href="${site.url}/tools/ai-stack-finder" style="color:#C8FF2E">Find your AI stack</a> or <a href="${site.url}/contact" style="color:#C8FF2E">talk to us</a>.</p>
 </td></tr>
 <tr><td style="padding:18px 32px;border-top:1px solid #1d2029;color:#8A90A2;font-size:12px;line-height:1.6">
-  Summaries are based on the linked sources and may be AI-assisted — check the original before acting on anything important.<br/>
+  Summaries are based on the linked sources and may be AI-assisted. Check the original before acting on anything important.<br/>
   You're receiving this because you subscribed at ${esc(site.url.replace(/^https?:\/\//, ""))}. <a href="${unsubscribeUrl(token)}" style="color:#8A90A2">Unsubscribe</a>
 </td></tr></table></td></tr></table></body></html>`;
 }
 
-/** Sends today's digest to every active subscriber — at most once per brief date. */
+/** Sends today's digest to every active subscriber - at most once per brief date. */
 export async function sendDigest(briefDate: string, items: NewsItem[]) {
   if (!hasEmail()) return { sent: 0, failed: 0, skipped: "email not configured" };
   if (!items.length) return { sent: 0, failed: 0, skipped: "no stories" };

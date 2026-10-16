@@ -107,7 +107,7 @@ export function ChatWidget() {
         messages: [
           ...c.messages,
           { id: uid(), role: "user", content, local: true },
-          { id: uid(), role: "assistant", content: enabled ? "Sure — here's how to reach the team directly:" : "Here's how to reach the team directly:", action: { type: "human" }, local: true },
+          { id: uid(), role: "assistant", content: enabled ? "Sure, here's how to reach the team directly:" : "Here's how to reach the team directly:", action: { type: "human" }, local: true },
         ],
       }));
       return;
@@ -228,7 +228,7 @@ export function ChatWidget() {
               <>Our AI assistant is offline right now, but the team is easy to reach:</>
             ) : (
               <>
-                Hi! I&apos;m Zaiphr&apos;s AI assistant. Ask me about our services, pricing and timelines — or describe a problem and I&apos;ll
+                Hi! I&apos;m Zaiphr&apos;s AI assistant. Ask me about our services, pricing and timelines, or describe a problem and I&apos;ll
                 suggest an approach.
               </>
             )}
@@ -303,7 +303,7 @@ export function ChatWidget() {
               </button>
             </div>
             <p className="mt-2 px-1 text-[0.68rem] leading-snug text-muted">
-              AI assistant — answers can be wrong. Don&apos;t share sensitive information.{" "}
+              AI assistant. Answers can be wrong. Don&apos;t share sensitive information.{" "}
               <Link href="/legal/privacy" className="underline underline-offset-2">
                 Privacy
               </Link>

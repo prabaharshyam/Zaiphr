@@ -1,5 +1,6 @@
 import { lowerLabel } from "@/lib/utils";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { aiTools, finderIndustries, toolCategories, type ToolCategory } from "@/config/ai-tools";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -7,11 +8,12 @@ import { RevealText } from "@/components/ui/RevealText";
 import { Directory } from "@/components/directory/Directory";
 import { FinderCta } from "@/components/directory/FinderCta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "AI tools directory for small businesses",
-  description: `A curated directory of ${aiTools.length} AI and automation tools for founders and small businesses — by category and industry, with free plans and India-ready picks flagged.`,
-  alternates: { canonical: "/ai-tools" },
-};
+  description: `A curated directory of ${aiTools.length} AI and automation tools for founders and small businesses, by category and industry, with free plans and India-ready picks flagged.`,
+  path: "/ai-tools",
+  image: "/og/ai-tools.jpg",
+});
 
 export default function AiToolsPage() {
   return (
@@ -33,6 +35,7 @@ export default function AiToolsPage() {
           ))}
         </nav>
         <div className="mt-16">
+          <h2 className="sr-only">All tools</h2>
           <Directory />
         </div>
         <nav aria-label="Categories" className="mt-20 border-t border-line pt-10">

@@ -71,7 +71,7 @@ export async function notifyLead(lead: Lead, id: string, extra?: { confirmSubjec
     replyTo: lead.email,
     subject: `New lead · ${label} · ${lead.name}${lead.company ? ` (${lead.company})` : ""}`,
     html: layout(`New lead: ${lead.name}`, [
-      p(`${label}${lead.tool ? ` — ${lead.tool}` : ""}. Reply to this email to respond directly.`),
+      p(`${label}${lead.tool ? ` (${lead.tool})` : ""}. Reply to this email to respond directly.`),
       rows({
         Name: lead.name,
         Email: lead.email,
@@ -95,11 +95,11 @@ export async function notifyLead(lead: Lead, id: string, extra?: { confirmSubjec
       : sendEmail({
           to: lead.email,
           replyTo: env.leadNotifyEmail,
-          subject: extra?.confirmSubject ?? "We've got your brief — Zaiphr Labs",
+          subject: extra?.confirmSubject ?? "We've got your brief | Zaiphr Labs",
           html:
             extra?.confirmHtml ??
-            layout(`Thanks, ${firstName(lead.name)} — we're on it.`, [
-              p("Your brief landed safely with the Zaiphr Labs team. We reply to every enquiry within one business day with honest thoughts — even if we're not the right fit."),
+            layout(`Thanks, ${firstName(lead.name)}. We're on it.`, [
+              p("Your brief landed safely with the Zaiphr Labs team. We reply to every enquiry within one business day with honest thoughts, even if we're not the right fit."),
               p("Want to move faster? Grab a slot for a free 30-minute strategy call:"),
               button(site.calendlyUrl, "Book a strategy call"),
               p(`Or just reply to this email, or WhatsApp us on ${site.phone}.`),

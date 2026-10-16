@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
   const ip = ipHash(req);
   if (await isRateLimited(ip)) {
-    return NextResponse.json({ ok: false, error: "Too many submissions — please try again in an hour, or email us." }, { status: 429 });
+    return NextResponse.json({ ok: false, error: "Too many submissions. Please try again in an hour, or email us." }, { status: 429 });
   }
 
   try {

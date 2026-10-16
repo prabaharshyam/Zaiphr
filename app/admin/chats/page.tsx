@@ -32,7 +32,7 @@ export default async function AdminChatsPage() {
       </p>
       <h1 className="font-display-wide mt-2 text-5xl">Chats</h1>
       <p className="mt-3 text-sm text-muted">
-        {hasAi() ? `Assistant on · model ${env.chatModel}` : <span className="text-amber-300">Assistant offline — ANTHROPIC_API_KEY missing; visitors see contact options instead</span>} · last {chats.length} conversations.
+        {hasAi() ? `Assistant on · model ${env.chatModel}` : <span className="text-amber-300">Assistant offline - ANTHROPIC_API_KEY missing; visitors see contact options instead</span>} · last {chats.length} conversations.
         Leads from the chat appear on the Leads page with source &ldquo;chat&rdquo;.
       </p>
 

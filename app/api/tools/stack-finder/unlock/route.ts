@@ -26,10 +26,10 @@ export async function POST(req: Request) {
   const { runId, attribution, ...person } = parsed.data;
 
   const ip = ipHash(req);
-  if (await isRateLimited(ip)) return NextResponse.json({ error: "Too many requests — please try again later." }, { status: 429 });
+  if (await isRateLimited(ip)) return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
 
   const { data: run } = await db().from("tool_runs").select("id, inputs, result").eq("id", runId).eq("tool", TOOL_ID).maybeSingle();
-  if (!run?.result) return NextResponse.json({ error: "Plan not found — please run the finder again." }, { status: 404 });
+  if (!run?.result) return NextResponse.json({ error: "Plan not found. Please run the finder again." }, { status: 404 });
   const { plan, engine } = run.result as { plan: Plan; engine: "ai" | "match" };
   const inputs = run.inputs as { problem: string; industry?: string };
 
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     await notifyLead(lead, leadId, { confirmSubject: `Your AI stack: ${plan.headline}`, confirmHtml: planEmail(person.name, plan, runId) });
   } catch (e) {
     console.error("[stack-finder] unlock failed", e);
-    return NextResponse.json({ error: "Something went wrong — please try again." }, { status: 500 });
+    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 
   const result: FinderResult = { runId, engine, locked: false, plan, totalTools: plan.stack.length };

@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     const hourAgo = new Date(Date.now() - 3600e3).toISOString();
     const { count } = await db().from("tool_runs").select("id", { count: "exact", head: true }).eq("tool", TOOL_ID).eq("ip_hash", ip).gte("created_at", hourAgo);
     if ((count ?? 0) >= PER_HOUR) {
-      return NextResponse.json({ error: "You've run a few plans already — please try again in an hour, or book a call and we'll map it with you." }, { status: 429 });
+      return NextResponse.json({ error: "You've run a few plans already. Please try again in an hour, or book a call and we'll map it with you." }, { status: 429 });
     }
   }
 

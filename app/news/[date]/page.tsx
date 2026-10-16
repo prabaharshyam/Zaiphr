@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound, redirect } from "next/navigation";
 import { BriefView } from "@/components/news/BriefView";
 import { formatBriefDate, istDate } from "@/lib/news/types";
@@ -11,11 +12,12 @@ const isDate = (s: string) => /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Dat
 export async function generateMetadata({ params }: PageProps<"/news/[date]">): Promise<Metadata> {
   const { date } = await params;
   if (!isDate(date)) return {};
-  return {
-    title: `AI news brief — ${formatBriefDate(date, "short")}`,
+  return pageMeta({
+    title: `AI news brief, ${formatBriefDate(date, "short")}`,
     description: `The AI stories that mattered for founders on ${formatBriefDate(date)}, each summarised in 60 words.`,
-    alternates: { canonical: `/news/${date}` },
-  };
+    path: `/news/${date}`,
+    image: "/og/news.jpg",
+  });
 }
 
 export default async function BriefDatePage({ params }: PageProps<"/news/[date]">) {

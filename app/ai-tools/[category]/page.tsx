@@ -1,5 +1,6 @@
 import { lowerLabel } from "@/lib/utils";
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { aiTools, toolCategories, type ToolCategory } from "@/config/ai-tools";
@@ -18,11 +19,12 @@ export async function generateMetadata({ params }: PageProps<"/ai-tools/[categor
   if (!isCat(category)) return {};
   const label = toolCategories[category];
   const n = aiTools.filter((t) => t.category === category).length;
-  return {
+  return pageMeta({
     title: `Best AI tools for ${lowerLabel(label)} (${new Date().getFullYear()})`,
-    description: `${n} hand-picked AI tools for ${lowerLabel(label)} — what each is best for, free plans, and India-ready options.`,
-    alternates: { canonical: `/ai-tools/${category}` },
-  };
+    description: `${n} hand-picked AI tools for ${lowerLabel(label)}: what each is best for, free plans, and India-ready options.`,
+    path: `/ai-tools/${category}`,
+    image: "/og/ai-tools.jpg",
+  });
 }
 
 export default async function CategoryPage({ params }: PageProps<"/ai-tools/[category]">) {
@@ -47,7 +49,8 @@ export default async function CategoryPage({ params }: PageProps<"/ai-tools/[cat
           <Eyebrow>{`${tools.length} tools`}</Eyebrow>
         </div>
         <h1 className="font-display-wide mt-6 max-w-[18ch] text-[clamp(2.6rem,6vw,6rem)]">Best AI tools for {lowerLabel(label)}</h1>
-        <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 className="sr-only">Tools</h2>
+        <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((t) => (
             <li key={t.id}>
               <ToolTile tool={t} />

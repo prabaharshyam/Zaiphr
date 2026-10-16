@@ -14,7 +14,7 @@ const MIN_MS = 1100;
 /**
  * Branded preloader, first visit per session only (≤ ~2s).
  * The SSR markup is hidden by an inline <head> script when already seen,
- * and by <noscript> CSS when JS is off — content is never blocked.
+ * and by <noscript> CSS when JS is off - content is never blocked.
  */
 export function Preloader() {
   const root = useRef<HTMLDivElement>(null);

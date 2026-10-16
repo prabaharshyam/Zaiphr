@@ -154,7 +154,7 @@ function UnlockForm({ runId, onUnlocked, totalTools }: { runId: string; onUnlock
     setLoading(false);
     if (!res?.ok) {
       const d = await res?.json().catch(() => ({}));
-      return setError(d?.error ?? "Couldn't unlock right now — please try again.");
+      return setError(d?.error ?? "Couldn't unlock right now. Please try again.");
     }
     onUnlocked(await res.json());
   };
@@ -164,7 +164,7 @@ function UnlockForm({ runId, onUnlocked, totalTools }: { runId: string; onUnlock
       <p className="label-mono text-signature">Free · takes 10 seconds</p>
       <h3 className="font-display-tight mt-3 text-3xl">Unlock your full plan</h3>
       <p className="mt-2 text-sm text-muted">
-        All {totalTools} tools with setup steps, the workflow diagram, cost and time estimates — plus a copy in your inbox.
+        All {totalTools} tools with setup steps, the workflow diagram, cost and time estimates, plus a copy in your inbox.
       </p>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <label className="sr-only" htmlFor="u-name">Name</label>
@@ -179,7 +179,7 @@ function UnlockForm({ runId, onUnlocked, totalTools }: { runId: string; onUnlock
       <label className="mt-4 flex cursor-pointer items-start gap-3 text-xs text-muted">
         <input type="checkbox" name="consent" className="mt-0.5 h-4 w-4 accent-[var(--signature)]" />
         <span>
-          Email me this plan. Zaiphr Labs may follow up about it — no spam, unsubscribe anytime.{" "}
+          Email me this plan. Zaiphr Labs may follow up about it. No spam, unsubscribe anytime.{" "}
           <Link href="/legal/privacy" target="_blank" className="underline underline-offset-4">Privacy</Link>
         </span>
       </label>
@@ -310,7 +310,7 @@ export function StackFinder() {
       }).catch(() => null);
       if (!res?.ok) {
         const d = await res?.json().catch(() => ({}));
-        setError(d?.error ?? "Something went wrong — please try again.");
+        setError(d?.error ?? "Something went wrong. Please try again.");
         setPhase("input");
         return;
       }
@@ -347,7 +347,7 @@ export function StackFinder() {
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    if (problem.trim().length < 15) return setError("Tell us a little more — at least a sentence about what's slowing you down.");
+    if (problem.trim().length < 15) return setError("Tell us a little more: at least a sentence about what's slowing you down.");
     void run(problem.trim());
   };
 
@@ -486,7 +486,7 @@ export function StackFinder() {
               {problem && <p className="mt-4 max-w-3xl text-sm text-muted">You said: “{problem}”</p>}
               <p className="mt-8 max-w-3xl text-xl leading-relaxed">{result.plan.diagnosis}</p>
               <div className="mt-8 max-w-3xl rounded-2xl border border-signature/40 bg-signature/5 p-5">
-                <p className="label-mono text-[0.62rem] text-signature">Quick win — do this today</p>
+                <p className="label-mono text-[0.62rem] text-signature">Quick win: do this today</p>
                 <p className="mt-2 leading-relaxed">{result.plan.quickWin}</p>
               </div>
             </header>
@@ -540,7 +540,7 @@ export function StackFinder() {
               <>
                 {result.runId && (
                   <p role="status" className="no-print label-mono text-signature">
-                    ✓ Full plan unlocked — a copy is on its way to your inbox.
+                    ✓ Full plan unlocked. A copy is on its way to your inbox.
                   </p>
                 )}
                 <FullPlan result={result} />
@@ -557,7 +557,7 @@ export function StackFinder() {
                 </button>
               )}
               <p className="ml-auto max-w-sm text-xs text-muted">
-                Recommendations come from our curated catalog of {aiTools.length} tools across {Object.keys(toolCategories).length} categories. Pricing changes often — check each vendor.
+                Recommendations come from our curated catalog of {aiTools.length} tools across {Object.keys(toolCategories).length} categories. Pricing changes often, so check each vendor.
               </p>
             </div>
           </motion.div>

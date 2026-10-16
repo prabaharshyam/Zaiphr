@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { services } from "@/config/services";
 import { getProjects } from "@/lib/work";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { ServicesList } from "@/components/sections/ServicesList";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Services",
-  description:
-    "AI automations, voice agents, websites, apps, branding, media and influencer marketing — seven engines from one AI-native studio.",
-  alternates: { canonical: "/services" },
-};
+  description: "AI automations, voice agents, websites, apps, branding, media and influencer marketing. Seven engines from one AI-native studio.",
+  path: "/services",
+  image: "/og/services.jpg",
+});
 
 export default function ServicesPage() {
   const projects = getProjects();

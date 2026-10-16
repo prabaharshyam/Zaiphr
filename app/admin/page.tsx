@@ -111,7 +111,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
 function StatusPanel({ checks }: { checks: Check[] }) {
   return (
     <section aria-label="System status" className="mt-8 rounded-2xl border border-amber-300/40 bg-amber-300/5 p-6">
-      <p className="label-mono text-amber-300">System status — something needs attention</p>
+      <p className="label-mono text-amber-300">System status - something needs attention</p>
       <ul className="mt-4 space-y-2 text-sm">
         {checks.map((c) => (
           <li key={c.label} className="flex flex-wrap gap-x-3">

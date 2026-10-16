@@ -48,7 +48,7 @@ export function BigCta() {
     setLoading(true);
     const r = await submitLead(
       { name, email, company, services: service, budget, message, source: "quick_brief", consent: true, hp: String(f.get("hp") || "") },
-      { subject: `Project brief — ${name}`, body },
+      { subject: `Project brief: ${name}`, body },
     );
     setLoading(false);
     if (r.status === "error") return setError(r.message);
@@ -62,16 +62,16 @@ export function BigCta() {
         className="pointer-events-none absolute -bottom-1/3 left-1/2 h-[60vw] w-[90vw] -translate-x-1/2 rounded-full bg-signature/[0.08] blur-[160px]"
       />
       <div className="container-x relative py-28 md:py-40">
-        <RevealText as="h2" split="chars" className="font-display-wide text-[length:var(--text-giga)]">
-          <span id="cta-heading">
+        <RevealText id="cta-heading" as="h2" split="chars" className="font-display-wide text-[length:var(--text-giga)]">
+          
             Let&apos;s build your <span className="text-signature">unfair</span> advantage.
-          </span>
+          
         </RevealText>
 
         <div className="mt-16 grid grid-cols-1 gap-16 lg:mt-24 lg:grid-cols-12">
           <div className="flex flex-col gap-8 lg:col-span-4">
             <p className="text-lg leading-relaxed text-muted">
-              Tell us what you&apos;re building. We reply within one business day with honest thoughts — even if we&apos;re
+              Tell us what you&apos;re building. We reply within one business day with honest thoughts, even if we&apos;re
               not the right fit.
             </p>
             <div className="flex flex-col items-start gap-3">
@@ -92,7 +92,7 @@ export function BigCta() {
           {sent ? (
             <div className="lg:col-span-8" role="status">
               <p className="font-display-tight text-4xl">
-                {sent === "saved" ? "Brief received — talk soon." : "Thank you — your email app should be open."}
+                {sent === "saved" ? "Brief received. Talk soon." : "Thank you. Your email app should be open."}
               </p>
               <p className="mt-4 text-muted">
                 {sent === "saved"

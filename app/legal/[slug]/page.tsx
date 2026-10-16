@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import { getLegal, legalSlugs } from "@/lib/legal";
@@ -11,7 +12,7 @@ export const generateStaticParams = () => legalSlugs().map((slug) => ({ slug }))
 export async function generateMetadata({ params }: PageProps<"/legal/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const doc = getLegal(slug);
-  return doc ? { title: doc.title, description: doc.summary, alternates: { canonical: `/legal/${slug}` } } : {};
+  return doc ? pageMeta({ title: doc.title, description: doc.summary, path: `/legal/${slug}` }) : {};
 }
 
 export default async function LegalPage({ params }: PageProps<"/legal/[slug]">) {

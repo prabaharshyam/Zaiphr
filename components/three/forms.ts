@@ -189,7 +189,7 @@ function core(n: number, seed = 1) {
   return w.finish(r);
 }
 
-/** 1 · AI Automations: a workflow DAG — nodes and edges flowing left → right. */
+/** 1 · AI Automations: a workflow DAG - nodes and edges flowing left → right. */
 function graph(n: number) {
   const r = mulberry32(2);
   const w = new Writer(n);
@@ -527,19 +527,29 @@ function shuffle(points: Float32Array, seed: number) {
   return points;
 }
 
-export interface FormSet {
-  forms: Float32Array[];
+export const FORM_COUNT = 9;
+
+export interface FormLibrary {
+  /** Form i (0 = core, 1–7 = services, 8 = core), built on first use and cached. */
+  get: (i: number) => Float32Array;
+  has: (i: number) => boolean;
   rand: Float32Array;
 }
 
-/** Builds all 9 forms (core, 7 services, core). Order must match config/services.ts. */
-export function buildForms(n: number): FormSet {
-  const c = core(n);
-  const forms = [c, graph(n), wave(n), browser(n), phone(n), glyph(n), film(n), orbit(n), core(n, 11)].map(
-    (f, i) => shuffle(f, 1000 + i),
-  );
+/**
+ * Lazy form library. Building all 9 point clouds up front blocked the main thread for a long
+ * stretch on phones; now only the forms in view are built immediately and the rest are filled
+ * in during idle time (see CipherCore). Order must match config/services.ts.
+ */
+export function formLibrary(n: number): FormLibrary {
+  const makers = [() => core(n), () => graph(n), () => wave(n), () => browser(n), () => phone(n), () => glyph(n), () => film(n), () => orbit(n), () => core(n, 11)];
+  const cache: (Float32Array | null)[] = makers.map(() => null);
   const r = mulberry32(99);
   const rand = new Float32Array(n);
   for (let i = 0; i < n; i++) rand[i] = r();
-  return { forms, rand };
+  return {
+    get: (i) => (cache[i] ??= shuffle(makers[i](), 1000 + i)),
+    has: (i) => cache[i] !== null,
+    rand,
+  };
 }

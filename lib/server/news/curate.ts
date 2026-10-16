@@ -1,4 +1,5 @@
 import "server-only";
+import { noEmDash } from "@/lib/text";
 import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
@@ -21,7 +22,7 @@ const MAX_STORIES = 12;
 const MAX_CANDIDATES = 120;
 const categoryIds = Object.keys(NEWS_CATEGORIES) as [NewsCategory, ...NewsCategory[]];
 
-/** Structured output. No length constraints here — enforced after parsing. */
+/** Structured output. No length constraints here - enforced after parsing. */
 const briefSchema = z.object({
   stories: z.array(
     z.object({
@@ -47,6 +48,7 @@ Selection:
 - Order stories by importance. score is 1–10 importance for a founder.
 
 Writing:
+- Never use em dashes (the long dash). Use commas, colons or full stops instead.
 - headline: max 90 characters, factual, no clickbait, no trailing period.
 - summary: max 60 words, plain English, what happened and the key specifics.
 - whyItMatters: 1–2 sentences (max 40 words) on what it means for a small business or startup: something to try, a cost change, a risk, or a reason to wait.
@@ -93,9 +95,9 @@ export async function curateWithClaude(candidates: Candidate[]): Promise<Story[]
     if (!items.length || !s.headline.trim() || !s.summary.trim()) continue;
     items.forEach((c) => used.add(c.id));
     stories.push({
-      headline: clip(s.headline.replace(/\.$/, ""), 110),
-      summary: clip(s.summary, 520),
-      whyItMatters: clip(s.whyItMatters, 320) || null,
+      headline: noEmDash(clip(s.headline.replace(/\.$/, ""), 110)),
+      summary: noEmDash(clip(s.summary, 520)),
+      whyItMatters: noEmDash(clip(s.whyItMatters, 320)) || null,
       category: s.category,
       tags: s.tags.slice(0, 4).map((t) => t.toLowerCase().slice(0, 30)),
       score: Math.max(1, Math.min(10, s.score)),
@@ -157,8 +159,8 @@ export function curateWithoutAi(candidates: Candidate[]): Story[] {
       // "India" only when the story is about India, not when it's mentioned in passing.
       const india = lead.india || INDIA_RE.test(lead.title);
       return {
-        headline: clip(lead.title, 110),
-        summary: lead.snippet ? clip(lead.snippet.split(/\s+/).slice(0, 55).join(" "), 420) : `Reported by ${lead.source}.`,
+        headline: noEmDash(clip(lead.title, 110)),
+        summary: lead.snippet ? noEmDash(clip(lead.snippet.split(/\s+/).slice(0, 55).join(" "), 420)) : `Reported by ${lead.source}.`,
         whyItMatters: null,
         category: india ? "india" : (CATEGORY_RULES.find(([re]) => re.test(lead.title))?.[1] ?? CATEGORY_RULES.find(([re]) => re.test(hay))?.[1] ?? "tools"),
         tags: [],

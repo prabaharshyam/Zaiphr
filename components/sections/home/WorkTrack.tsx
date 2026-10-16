@@ -79,13 +79,13 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
       <div className="container-x flex flex-col gap-6 pt-24 lg:flex-row lg:items-end lg:justify-between lg:pt-[calc(var(--nav-h)+1rem)]">
         <div>
           <Eyebrow index="02">Selected work</Eyebrow>
-          <RevealText as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
-            <span id="work-heading">Built to show what&apos;s possible.</span>
+          <RevealText id="work-heading" as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
+            Built to show what&apos;s possible.
           </RevealText>
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">
           We&apos;re a new studio, so these are <span className="text-text">concept projects and showcase builds</span>{" "}
-          for fictional brands — real thinking, real design, honest about what they are.
+          for fictional brands. Real thinking, real design, honest about what they are.
         </p>
       </div>
 
@@ -104,7 +104,7 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
               <div data-parallax className="absolute inset-y-0 -inset-x-[10%]">
                 <Image
                   src={p.cover}
-                  alt={`${p.client} — ${p.title} (concept mockup)`}
+                  alt={`${p.client}: ${p.title} (concept mockup)`}
                   fill
                   sizes="(min-width: 1024px) 50vw, 85vw"
                   className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out)] group-hover:scale-[1.04]"

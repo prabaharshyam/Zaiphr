@@ -1,6 +1,6 @@
 /**
  * Curated catalog of real AI & automation tools used by the AI Stack Finder and the
- * /ai-tools SEO pages. Recommendations can ONLY come from this list — add a tool here
+ * /ai-tools SEO pages. Recommendations can ONLY come from this list - add a tool here
  * to make it recommendable.
  *
  * Pricing is deliberately coarse (plans change often): "free" = genuinely free to use,
@@ -68,20 +68,20 @@ export const aiTools: AiTool[] = [
   { id: "perplexity", name: "Perplexity", url: "https://www.perplexity.ai", category: "assistants", tagline: "AI search engine with cited sources for market and competitor research.", pricing: "freemium", difficulty: "easy", tags: ["research", "competitors", "market research", "sources"] },
   { id: "copilot", name: "Microsoft Copilot", url: "https://copilot.microsoft.com", category: "assistants", tagline: "AI assistant across Word, Excel, Outlook and Teams.", pricing: "freemium", difficulty: "easy", tags: ["microsoft 365", "excel", "email", "documents"] },
   { id: "notebooklm", name: "NotebookLM", url: "https://notebooklm.google.com", category: "assistants", tagline: "Upload your documents and get answers, summaries and audio overviews grounded in them.", pricing: "free", difficulty: "easy", tags: ["knowledge base", "training", "sops", "documents", "research"] },
-  { id: "sarvam", name: "Sarvam AI", url: "https://www.sarvam.ai", category: "assistants", tagline: "Indian AI models for Indic languages — chat, translation, speech.", pricing: "usage", difficulty: "medium", india: "Built for Indian languages (Hindi, Tamil, Telugu, Kannada and more)", tags: ["indian languages", "translation", "speech", "hindi"] },
+  { id: "sarvam", name: "Sarvam AI", url: "https://www.sarvam.ai", category: "assistants", tagline: "Indian AI models for Indic languages: chat, translation, speech.", pricing: "usage", difficulty: "medium", india: "Built for Indian languages (Hindi, Tamil, Telugu, Kannada and more)", tags: ["indian languages", "translation", "speech", "hindi"] },
 
   // ── Writing & content ──
   { id: "grammarly", name: "Grammarly", url: "https://www.grammarly.com", category: "writing", tagline: "Writing assistant for clear, error-free emails and documents.", pricing: "freemium", difficulty: "easy", tags: ["email", "proofreading", "tone"] },
   { id: "jasper", name: "Jasper", url: "https://www.jasper.ai", category: "writing", tagline: "AI marketing copy with brand voice controls for teams.", pricing: "trial", difficulty: "easy", tags: ["marketing copy", "brand voice", "blogs", "ads"] },
   { id: "copyai", name: "Copy.ai", url: "https://www.copy.ai", category: "writing", tagline: "AI workflows for sales and marketing copy at scale.", pricing: "freemium", difficulty: "easy", tags: ["sales copy", "marketing", "workflows", "product descriptions"] },
-  { id: "notion-ai", name: "Notion AI", url: "https://www.notion.com/product/ai", category: "writing", tagline: "AI inside your Notion wiki — summarise, draft and search your workspace.", pricing: "paid", difficulty: "easy", tags: ["wiki", "notes", "sops", "knowledge base"] },
+  { id: "notion-ai", name: "Notion AI", url: "https://www.notion.com/product/ai", category: "writing", tagline: "AI inside your Notion wiki to summarise, draft and search your workspace.", pricing: "paid", difficulty: "easy", tags: ["wiki", "notes", "sops", "knowledge base"] },
   { id: "gamma", name: "Gamma", url: "https://gamma.app", category: "writing", tagline: "Generate polished presentations, one-pagers and simple sites from a prompt.", pricing: "freemium", difficulty: "easy", tags: ["presentations", "pitch deck", "proposals", "slides"] },
 
   // ── Design & images ──
   { id: "canva", name: "Canva", url: "https://www.canva.com", category: "design", tagline: "Design anything with templates and Magic Studio AI tools.", pricing: "freemium", difficulty: "easy", india: "INR pricing; widely used by Indian SMBs", tags: ["social posts", "graphics", "branding", "presentations", "background removal"] },
   { id: "firefly", name: "Adobe Firefly", url: "https://firefly.adobe.com", category: "design", tagline: "Commercially safe AI image generation and editing.", pricing: "freemium", difficulty: "easy", tags: ["images", "ads", "product shots", "generative fill"] },
   { id: "midjourney", name: "Midjourney", url: "https://www.midjourney.com", category: "design", tagline: "High-end AI image generation for creative visuals.", pricing: "paid", difficulty: "medium", tags: ["images", "creative", "concept art", "ads"] },
-  { id: "ideogram", name: "Ideogram", url: "https://ideogram.ai", category: "design", tagline: "AI images that render text accurately — posters, logos, ads.", pricing: "freemium", difficulty: "easy", tags: ["posters", "text in images", "logos", "ads"] },
+  { id: "ideogram", name: "Ideogram", url: "https://ideogram.ai", category: "design", tagline: "AI images that render text accurately: posters, logos, ads.", pricing: "freemium", difficulty: "easy", tags: ["posters", "text in images", "logos", "ads"] },
   { id: "photoroom", name: "Photoroom", url: "https://www.photoroom.com", category: "design", tagline: "Studio-quality product photos from your phone in seconds.", pricing: "freemium", difficulty: "easy", india: "Popular with Meesho, Flipkart and Amazon India sellers", tags: ["product photos", "background removal", "e-commerce", "catalog"] },
   { id: "looka", name: "Looka", url: "https://looka.com", category: "design", tagline: "AI logo and brand kit generator for new businesses.", pricing: "paid", difficulty: "easy", tags: ["logo", "branding", "brand kit"] },
 
@@ -100,7 +100,7 @@ export const aiTools: AiTool[] = [
   { id: "retell", name: "Retell AI", url: "https://www.retellai.com", category: "voice", tagline: "Build human-like AI phone agents for inbound and outbound calls.", pricing: "usage", difficulty: "medium", tags: ["voice agent", "phone calls", "receptionist", "lead qualification", "appointment booking"] },
   { id: "bland", name: "Bland AI", url: "https://www.bland.ai", category: "voice", tagline: "Enterprise AI phone calling at scale.", pricing: "usage", difficulty: "advanced", tags: ["outbound calls", "voice agent", "call center"] },
   { id: "bolna", name: "Bolna", url: "https://www.bolna.ai", category: "voice", tagline: "Voice AI agents built for Indian languages and accents.", pricing: "usage", difficulty: "medium", india: "Indian languages, Indian telephony integrations", tags: ["voice agent", "hindi", "phone calls", "lead qualification", "reminders"] },
-  { id: "exotel", name: "Exotel", url: "https://exotel.com", category: "voice", tagline: "Indian cloud telephony — virtual numbers, IVR, call tracking.", pricing: "paid", difficulty: "medium", india: "Indian virtual numbers and compliant telephony", tags: ["ivr", "virtual number", "call tracking", "telephony"] },
+  { id: "exotel", name: "Exotel", url: "https://exotel.com", category: "voice", tagline: "Indian cloud telephony: virtual numbers, IVR, call tracking.", pricing: "paid", difficulty: "medium", india: "Indian virtual numbers and compliant telephony", tags: ["ivr", "virtual number", "call tracking", "telephony"] },
   { id: "twilio", name: "Twilio", url: "https://www.twilio.com", category: "voice", tagline: "Programmable phone numbers, SMS and WhatsApp APIs.", pricing: "usage", difficulty: "advanced", tags: ["sms", "phone numbers", "api", "whatsapp api"] },
 
   // ── Chatbots & WhatsApp ──
@@ -152,7 +152,7 @@ export const aiTools: AiTool[] = [
   { id: "ahrefs", name: "Ahrefs", url: "https://ahrefs.com", category: "seo", tagline: "Backlinks, keywords and content gaps; free webmaster tools.", pricing: "freemium", difficulty: "medium", tags: ["backlinks", "keywords", "seo", "competitors"] },
   { id: "surfer", name: "Surfer SEO", url: "https://surferseo.com", category: "seo", tagline: "Write content that ranks with on-page SEO guidance.", pricing: "paid", difficulty: "easy", tags: ["content seo", "blogs", "on-page"] },
   { id: "looker-studio", name: "Looker Studio", url: "https://lookerstudio.google.com", category: "seo", tagline: "Free dashboards from Sheets, Ads, Analytics and more.", pricing: "free", difficulty: "medium", tags: ["dashboards", "reporting", "kpis"] },
-  { id: "julius", name: "Julius AI", url: "https://julius.ai", category: "seo", tagline: "Chat with your spreadsheets — analysis and charts in plain English.", pricing: "freemium", difficulty: "easy", tags: ["data analysis", "excel", "charts", "reports"] },
+  { id: "julius", name: "Julius AI", url: "https://julius.ai", category: "seo", tagline: "Chat with your spreadsheets: analysis and charts in plain English.", pricing: "freemium", difficulty: "easy", tags: ["data analysis", "excel", "charts", "reports"] },
 
   // ── Meetings & notes ──
   { id: "fireflies", name: "Fireflies.ai", url: "https://fireflies.ai", category: "meetings", tagline: "Records, transcribes and summarises your meetings.", pricing: "freemium", difficulty: "easy", tags: ["meeting notes", "transcription", "action items", "crm sync"] },
@@ -289,7 +289,7 @@ export const industryPicks: Record<string, { intro: string; picks: { toolId: str
       { toolId: "apollo", useFor: "Find and email your ideal customers" },
       { toolId: "intercom", useFor: "In-app support with an AI agent" },
       { toolId: "fathom", useFor: "Record and summarise every customer call" },
-      { toolId: "clarity", useFor: "Watch where users get stuck — free" },
+      { toolId: "clarity", useFor: "Watch where users get stuck, free" },
     ],
   },
   "restaurants-cafes": {

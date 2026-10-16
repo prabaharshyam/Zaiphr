@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { services } from "@/config/services";
 import { getProjects, toCard } from "@/lib/work";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { WorkGrid } from "@/components/work/WorkGrid";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Work",
-  description:
-    "Concept projects and showcase builds across AI automation, voice agents, websites, apps, branding, media and influencer marketing.",
-  alternates: { canonical: "/work" },
-};
+  description: "Concept projects and showcase builds across AI automation, voice agents, websites, apps, branding, media and influencer marketing.",
+  path: "/work",
+  image: "/og/work.jpg",
+});
 
 export default function WorkPage() {
   const projects = getProjects().map((p) => ({ ...toCard(p), services: p.services }));
@@ -33,6 +34,7 @@ export default function WorkPage() {
           </p>
         </div>
         <div className="mt-16">
+          <h2 className="sr-only">Projects</h2>
           <WorkGrid projects={projects} filters={services.map((s) => ({ slug: s.slug, label: s.title }))} />
         </div>
       </div>

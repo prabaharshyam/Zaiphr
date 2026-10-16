@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Enter a valid email address." }, { status: 422 });
 
   const ip = ipHash(req);
-  if (await isRateLimited(ip)) return NextResponse.json({ ok: false, error: "Too many requests — try again later." }, { status: 429 });
+  if (await isRateLimited(ip)) return NextResponse.json({ ok: false, error: "Too many requests. Try again later." }, { status: 429 });
 
   const { email, attribution } = parsed.data;
   try {

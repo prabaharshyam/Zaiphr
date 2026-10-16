@@ -10,7 +10,7 @@ export default function NotFound() {
         <ScrambleText text="404" trigger="mount" duration={1400} delay={300} />
       </h1>
       <p className="relative mt-6 max-w-md text-lg text-muted">
-        This page was never built — or our engines automated it away. Let&apos;s get you back on track.
+        This page was never built, or our engines automated it away. Let&apos;s get you back on track.
       </p>
       <div className="relative mt-10 flex flex-wrap justify-center gap-3">
         <Button href="/">Back home</Button>

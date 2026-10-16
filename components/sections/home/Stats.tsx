@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { stats } from "@/config/stats";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-/** Animated counters — values live in config/stats.ts. */
+/** Animated counters - values live in config/stats.ts. */
 export function Stats() {
   const root = useRef<HTMLElement>(null);
 

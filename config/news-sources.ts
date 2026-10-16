@@ -1,5 +1,5 @@
 /**
- * Where the daily AI brief reads from. Public RSS/Atom feeds and the Hacker News API only —
+ * Where the daily AI brief reads from. Public RSS/Atom feeds and the Hacker News API only -
  * no scraping. Add, remove or reweight freely; a broken feed is skipped and shown in /admin.
  *
  * authority (1–10) nudges ranking when the AI curator isn't available, and is shown to it as a hint.

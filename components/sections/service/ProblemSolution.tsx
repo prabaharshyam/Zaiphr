@@ -7,8 +7,8 @@ export function ProblemSolution({ detail }: { detail: ServiceDetail }) {
     <section aria-labelledby="ps-heading" className="relative z-10 border-t border-line bg-bg py-24 md:py-32">
       <div className="container-x">
         <Eyebrow index="01">Problem → solution</Eyebrow>
-        <RevealText as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
-          <span id="ps-heading">Sound familiar? Here&apos;s what changes.</span>
+        <RevealText id="ps-heading" as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
+          Sound familiar? Here&apos;s what changes.
         </RevealText>
         <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-2">
           <div className="bg-bg p-8 md:p-12">

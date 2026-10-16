@@ -8,8 +8,8 @@ export function Deliverables({ detail }: { detail: ServiceDetail }) {
     <section aria-labelledby="del-heading" className="relative z-10 bg-bg py-24 md:py-32">
       <div className="container-x">
         <Eyebrow index="02">What&apos;s included</Eyebrow>
-        <RevealText as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
-          <span id="del-heading">Everything it takes to ship it properly.</span>
+        <RevealText id="del-heading" as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
+          Everything it takes to ship it properly.
         </RevealText>
         <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {detail.deliverables.map((d, i) => (

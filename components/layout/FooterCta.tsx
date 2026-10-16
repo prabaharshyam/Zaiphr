@@ -5,7 +5,7 @@ import { site } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { RevealText } from "@/components/ui/RevealText";
 
-/** Footer CTA band — hidden on the home page, which ends with its own big CTA. */
+/** Footer CTA band - hidden on the home page, which ends with its own big CTA. */
 export function FooterCta() {
   const pathname = usePathname();
   if (pathname === "/") return null;

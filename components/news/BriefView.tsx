@@ -32,7 +32,7 @@ export function BriefView({ date, items, dates, archive = false }: { date: strin
                 founder&apos;s takeaway. New brief every morning at 6:00 IST.
               </>
             ) : (
-              "The AI stories that matter for founders, picked every morning from the labs, the tech press and India's startup media — each in 60 words, with what it means for your business."
+              "The AI stories that matter for founders, picked every morning from the labs, the tech press and India's startup media, each in 60 words, with what it means for your business."
             )}
           </p>
         </div>

@@ -14,7 +14,7 @@ export function Marquee({
   reverse?: boolean;
 }) {
   return (
-    <div className={cn("group relative flex overflow-hidden", className)}>
+    <div data-clip-ok className={cn("group relative flex overflow-hidden", className)}>
       <div
         className="animate-marquee flex w-max shrink-0 group-hover:[animation-play-state:paused]"
         style={{ ["--marquee-duration" as string]: `${duration}s`, animationDirection: reverse ? "reverse" : undefined }}

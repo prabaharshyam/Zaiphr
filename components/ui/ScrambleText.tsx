@@ -80,7 +80,7 @@ export function ScrambleText({
   return (
     <span className={cn("relative inline-block", className)}>
       <span className="sr-only">{text}</span>
-      <span ref={el} aria-hidden className="whitespace-pre">
+      <span ref={el} aria-hidden className="whitespace-pre-wrap">
         {text}
       </span>
     </span>

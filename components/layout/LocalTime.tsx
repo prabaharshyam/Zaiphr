@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-/** Live studio clock (IST) — a small "the lab is on" signal. */
+/** Live studio clock (IST) - a small "the lab is on" signal. */
 export function LocalTime({ className }: { className?: string }) {
   const [time, setTime] = useState<string | null>(null);
 

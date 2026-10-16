@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getService, services } from "@/config/services";
 import { serviceDetails } from "@/config/service-details";
@@ -24,11 +25,12 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   const s = getService(slug);
   const d = serviceDetails[slug];
   if (!s || !d) return {};
-  return {
-    title: `${s.title} — ${d.headline}`,
+  return pageMeta({
+    title: `${s.title}: ${d.headline.replace(/\.$/, "")}`,
     description: d.intro,
-    alternates: { canonical: `/services/${s.slug}` },
-  };
+    path: `/services/${s.slug}`,
+    image: `/og/service-${s.slug}.jpg`,
+  });
 }
 
 export default async function ServicePage({ params }: PageProps<"/services/[slug]">) {

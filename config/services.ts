@@ -38,7 +38,7 @@ export const services: Service[] = [
     title: "AI Voice Agents",
     short: "Voice Agents",
     summary:
-      "Inbound and outbound voice AI that answers, qualifies and books — plus WhatsApp and website chat agents.",
+      "Inbound and outbound voice AI that answers, qualifies and books, plus WhatsApp and website chat agents.",
     form: "wave",
     capabilities: ["Inbound reception", "Outbound qualification", "WhatsApp bots", "Support agents"],
   },
@@ -58,7 +58,7 @@ export const services: Service[] = [
     title: "Mobile & Web Apps",
     short: "Apps",
     summary:
-      "MVPs, SaaS products and internal tools — designed, engineered and shipped in weeks, not quarters.",
+      "MVPs, SaaS products and internal tools, designed, engineered and shipped in weeks, not quarters.",
     form: "phone",
     capabilities: ["MVPs", "SaaS products", "Internal tools", "iOS & Android"],
   },
@@ -78,7 +78,7 @@ export const services: Service[] = [
     title: "Media & Ads",
     short: "Media",
     summary:
-      "Short-form reels, YouTube, ad creatives and AI-assisted production — content that stops the scroll.",
+      "Short-form reels, YouTube, ad creatives and AI-assisted production. Content that stops the scroll.",
     form: "film",
     capabilities: ["Ad creatives", "Reels & shorts", "YouTube", "AI-assisted production"],
   },

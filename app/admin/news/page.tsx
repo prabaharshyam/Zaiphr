@@ -29,8 +29,8 @@ export default async function AdminNewsPage() {
           </p>
           <h1 className="font-display-wide mt-2 text-5xl">News pipeline</h1>
           <p className="mt-3 text-sm text-muted">
-            Runs daily at ~6:00 IST · writer: {hasAi() ? env.newsModel : "no API key — keyword fallback"} · {subs} active digest subscribers ·{" "}
-            {env.cronSecret ? "cron secret set" : <span className="text-red-400">CRON_SECRET missing — the daily run won&apos;t start</span>}
+            Runs daily at ~6:00 IST · writer: {hasAi() ? env.newsModel : "no API key - keyword fallback"} · {subs} active digest subscribers ·{" "}
+            {env.cronSecret ? "cron secret set" : <span className="text-red-400">CRON_SECRET missing - the daily run won&apos;t start</span>}
           </p>
         </div>
         <RunNewsButtons />
@@ -57,10 +57,10 @@ export default async function AdminNewsPage() {
                       <td className="px-4 py-3 whitespace-nowrap">{ist(r.started_at)}</td>
                       <td className={`px-4 py-3 ${r.status === "ok" ? "text-signature" : r.status === "error" ? "text-red-400" : "text-amber-300"}`}>{r.status}</td>
                       <td className="px-4 py-3 whitespace-nowrap">{s.briefDate}</td>
-                      <td className="px-4 py-3">{s.engine === "ai" ? "Claude" : s.engine === "match" ? "Fallback" : "—"}</td>
-                      <td className="px-4 py-3">{s.stories ?? "—"}</td>
-                      <td className="px-4 py-3">{s.sources ? `${ok}/${s.sources.length}` : "—"}</td>
-                      <td className="px-4 py-3">{s.digest ? s.digest.skipped ?? `${s.digest.sent} sent${s.digest.failed ? `, ${s.digest.failed} failed` : ""}` : "—"}</td>
+                      <td className="px-4 py-3">{s.engine === "ai" ? "Claude" : s.engine === "match" ? "Fallback" : "-"}</td>
+                      <td className="px-4 py-3">{s.stories ?? "-"}</td>
+                      <td className="px-4 py-3">{s.sources ? `${ok}/${s.sources.length}` : "-"}</td>
+                      <td className="px-4 py-3">{s.digest ? s.digest.skipped ?? `${s.digest.sent} sent${s.digest.failed ? `, ${s.digest.failed} failed` : ""}` : "-"}</td>
                       <td className="max-w-xs px-4 py-3 text-muted">{r.error ?? s.skipped ?? (s.aiError ? `AI failed: ${s.aiError}` : "")}</td>
                     </tr>
                   );

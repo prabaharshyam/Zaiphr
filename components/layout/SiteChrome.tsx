@@ -34,7 +34,7 @@ export function SiteChrome() {
       className="glass fixed right-4 bottom-4 left-4 z-[85] flex flex-col gap-3 rounded-2xl p-4 text-sm shadow-2xl sm:left-auto sm:max-w-sm"
     >
       <p className="text-muted">
-        No ad trackers here — just cookieless analytics and a few preferences stored on your device.{" "}
+        No ad trackers here. Just cookieless analytics and a few preferences stored on your device.{" "}
         <TransitionLink href="/legal/cookies" className="text-text underline underline-offset-4">
           Details
         </TransitionLink>

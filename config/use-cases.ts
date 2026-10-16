@@ -1,7 +1,7 @@
 import type { Industry } from "./service-details";
 
 /**
- * Use Cases library. Time saved is an estimate for a typical small team —
+ * Use Cases library. Time saved is an estimate for a typical small team -
  * label it as such wherever it's shown.
  */
 export interface UseCase {

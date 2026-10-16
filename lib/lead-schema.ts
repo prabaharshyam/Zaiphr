@@ -31,7 +31,7 @@ export const leadSchema = z.object({
   report: z.record(z.string(), z.unknown()).optional(),
   consent: z.literal(true, { message: "Consent is required" }),
   attribution: attributionSchema,
-  /** Honeypot — real users never fill this. */
+  /** Honeypot - real users never fill this. */
   hp: z.string().max(0).optional(),
 });
 

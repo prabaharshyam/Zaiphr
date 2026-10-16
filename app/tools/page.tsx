@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { aiTools, finderIndustries, toolCategories } from "@/config/ai-tools";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { Button } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Free AI tools for founders",
   description: "Free tools from Zaiphr Labs: find the right AI tools for your business problem, and browse a curated directory of AI tools by category and industry.",
-  alternates: { canonical: "/tools" },
-};
+  path: "/tools",
+  image: "/og/tools.jpg",
+});
 
 export default function ToolsPage() {
   return (

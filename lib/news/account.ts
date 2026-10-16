@@ -44,7 +44,7 @@ function start() {
   const c = browserDb();
   if (!c) return set({ ready: true });
   void c.auth.getSession().then(({ data }) => onUser(data.session?.user ?? null));
-  // Supabase advises against awaiting other calls inside this callback — defer them.
+  // Supabase advises against awaiting other calls inside this callback - defer them.
   c.auth.onAuthStateChange((_event, session) => setTimeout(() => void onUser(session?.user ?? null), 0));
 }
 
@@ -69,7 +69,7 @@ export function openSignIn(pendingSaveId?: string) {
   try {
     if (pendingSaveId) localStorage.setItem(PENDING_KEY, pendingSaveId);
   } catch {
-    /* storage blocked — the save just won't be remembered */
+    /* storage blocked - the save just won't be remembered */
   }
   set({ dialog: true });
 }
@@ -123,8 +123,8 @@ export async function requestMagicLink(email: string, opts: { digest: boolean; n
       body: JSON.stringify({ email, digest: opts.digest, next: opts.next, attribution: getAttribution() }),
     });
     const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-    return data.ok ? { ok: true as const } : { ok: false as const, error: data.error ?? "Something went wrong — please try again." };
+    return data.ok ? { ok: true as const } : { ok: false as const, error: data.error ?? "Something went wrong. Please try again." };
   } catch {
-    return { ok: false as const, error: "You seem to be offline — please try again." };
+    return { ok: false as const, error: "You seem to be offline. Please try again." };
   }
 }

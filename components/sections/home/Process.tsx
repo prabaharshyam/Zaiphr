@@ -55,11 +55,11 @@ export function Process() {
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--nav-h)+3rem)]">
             <Eyebrow index="03">How we work</Eyebrow>
-            <RevealText as="h2" className="font-display-tight mt-5 text-[clamp(2.4rem,4.6vw,4.8rem)]">
-              <span id="process-heading">From first call to compounding growth.</span>
+            <RevealText id="process-heading" as="h2" className="font-display-tight mt-5 text-[clamp(2.4rem,4.6vw,4.8rem)]">
+              From first call to compounding growth.
             </RevealText>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
-              Five stages, weekly demos and one team accountable for the outcome — not a relay race between agencies.
+              Five stages, weekly demos and one team accountable for the outcome, not a relay race between agencies.
             </p>
           </div>
         </div>

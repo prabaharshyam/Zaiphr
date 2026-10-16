@@ -30,7 +30,7 @@ export function ContactCard({ summary, transcript, conversationId }: { summary: 
       return;
     }
     setState("loading");
-    const message = `${summary || "Enquiry from the website chat"}\n\n— Chat transcript —\n${transcript}`.slice(0, 5000);
+    const message = `${summary || "Enquiry from the website chat"}\n\n--- Chat transcript ---\n${transcript}`.slice(0, 5000);
     const r = await submitLead(
       { name, email, phone: phone || undefined, source: "chat", message, inputs: { conversationId }, consent: true },
       { subject: `Enquiry from ${name}`, body: `${summary}\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}` },
@@ -76,7 +76,7 @@ export function BookCard() {
   return (
     <div className={card}>
       <p className="label-mono text-[0.62rem] text-signature">Free 30-minute call</p>
-      <p className="mt-2 text-sm text-muted">Pick a time that suits you — no prep needed.</p>
+      <p className="mt-2 text-sm text-muted">Pick a time that suits you. No prep needed.</p>
       <div className="mt-3 flex flex-wrap gap-2">
         <a href={site.calendlyUrl} target="_blank" rel="noopener noreferrer" className={`${btn} bg-signature text-signature-ink`}>
           Book a call ↗

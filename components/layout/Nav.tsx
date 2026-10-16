@@ -76,7 +76,7 @@ export function Nav() {
           aria-label="Main"
           className="container-x relative flex h-[var(--nav-h)] items-center justify-between gap-6"
         >
-          <TransitionLink href="/" aria-label="Zaiphr Labs — home" className="relative z-10 shrink-0">
+          <TransitionLink href="/" aria-label="Zaiphr Labs" className="relative z-10 shrink-0">
             <Logo />
           </TransitionLink>
 

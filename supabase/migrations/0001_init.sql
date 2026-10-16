@@ -1,4 +1,4 @@
--- Zaiphr Labs — initial schema.
+-- Zaiphr Labs - initial schema.
 -- Run once in Supabase: Dashboard → SQL Editor → paste → Run.
 -- The website writes with the service-role key (server-side only), which bypasses RLS.
 -- RLS stays ON everywhere so the public anon key can only do what the policies below allow.

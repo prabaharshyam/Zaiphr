@@ -1,5 +1,5 @@
 /**
- * Home "impact" counters. Keep these honest — capabilities and commitments,
+ * Home "impact" counters. Keep these honest - capabilities and commitments,
  * not invented client results. Swap in real numbers as they accrue.
  */
 export interface Stat {

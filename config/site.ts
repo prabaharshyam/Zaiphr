@@ -1,5 +1,5 @@
 /**
- * Global business info. Edit freely — components read from here.
+ * Global business info. Edit freely - components read from here.
  */
 export const site = {
   name: "Zaiphr Labs",

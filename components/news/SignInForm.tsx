@@ -83,7 +83,7 @@ export function SignInForm({ next, className, autoFocus }: { next?: string; clas
         ) : (
           <>
             No password needed. We only use your email to sign you in
-            {" "}— see our <Link href="/legal/privacy" className="underline underline-offset-2 hover:text-text">privacy policy</Link>.
+            . See our <Link href="/legal/privacy" className="underline underline-offset-2 hover:text-text">privacy policy</Link>.
           </>
         )}
       </p>
