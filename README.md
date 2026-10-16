@@ -29,6 +29,11 @@ npm run dev                  # http://localhost:3000
 | `config/navigation.ts` | Header and footer links |
 | `config/stats.ts` | Home page counters |
 | `config/process.ts` | Process timeline steps |
+| `config/service-details.ts` | Service page copy, industry use cases, FAQs, pricing (₹ and $) |
+| `config/use-cases.ts` | The Use Cases library |
+| `config/about.ts` | Mission, values, founder (add your photo + bio), stack |
+| `config/features.ts` | Feature flags (e.g. testimonials — keep off until quotes are real) |
+| `content/legal/*.mdx` | Privacy, Terms, Cookie notice |
 | `content/work/*.mdx` | Case studies (frontmatter drives cards; body is the case study) |
 | `app/globals.css` (top) | Design tokens: colors, easing, gutters, type scale |
 
@@ -73,7 +78,7 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 
 - [x] **1. Foundation** — tokens, fonts, layout, nav, footer, smooth scroll, cursor, transitions, preloader
 - [x] **2. Home** — WebGL Cipher Core, 7-form services story, work gallery, process, tools/news teasers, stats, CTA
-- [ ] 3. Service pages, Work/case studies, Use Cases, About, Contact
+- [x] **3. Pages** — 7 service pages (3D form hero, pricing ₹/$, FAQ + JSON-LD), Work index + case studies, 24 Use Cases, About, multi-step Contact, Legal (DPDP)
 - [ ] 4. Supabase + leads + emails + admin
 - [ ] 5. Free tools (Competitor Analysis, Readiness Score, ROI Calculator)
 - [ ] 6. AI News (UI, daily pipeline, saved/auth/digest)

@@ -70,7 +70,7 @@ export function BigCta() {
             </p>
             <div className="flex flex-col items-start gap-3">
               <Button href={site.calendlyUrl} variant="ghost">
-                Book a 20-min strategy call
+                Book a 30-min strategy call
               </Button>
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Zaiphr Labs, I'd like to discuss a project.")}`}

@@ -2,7 +2,8 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-
+import { services } from "@/config/services";
+import type { ProjectCardData } from "@/components/work/ProjectCard";
 /**
  * Case studies live in content/work/*.mdx. Add a file to add a project —
  * frontmatter drives cards, filters and the case-study page.
@@ -47,3 +48,14 @@ export function getProjects(): Project[] {
 }
 
 export const getProject = (slug: string) => getProjects().find((p) => p.slug === slug);
+
+export const toCard = (p: Project): ProjectCardData => ({
+  slug: p.slug,
+  client: p.client,
+  title: p.title,
+  label: p.label,
+  industry: p.industry,
+  cover: p.cover,
+  accent: p.accent,
+  service: services.find((s) => s.slug === p.service)?.title ?? p.service,
+});

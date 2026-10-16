@@ -258,3 +258,7 @@ html.js-motion [data-panel] + [data-panel] {
 .prose-zl a { color: var(--signature); text-decoration: underline; text-underline-offset: 4px; }
 .prose-zl blockquote { border-left: 2px solid var(--signature); padding-left: 1.25rem; font-style: italic; color: var(--text); margin: 2rem 0; }
 .prose-zl code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface-2); padding: 0.15em 0.4em; border-radius: 6px; }
+.prose-zl table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.92rem; display: block; overflow-x: auto; }
+.prose-zl th { text-align: left; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.prose-zl th, .prose-zl td { border-bottom: 1px solid var(--line); padding: 0.85rem 1rem 0.85rem 0; vertical-align: top; }
+.prose-zl td:first-child { color: var(--text); }

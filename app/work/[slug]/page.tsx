@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
+import { mdxOptions } from "@/lib/mdx";
 import { getProject, getProjects } from "@/lib/work";
 import { services } from "@/config/services";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -95,7 +96,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           </div>
         </aside>
         <div className="prose-zl md:col-span-8">
-          <MDXRemote source={p.body} />
+          <MDXRemote source={p.body} options={mdxOptions} />
         </div>
       </div>
 
