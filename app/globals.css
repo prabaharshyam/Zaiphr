@@ -215,3 +215,17 @@ html.reveal-fallback [data-reveal] {
   padding-bottom: 0.14em;
   margin-bottom: -0.14em;
 }
+
+/* CSS hero core fades out once the WebGL scene is live */
+.hero-core-fallback {
+  transition: opacity 1.2s var(--ease-out);
+}
+html[data-scene="on"] .hero-core-fallback {
+  opacity: 0 !important;
+}
+
+/* Services story: only the first panel is visible before GSAP takes over */
+html.js-motion [data-panel] + [data-panel] {
+  opacity: 0;
+  visibility: hidden;
+}

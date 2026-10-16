@@ -6,7 +6,7 @@ import { HeroCore } from "./HeroCore";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden pt-[var(--nav-h)]">
+    <section className="relative z-10 flex min-h-[100svh] flex-col overflow-hidden pt-[var(--nav-h)]">
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden />
       <HeroCore />
 

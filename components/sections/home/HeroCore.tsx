@@ -37,7 +37,7 @@ export function HeroCore() {
     <div
       ref={root}
       aria-hidden
-      className="pointer-events-none absolute inset-0 flex items-start justify-center pt-[var(--nav-h)] opacity-70 md:items-center md:justify-end md:pt-0 md:opacity-100"
+      className="hero-core-fallback pointer-events-none absolute inset-0 flex items-start justify-center pt-[var(--nav-h)] opacity-70 md:items-center md:justify-end md:pt-0 md:opacity-100"
     >
       <div className="relative aspect-square w-[72vw] md:-mr-[8vw] md:w-[min(60vw,48rem)] md:-translate-y-[10%]">
         <div data-depth="0.3" className="absolute inset-[18%] rounded-full bg-signature/25 blur-[90px]" />

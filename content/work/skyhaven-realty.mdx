@@ -1,0 +1,35 @@
+---
+title: "Leads that qualify themselves"
+client: "Skyhaven Realty"
+slug: "skyhaven-realty"
+label: "Concept Project"
+service: "ai-automations"
+services: ["ai-automations", "ai-voice-agents"]
+industry: "Real estate"
+year: 2026
+order: 3
+featured: true
+accent: "#C9A227"
+summary: "A WhatsApp assistant that qualifies property enquiries from ads in under two minutes, scores them, and drops hot leads straight into the sales team's CRM with a site-visit slot."
+metrics:
+  - { value: "<2 min", label: "Designed time from ad click to qualified lead" }
+  - { value: "5x", label: "Projected faster first response than manual follow-up" }
+  - { value: "0", label: "Leads left untouched overnight, by design" }
+stack: ["WhatsApp Business API", "Claude", "n8n", "HubSpot / Zoho CRM", "Meta Lead Ads", "Google Sheets"]
+---
+
+## The challenge
+
+Skyhaven is a fictional mid-size developer selling 2 and 3 BHK apartments in Pune. Its Meta ads bring in hundreds of enquiries a week. Most are cold, a few are ready to buy, and the sales team spends its mornings calling everyone in the order they came in.
+
+## Our approach
+
+We designed a five-question qualification flow covering budget, configuration, timeline, financing and preferred location. It runs as a natural WhatsApp conversation rather than a form, and answers questions about amenities, possession dates and pricing from a verified project sheet.
+
+## The solution
+
+Lead-ad submissions trigger an n8n workflow that opens a WhatsApp conversation within seconds. Claude runs the dialogue, extracts structured answers and computes a lead score. Hot leads are pushed to the CRM with a summary and offered site-visit slots, warm leads enter a nurture sequence, and every lead gets a reply even at 2 AM.
+
+## Projected impact
+
+Design targets, not client results: every enquiry answered in under a minute, sales calls focused on the top fifth of leads, and a full audit trail of every conversation in the CRM.

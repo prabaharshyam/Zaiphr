@@ -1,13 +1,17 @@
 import { Hero } from "@/components/sections/home/Hero";
 import { StackMarquee } from "@/components/sections/home/StackMarquee";
-import { ServicesIndex } from "@/components/sections/home/ServicesIndex";
+import { ServicesScroll } from "@/components/sections/home/ServicesScroll";
+import { SceneLoader } from "@/components/three/SceneLoader";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <StackMarquee />
-      <ServicesIndex />
+      <SceneLoader />
+      <div id="scene-zone" className="relative">
+        <Hero />
+        <StackMarquee />
+        <ServicesScroll />
+      </div>
     </>
   );
 }

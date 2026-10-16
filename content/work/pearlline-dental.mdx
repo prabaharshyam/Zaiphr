@@ -1,0 +1,39 @@
+---
+title: "Pearl, the 24/7 AI receptionist"
+client: "Pearlline Dental"
+slug: "pearlline-dental"
+label: "Concept Project"
+service: "ai-voice-agents"
+services: ["ai-voice-agents", "ai-automations"]
+industry: "Clinics"
+year: 2026
+order: 1
+featured: true
+accent: "#2BB3A3"
+summary: "A voice agent that answers every call, books cleanings and consultations into the practice calendar, and sends WhatsApp reminders — without a single missed ring."
+metrics:
+  - { value: "24/7", label: "Call coverage, designed for zero missed calls" }
+  - { value: "~70%", label: "Projected share of bookings handled without staff" }
+  - { value: "<1s", label: "Target response latency per turn" }
+stack: ["Voice AI (STT + LLM + TTS)", "Twilio", "Claude", "Google Calendar", "WhatsApp Business API", "n8n"]
+---
+
+## The challenge
+
+Pearlline is a fictional four-chair dental chain in Bengaluru. Like most clinics, its front desk is busiest exactly when patients call: during treatment hours. Calls go unanswered, after-hours enquiries leak to competitors, and reception staff spend their day repeating timings, prices and directions.
+
+## Our approach
+
+We mapped the 12 call types that make up most inbound volume — new bookings, reschedules, pricing questions, insurance, emergencies and directions — and designed a voice persona, **Pearl**, that handles the routine ones end-to-end and hands off the rest with context.
+
+- **Conversation design:** short turns, interruption handling, Hindi–English code-switching, and a confirmation step before anything is booked.
+- **Guardrails:** Pearl never gives clinical advice. Pain, swelling or bleeding triggers an immediate transfer to the on-call number.
+- **Calendar truth:** availability is read live from the practice calendar, so Pearl can't double-book a chair.
+
+## The solution
+
+Calls land on a Twilio number and stream to a low-latency voice pipeline. Claude handles dialogue and tool use (check slots, book, reschedule, send a reminder), an n8n workflow writes the visit to the calendar and patient sheet, and a WhatsApp confirmation goes out within seconds. Every call is summarised for the front desk.
+
+## Projected impact
+
+These are design targets for a concept build, not client results: answer 100% of calls including nights and Sundays, handle roughly two-thirds of bookings without staff, and free 2–3 hours of front-desk time per day.
