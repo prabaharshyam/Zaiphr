@@ -83,6 +83,14 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - **With Supabase:** runs are stored in `tool_runs`, identical inputs are served from cache for 14 days, each IP gets 6 runs per hour, and the full plan unlocks after name + email (saved as a lead with source `tool`, plan emailed). Without a DB the full plan shows straight away.
 - **Editing the catalogue:** add or edit tools in `aiTools`; industry pages read `industryPicks`. Directory pages under `/ai-tools` rebuild from the same file.
 
+## Chat assistant
+
+- **Knowledge:** built at runtime from `config/` (services, packages, process, FAQs, about), `content/work` and `content/blog` — edit those and the assistant updates on the next deploy. Rules live in `lib/server/chat/engine.ts`.
+- **Model:** `CHAT_MODEL` (default Sonnet 5.5 with thinking off and low effort for fast replies). The system prompt is cached, so a typical reply costs a fraction of a rupee.
+- **Actions:** the model ends a reply with `[[contact: summary]]`, `[[book]]` or `[[whatsapp]]`; the server strips the marker from the stream and the widget shows a consent-based contact form (saved as a lead with source `chat`), a booking button or WhatsApp. It never asks for personal details in the chat itself.
+- **Limits:** 8 new conversations per IP per hour, 20 messages per conversation, 2,000 characters per message. Transcripts are stored in `tool_runs` (tool `chat`) and shown at `/admin/chats`.
+- **No key?** The widget stays and offers WhatsApp, booking, email and the brief form.
+
 ## Writing a blog post
 
 1. Add `content/blog/<slug>.mdx` with frontmatter: `title`, `description` (140–160 chars), `date` (YYYY-MM-DD — future dates stay hidden until that day), `category` (AI for Business · Automation · Websites & Apps · Marketing & Growth), `tags`, `service` (a service slug), optional `featured: true`, `updated`, and `faq` (list of `q`/`a`).
@@ -117,5 +125,5 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - [x] **5. Free tools** — AI Stack Finder (Claude-powered, with a no-key instant-match fallback, cached runs, email unlock → lead), /ai-tools directory with 22 category + 8 industry pages (JSON-LD)
 - [x] **6. AI News** — daily pipeline (13 feeds → Claude curation → Supabase, keyword fallback), /news + archives, magic-link sign-in, saved stories, daily digest email with one-click unsubscribe, /admin/news
 - [x] **7. Blog** — 10 launch posts (MDX), /blog with featured post + topic filter, post pages with contents, reading progress, FAQ + BlogPosting/FAQPage/Breadcrumb JSON-LD, related posts, share links, RSS at /blog/rss.xml, generated covers
-- [ ] 8. AI chat assistant
+- [x] **8. AI chat assistant** — streaming site-wide assistant grounded in the site's own config (services, prices, process, blog), contact form / booking / WhatsApp actions with consent, transcripts in /admin/chats, offline fallback
 - [ ] 9. SEO, performance, accessibility pass → Vercel deploy

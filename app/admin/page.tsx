@@ -52,6 +52,9 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           <Link href="/admin/news" className="rounded-full border border-line-strong px-4 py-2 text-sm hover:border-signature">
             AI News
           </Link>
+          <Link href="/admin/chats" className="rounded-full border border-line-strong px-4 py-2 text-sm hover:border-signature">
+            Chats
+          </Link>
           <a href={`/admin/export${qs({})}`} className="rounded-full border border-line-strong px-4 py-2 text-sm hover:border-signature">
             Export CSV
           </a>

@@ -11,6 +11,7 @@ import { Cursor } from "@/components/effects/Cursor";
 import { Preloader } from "@/components/effects/Preloader";
 import { Grain } from "@/components/effects/Grain";
 import { SiteChrome } from "@/components/layout/SiteChrome";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import "./globals.css";
 
 const archivo = localFont({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </main>
             <Footer />
             <SiteChrome />
+            <ChatWidget />
             <Cursor />
             <Grain />
           </TransitionProvider>
