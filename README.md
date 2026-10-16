@@ -74,6 +74,15 @@ lib/                  gsap registration, hooks, ready-signal, utils
 
 Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (needs a local Chromium; set `CHROMIUM_PATH`).
 
+## AI Stack Finder
+
+`/tools/ai-stack-finder` — a visitor describes a business problem and gets a recommended stack picked from the catalogue in `config/ai-tools.ts`.
+
+- **With `ANTHROPIC_API_KEY`:** Claude writes a tailored plan (diagnosis, stack, workflow, costs, watch-outs) and may only pick tools from the catalogue. `STACK_FINDER_EFFORT` = `low` (default, fastest/cheapest), `medium` or `high`.
+- **Without a key** (or if the API call fails): an instant keyword matcher builds a starter stack, so the tool always works.
+- **With Supabase:** runs are stored in `tool_runs`, identical inputs are served from cache for 14 days, each IP gets 6 runs per hour, and the full plan unlocks after name + email (saved as a lead with source `tool`, plan emailed). Without a DB the full plan shows straight away.
+- **Editing the catalogue:** add or edit tools in `aiTools`; industry pages read `industryPicks`. Directory pages under `/ai-tools` rebuild from the same file.
+
 ## The 3D scene
 
 `components/three/` — a single GPU particle system (`CipherCore`) that morphs between 9 point-cloud forms (`forms.ts`): core → one form per service → core. Scroll code writes `lib/scene-store.ts`; the render loop reads it. It is lazy-loaded after the preloader, scales its particle count to the device, pauses when off-screen, and falls back to a CSS core for reduced motion / no WebGL / Save-Data.
@@ -92,7 +101,7 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - [x] **2. Home** — WebGL Cipher Core, 7-form services story, work gallery, process, tools/news teasers, stats, CTA
 - [x] **3. Pages** — 7 service pages (3D form hero, pricing ₹/$, FAQ + JSON-LD), Work index + case studies, 24 Use Cases, About, multi-step Contact, Legal (DPDP)
 - [x] **4. Leads** — Supabase schema + RLS, /api/leads + /api/subscribe (validation, honeypot, rate limit, UTM), Resend notifications + confirmations, /admin dashboard (filters, status, notes, CSV)
-- [ ] 5. Free tools (Competitor Analysis, Readiness Score, ROI Calculator)
+- [x] **5. Free tools** — AI Stack Finder (Claude-powered, with a no-key instant-match fallback, cached runs, email unlock → lead), /ai-tools directory with 22 category + 8 industry pages (JSON-LD)
 - [ ] 6. AI News (UI, daily pipeline, saved/auth/digest)
 - [ ] 7. Blog + 10 posts
 - [ ] 8. AI chat assistant

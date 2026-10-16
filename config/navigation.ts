@@ -26,6 +26,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: "Resources",
     items: [
       { label: "Free tools", href: "/tools" },
+      { label: "AI tools directory", href: "/ai-tools" },
       { label: "AI News", href: "/news" },
       { label: "Blog", href: "/blog" },
     ],

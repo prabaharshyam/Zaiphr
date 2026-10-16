@@ -262,3 +262,14 @@ html.js-motion [data-panel] + [data-panel] {
 .prose-zl th { text-align: left; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
 .prose-zl th, .prose-zl td { border-bottom: 1px solid var(--line); padding: 0.85rem 1rem 0.85rem 0; vertical-align: top; }
 .prose-zl td:first-child { color: var(--text); }
+
+/* Print / "Download PDF" for tool reports */
+@media print {
+  @page { margin: 14mm; }
+  html, body { background: #fff !important; color: #111 !important; }
+  header, footer, .grain, .no-print, [role="region"][aria-label="Cookie notice"], #preloader { display: none !important; }
+  .print-area, .print-area * { color: #111 !important; background: transparent !important; border-color: #ddd !important; box-shadow: none !important; backdrop-filter: none !important; text-shadow: none !important; }
+  .print-area .glass, .print-area li, .print-area section > div { break-inside: avoid; }
+  main { padding: 0 !important; }
+  .prose-zl a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #555; }
+}

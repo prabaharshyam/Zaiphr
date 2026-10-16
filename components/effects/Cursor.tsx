@@ -98,7 +98,7 @@ export function Cursor() {
       <div
         ref={ring}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-[100] flex items-center justify-center border border-text/30 mix-blend-normal"
+        className="no-print pointer-events-none fixed top-0 left-0 z-[100] flex items-center justify-center border border-text/30 mix-blend-normal"
         style={{ width: 36, height: 36, borderRadius: 999 }}
       >
         <span className="label-mono text-[0.65rem] font-medium text-signature-ink">{label}</span>
@@ -106,7 +106,7 @@ export function Cursor() {
       <div
         ref={dot}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-[100] h-1.5 w-1.5 rounded-full bg-signature"
+        className="no-print pointer-events-none fixed top-0 left-0 z-[100] h-1.5 w-1.5 rounded-full bg-signature"
       />
     </>
   );
