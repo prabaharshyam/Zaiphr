@@ -10,6 +10,7 @@ import { BlogHighlights } from "@/components/sections/home/BlogHighlights";
 import { BigCta } from "@/components/sections/home/BigCta";
 import { SceneLoader } from "@/components/three/SceneLoader";
 import { getLatestBrief } from "@/lib/server/news/queries";
+import { getPosts } from "@/lib/blog";
 import { NEWS_CATEGORIES } from "@/lib/news/types";
 
 export const revalidate = 600;
@@ -40,7 +41,7 @@ export default async function HomePage() {
       <ToolsTeaser />
       <NewsTeaser stories={stories} />
       <Stats />
-      <BlogHighlights />
+      <BlogHighlights posts={getPosts().slice(0, 3).map((p) => ({ slug: p.slug, title: p.title, category: p.category, minutes: p.minutes, cover: p.cover }))} />
       <BigCta />
     </>
   );

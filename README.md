@@ -83,6 +83,12 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - **With Supabase:** runs are stored in `tool_runs`, identical inputs are served from cache for 14 days, each IP gets 6 runs per hour, and the full plan unlocks after name + email (saved as a lead with source `tool`, plan emailed). Without a DB the full plan shows straight away.
 - **Editing the catalogue:** add or edit tools in `aiTools`; industry pages read `industryPicks`. Directory pages under `/ai-tools` rebuild from the same file.
 
+## Writing a blog post
+
+1. Add `content/blog/<slug>.mdx` with frontmatter: `title`, `description` (140–160 chars), `date` (YYYY-MM-DD — future dates stay hidden until that day), `category` (AI for Business · Automation · Websites & Apps · Marketing & Growth), `tags`, `service` (a service slug), optional `featured: true`, `updated`, and `faq` (list of `q`/`a`).
+2. Components available in posts: `<KeyTakeaways>` (wrap a bullet list), `<Callout type="tip|note|warning" title="…">`, `<StackFinderCta problem="…" />`, `<ServiceCta service="<slug>" />`. Tables and `- [ ]` checklists work too.
+3. Generate the cover: `node scripts/blog-covers/render.mjs <slug>` → `public/blog/<slug>/cover.jpg` (or put your own 16:9 image there).
+
 ## AI News
 
 - **Daily run:** Vercel Cron calls `/api/cron/news` at 00:30 UTC (≈6:00 IST) with `CRON_SECRET`. It reads the feeds in `config/news-sources.ts`, drops stories already published in the last 5 days, and asks Claude (`NEWS_MODEL`, default Sonnet) to pick 8–12 stories and write a headline, 60-word summary and "why it matters". Without a key, or if the call fails, a keyword ranker uses each feed's own snippet instead.
@@ -110,6 +116,6 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - [x] **4. Leads** — Supabase schema + RLS, /api/leads + /api/subscribe (validation, honeypot, rate limit, UTM), Resend notifications + confirmations, /admin dashboard (filters, status, notes, CSV)
 - [x] **5. Free tools** — AI Stack Finder (Claude-powered, with a no-key instant-match fallback, cached runs, email unlock → lead), /ai-tools directory with 22 category + 8 industry pages (JSON-LD)
 - [x] **6. AI News** — daily pipeline (13 feeds → Claude curation → Supabase, keyword fallback), /news + archives, magic-link sign-in, saved stories, daily digest email with one-click unsubscribe, /admin/news
-- [ ] 7. Blog + 10 posts
+- [x] **7. Blog** — 10 launch posts (MDX), /blog with featured post + topic filter, post pages with contents, reading progress, FAQ + BlogPosting/FAQPage/Breadcrumb JSON-LD, related posts, share links, RSS at /blog/rss.xml, generated covers
 - [ ] 8. AI chat assistant
 - [ ] 9. SEO, performance, accessibility pass → Vercel deploy

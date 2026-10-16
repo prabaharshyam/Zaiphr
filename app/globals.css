@@ -273,3 +273,8 @@ html.js-motion [data-panel] + [data-panel] {
   main { padding: 0 !important; }
   .prose-zl a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #555; }
 }
+
+/* GFM task lists in blog posts ("- [ ] item") render as a checklist */
+.prose-zl ul.contains-task-list li.task-list-item { padding-left: 1.85rem; }
+.prose-zl ul.contains-task-list li.task-list-item::before { display: none; }
+.prose-zl li.task-list-item input[type="checkbox"] { position: absolute; left: 0; top: 0.42em; width: 1rem; height: 1rem; margin: 0; accent-color: var(--signature); }

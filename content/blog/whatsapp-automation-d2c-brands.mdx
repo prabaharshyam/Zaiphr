@@ -1,0 +1,177 @@
+---
+title: "The WhatsApp automation playbook for D2C brands"
+description: "A practical WhatsApp automation guide for Indian D2C brands: API vs app, core flows, COD and RTO, Shopify setup, AI replies, metrics and a 30-day rollout."
+date: "2026-09-22"
+category: "Automation"
+tags: ["whatsapp", "d2c", "shopify", "automation", "ecommerce"]
+service: "ai-automations"
+featured: false
+faq:
+  - q: "Do I need the WhatsApp Business API or is the free app enough?"
+    a: "The free WhatsApp Business app is fine while one or two people handle chats by hand. Once you want automated order updates, abandoned cart messages or multiple agents on one number, you need the WhatsApp Business API, usually through a provider such as WATI, Interakt, AiSensy or Gallabox."
+  - q: "How much does WhatsApp Business API messaging cost?"
+    a: "Meta charges per conversation or message depending on the category, such as marketing, utility or service, and providers add their own platform fee on top. Rates change, so check current pricing from Meta and your provider before you plan budgets."
+  - q: "Can WhatsApp automation reduce RTO for COD orders?"
+    a: "A COD confirmation message asks the customer to confirm before you ship, which helps filter out fake or impulse orders. How much it helps depends on your product and audience, so measure your RTO rate before and after rather than assuming a number."
+  - q: "Why is my WhatsApp number's quality rating dropping?"
+    a: "Quality rating falls when many people block or report your messages, usually because of too-frequent or irrelevant broadcasts. Cut frequency, segment better, and only message people who opted in."
+---
+
+Your customers already live on WhatsApp. They ask "order kab aayega?" there, they share your product links with their sisters there, and they ignore your emails while reading every WhatsApp message.
+
+Yet most D2C brands still run WhatsApp by hand: someone on the team copying tracking links from Shiprocket, replying to the same size question forty times a day, and blasting the whole contact list during the Diwali sale.
+
+This playbook covers the setup you actually need, the flows worth automating first, how to add an AI assistant without annoying people, what to measure, and a 30-day rollout plan.
+
+<KeyTakeaways>
+- Move to the WhatsApp Business API once you need automated flows or more than a couple of agents.
+- Start with order confirmation, COD confirmation and shipping updates before any marketing flows.
+- Every automated flow needs a clear goal and a number to measure it by.
+- Broadcast less often, to smaller segments. Your quality rating depends on it.
+- An AI assistant can handle FAQs and order status, but always offer a human.
+</KeyTakeaways>
+
+## WhatsApp Business app vs WhatsApp Business API
+
+These are two different products, and the difference matters.
+
+The **WhatsApp Business app** is the free app on your phone. It gives you a business profile, catalogue, quick replies and labels. It's great for a new brand doing a few dozen orders a week, with one person replying.
+
+The **WhatsApp Business API** (now often called the WhatsApp Business Platform) is meant for automation and scale. You don't use it directly; you go through a provider such as WATI, Interakt, AiSensy or Gallabox. These give you a shared team inbox, Shopify integrations, broadcast tools, chatbot builders and analytics.
+
+| | Business app | Business API via a provider |
+|---|---|---|
+| Who it suits | Early-stage, low volume | Growing brands with steady orders |
+| Automated order updates | No | Yes |
+| Multiple agents on one number | Limited | Yes |
+| Broadcasts | Small lists, manual | Large, segmented, scheduled |
+| Shopify integration | No | Yes, through the provider |
+| Cost | Free | Provider plan plus Meta's message charges |
+
+Most providers have trial or starter plans; check current pricing, since it changes often. Compare them in our [e-commerce tools list](/ai-tools/for/d2c-ecommerce).
+
+## Opt-in and templates, in plain terms
+
+Two rules shape everything on the API.
+
+**Opt-in.** You may only message people who agreed to hear from you on WhatsApp. Add a clear checkbox at checkout ("Get order updates on WhatsApp") and a separate one for offers if you want marketing messages too. Keep a record of consent. This also lines up with the spirit of India's DPDP Act; check current rules or take advice for your situation.
+
+**Templates.** When you start a conversation (rather than replying to the customer), you must use a pre-approved message template. Templates fall into categories, broadly utility (order updates, confirmations) and marketing (offers, campaigns), and they're priced differently. Once a customer replies, you get a window in which you can chat freely.
+
+<Callout type="tip" title="Write templates like a person">Templates with a clear purpose, the customer's name and a useful button get approved faster and get more replies than ones stuffed with emojis and capital letters.</Callout>
+
+## The core flows
+
+Here are the flows that matter for most D2C brands, in roughly the order we'd build them.
+
+| Trigger | Message | Goal |
+|---|---|---|
+| Order placed (prepaid) | Order summary, expected delivery, support contact | Reassure, cut "where's my order" queries |
+| Order placed (COD) | Order summary with Confirm and Cancel buttons | Filter fake or impulse orders before dispatch |
+| Shipped (from Shiprocket) | Tracking link and courier name | Fewer status queries |
+| Out for delivery | "Arriving today, keep ₹1,299 ready" for COD | Fewer failed deliveries |
+| Cart abandoned | Reminder with cart link, after an hour or so | Recover sales |
+| Delivered, a few days later | Review request with a simple link | More reviews and early warning on issues |
+| Product likely running out | Reorder reminder with one-tap reorder link | Repeat purchases |
+| Campaign (sale, launch) | Offer to a specific segment | Revenue without spamming everyone |
+
+### Order and COD confirmation
+
+The order confirmation is the most-read message you'll send. Keep it clean: what they bought, the amount, the expected delivery date, and how to reach you.
+
+For COD, add buttons. If the customer taps Confirm, ship it. If they tap Cancel, you've saved two-way shipping. If they don't respond, a short follow-up or a quick call (a voice agent can do this) before dispatch makes sense. RTO is one of the biggest silent costs in Indian D2C, so this flow often pays for the whole setup.
+
+### Shipping updates via Shiprocket
+
+Shiprocket and most providers can pass shipping events (shipped, out for delivery, delivered, RTO initiated) into your WhatsApp tool. Pick the two or three updates customers actually care about. Sending every scan event feels like spam.
+
+### Abandoned cart
+
+Send one reminder, and maybe a second a day later. Use the product image and a direct link back to the cart. Hold the discount for the second message, if at all, or you'll train customers to abandon carts on purpose.
+
+### Post-delivery review request
+
+Wait until the customer has used the product. For skincare that might be a week; for a phone cover, two days. Ask a simple question first ("How's the product?"). Happy replies get a review link; unhappy ones go to your support team before they become a one-star review.
+
+### Reorder reminders
+
+For consumables (coffee, supplements, pet food, skincare), estimate when the product runs out and send a reminder a few days earlier. Say a customer buys a 30-day pack of protein on 1 March; a reminder around 25 March with a one-tap reorder link is useful, not pushy.
+
+### Broadcast campaigns with segmentation
+
+Broadcasts are where brands get into trouble. Instead of "everyone, every sale," segment by what people bought, when they last ordered, city, or average order value. A Diwali gift box offer to last year's gift buyers will do far better than the same message to all 40,000 contacts.
+
+<StackFinderCta problem="We do around 80 Shopify orders a day, half are COD, and our team spends hours answering order status questions on WhatsApp." />
+
+## Adding an AI assistant
+
+Most WhatsApp queries are repetitive: order status, sizes, ingredients, return policy, delivery time to a pincode. An AI assistant can handle a lot of this.
+
+A good setup:
+
+- **Answers FAQs** from your own policies and product information, not from the open internet.
+- **Looks up order status** by phone number or order ID through your Shopify and Shiprocket data.
+- **Speaks the customer's language**, including Hinglish, and keeps replies short.
+- **Hands over to a human** when the customer asks, gets frustrated, or raises refunds, damaged items or anything it isn't sure about.
+
+Providers like WATI, Interakt, AiSensy and Gallabox have built-in bot builders, and tools like Chatbase or Botpress can be connected for more advanced AI replies. See more in our [chat and support tools directory](/ai-tools/chat).
+
+<Callout type="warning" title="Don't let the bot guess">If the assistant isn't confident, it should say so and route to a person. One wrong refund promise causes more trouble than ten slow replies.</Callout>
+
+## Connecting to Shopify
+
+For most brands the setup looks like this:
+
+1. Install your WhatsApp provider's Shopify app, or connect through Zapier, Make, n8n or Pabbly Connect for custom flows.
+2. Add the WhatsApp opt-in checkbox at checkout.
+3. Map Shopify events (order created, fulfilled, cancelled, cart abandoned) to templates.
+4. Connect Shiprocket for shipping events.
+5. Tag customers in your provider (COD, repeat buyer, city, product category) for segmentation.
+6. Test every flow with real orders, including COD and cancelled ones.
+
+If your flows need logic that the off-the-shelf apps can't do, such as different COD rules by pincode or order value, that's where custom [AI automations](/services/ai-automations) come in.
+
+## What to measure
+
+Pick a few numbers and check them weekly.
+
+- **Reply rate** on each template. Low replies on a flow usually means the message is unclear or badly timed.
+- **Recovered carts:** orders placed from abandoned cart messages, and the revenue they brought.
+- **COD confirmation rate** and **RTO rate**, compared with your baseline before the flow went live.
+- **Support load:** number of "where is my order" chats per 100 orders.
+- **Block and opt-out rate** after each broadcast.
+- **Repeat purchase rate** for customers who got reorder reminders.
+
+A worked example: say you get 500 abandoned carts a month, and your reminder flow brings back 40 orders at an average of ₹900. That's ₹36,000 in recovered revenue, which you can weigh against message and provider costs. Your own numbers will differ; the point is to do this arithmetic every month.
+
+## Frequency, spam and quality rating
+
+Meta gives every business number a quality rating based on how people respond to your messages, especially blocks and reports. If it drops, your messaging limits can be reduced and, in bad cases, your number restricted.
+
+Common ways brands hurt their rating:
+
+- Broadcasting to everyone, several times a week, during sale season.
+- Messaging people who only gave their number for delivery, not for marketing.
+- Sending offers that have nothing to do with what the customer bought.
+- Long templates with no clear reason to read them.
+
+Set a simple rule: marketing broadcasts to any one customer no more than a few times a month, each to a clear segment, with an easy way to opt out. Utility messages like order updates are less of a risk, because customers want them.
+
+## A 30-day rollout plan
+
+- [ ] **Days 1–5:** Choose a provider, get the API number verified, add the checkout opt-in, and record your baseline: RTO rate, support chats per order, cart abandonment.
+- [ ] **Days 6–10:** Launch order confirmation, COD confirmation and two shipping updates. Test with real orders.
+- [ ] **Days 11–15:** Add the abandoned cart flow and the post-delivery review request.
+- [ ] **Days 16–22:** Add an AI assistant for FAQs and order status, with human handover. Review every conversation it handled in the first week.
+- [ ] **Days 23–27:** Set up segments and run one small, targeted broadcast. Watch blocks and replies.
+- [ ] **Days 28–30:** Compare metrics with your baseline, cut what isn't working, and plan reorder reminders for month two.
+
+## Where to start
+
+1. **Check your RTO rate and COD share** from the last three months. That tells you how urgent the COD flow is.
+2. **Add a WhatsApp opt-in at checkout today**, even before you pick a provider. Every order without it is a customer you can't message later.
+3. **Shortlist two providers** and test their Shopify integration with a few real orders before committing.
+
+Want the flows built and connected properly? [Talk to us](/contact), or use the free [AI stack finder](/tools/ai-stack-finder) to see which tools fit your setup.
+
+<ServiceCta service="ai-automations" />

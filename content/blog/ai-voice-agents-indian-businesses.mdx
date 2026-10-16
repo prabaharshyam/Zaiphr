@@ -1,0 +1,179 @@
+---
+title: "AI voice agents for Indian businesses: what they can and can't do"
+description: "A plain guide to AI voice agents for Indian SMBs: how they work, good use cases, Hinglish realities, human handover, costs, compliance and a pilot plan."
+date: "2026-10-08"
+category: "AI for Business"
+tags: ["ai voice agents", "telephony", "small business", "customer support", "india"]
+service: "ai-voice-agents"
+featured: false
+faq:
+  - q: "Can an AI voice agent speak Hindi and other Indian languages?"
+    a: "Yes, most modern voice stacks can handle Hindi and several other Indian languages, and many cope with Hinglish-style mixing. Quality varies by language, accent and line quality, so test with real recordings from your own callers before you commit."
+  - q: "Will callers know they are talking to an AI?"
+    a: "They should. A short, honest introduction such as saying it is the clinic's automated assistant builds trust and avoids awkward moments later. Most callers care more about getting their work done quickly than about who answers."
+  - q: "How much does an AI voice agent cost to run?"
+    a: "Running costs usually combine per-minute usage for speech and AI, a phone number rental, and telephony charges, plus a one-time build. Your monthly bill scales with call minutes, so a pilot with real volume is the best way to estimate it."
+  - q: "Is it legal to use an AI voice agent for outbound calls in India?"
+    a: "Outbound calls are covered by TRAI's telemarketing and DND rules, and recording calls or storing personal data brings in consent and data protection duties under the DPDP Act. Rules change, so check the current position and take advice before running outbound campaigns."
+---
+
+Your phone rings at 9:40 pm. It's a patient asking whether the doctor sits on Sunday, or a buyer who saw your 2BHK listing on a portal and wants a site visit. Nobody picks up. By morning, they've called someone else.
+
+That gap between when people call and when you can answer is where AI voice agents earn their keep. But they are not magic receptionists, and plenty of businesses have tried one, heard it fumble a Tamil-English sentence, and given up.
+
+This post explains how voice agents actually work, where they do well in Indian businesses, where they struggle, what drives the cost, and how to run a small pilot that tells you whether it's worth it.
+
+<KeyTakeaways>
+- A voice agent is four parts working together: speech-to-text, an AI model, text-to-speech and a phone line.
+- They shine on short, repetitive calls: bookings, confirmations, reminders and after-hours enquiries.
+- They struggle with angry callers, complex complaints and noisy lines, so plan the human handover first.
+- Code-mixed Hinglish and Tanglish are workable today, but test with your own callers' recordings.
+- Start with a 30-day pilot on one call type and track answer, booking and handover rates.
+</KeyTakeaways>
+
+## What a voice agent actually is
+
+Strip away the marketing and a voice agent is a loop that runs several times a second during a call.
+
+1. **Speech-to-text** listens to the caller and turns their words into text.
+2. **An AI model** (a large language model like the ones behind ChatGPT, Claude or Google Gemini) reads that text, checks its instructions and your data, and decides what to say.
+3. **Text-to-speech** turns the reply into a natural-sounding voice. Companies like ElevenLabs and Sarvam AI work on this layer, including Indian voices.
+4. **Telephony** connects all of this to a real phone number, so a caller dials in from any phone, or the agent dials out.
+
+The agent can also take actions mid-call: check a calendar, create a booking, update your CRM, or send a WhatsApp confirmation once the call ends.
+
+Speed is everything. If any step is slow, the caller hears a pause and starts saying "hello? hello?"
+
+## Where voice agents work well
+
+The best use cases share three traits: the calls are frequent, the conversation is predictable, and the outcome is clear (a booking made, an order confirmed, a lead scored).
+
+### Missed-call answering for clinics
+
+Clinics miss calls during rush hours and after closing. A voice agent can answer every call, tell people timings and fees, check doctor availability and book a slot. Anything medical goes to staff. You can see related tools in our [clinics and healthcare tools list](/ai-tools/for/clinics-healthcare).
+
+### Appointment booking and rescheduling
+
+Salons, diagnostic labs, coaching institutes and service businesses all spend hours on "can I move my slot to Thursday?" calls. Connected to Calendly, Cal.com or Zoho Bookings, an agent can handle these end to end.
+
+### Lead qualification for real estate
+
+Property enquiries arrive in waves from portals, IndiaMART-style listings and ads, often at odd hours. An agent can call back within minutes, ask budget, location, possession timeline and loan status, and pass only serious buyers to your sales team with notes. More ideas in our [real estate tools list](/ai-tools/for/real-estate).
+
+### COD order confirmation for D2C brands
+
+Cash-on-delivery orders that get refused at the door cost you shipping both ways. A short outbound call ("You ordered a kurta set for ₹1,499, cash on delivery. Shall we ship it?") filters out fake and impulse orders before dispatch.
+
+### Payment reminders
+
+Gentle, scheduled reminders for school fees, EMIs, subscriptions or overdue invoices, with a UPI link sent on WhatsApp after the call. Polite and consistent.
+
+### After-hours enquiries
+
+Restaurants, hotels and local services get calls at night. The agent answers common questions, takes a message or a reservation, and your team calls back the next morning with full context.
+
+## Indian languages and code-mixing: the honest picture
+
+Real callers don't speak textbook Hindi or Tamil. They say "Sir, mera appointment kal ka tha, can I shift it to evening?" or "Naan booking pannanum, but tomorrow free-aa?" This mixing is normal, and your agent needs to handle it.
+
+The good news: modern speech and AI models handle Hinglish reasonably well, and support for Tamil, Telugu, Kannada, Marathi, Bengali and others keeps improving. Indian-focused providers like Sarvam AI are building specifically for this.
+
+The caveats are real, though:
+
+- **Accuracy varies by language.** Hindi and English are strongest. Some regional languages and dialects are weaker, especially with heavy accents.
+- **Names, addresses and numbers are hard.** Locality names, surnames and phone numbers read aloud are where errors creep in. Always read them back for confirmation.
+- **Choose a default language and let callers switch.** Opening with "Hindi ya English?" is often simpler than trying to auto-detect.
+
+<Callout type="tip" title="Test with your own calls">Before choosing a stack, collect 20 to 30 real call recordings (with consent) and see how each option transcribes them. Demo calls in a quiet office tell you very little.</Callout>
+
+## Where voice agents struggle
+
+Be clear-eyed about this, because the failures are what your customers remember.
+
+| Voice agents can | Voice agents can't (yet) |
+|---|---|
+| Answer FAQs on timings, fees, location and policies | Calm down a genuinely angry customer |
+| Book, reschedule and cancel appointments | Resolve complex, multi-issue complaints |
+| Qualify leads with a fixed set of questions | Negotiate price or make judgement calls |
+| Confirm COD orders and delivery addresses | Reliably understand very noisy or weak lines |
+| Send payment and appointment reminders | Handle emotional or sensitive calls (health scares, bereavement) |
+| Take messages and log them in your CRM | Replace your best salesperson on a high-value close |
+| Work 24x7 without breaks | Fix a bad process or outdated information |
+
+Noisy lines are hard for any speech system. A caller on a scooter or at a railway station should be offered a callback, not guessed at.
+
+## Design the human handover first
+
+The single biggest difference between a voice agent people tolerate and one they hate is how it hands over to a human.
+
+Decide upfront:
+
+- **Triggers.** Hand over when the caller asks for a person, sounds upset, repeats themselves, or raises something outside the agent's scope (billing disputes, medical questions, legal issues).
+- **Route.** Live transfer to a staff number during working hours; a promised callback outside them.
+- **Context.** The human should get a summary and transcript, so the customer doesn't repeat everything.
+- **Fallback.** If nobody picks up the transfer, the agent should say so honestly and log a callback, not leave the caller in silence.
+
+<Callout type="warning" title="Never trap callers">Always give callers a clear way to reach a human. An agent that loops them through the same three questions is worse than a missed call.</Callout>
+
+## Telephony and platforms
+
+You need two layers: a phone line and a voice agent platform.
+
+**Telephony.** Exotel is widely used in India for virtual numbers, IVR and call routing, and works with Indian regulatory requirements. Twilio is a global option with strong developer tools. Choose based on Indian numbers, outbound volume and integrations.
+
+**Voice agent platforms.** Vapi and Retell AI let developers assemble speech, AI and telephony into an agent with tool calls and analytics. Bolna is an India-focused platform built with Indian languages and telephony in mind. All of them change quickly, so compare on current features, language support and pricing at the time you decide. Browse more in our [voice AI tools directory](/ai-tools/voice).
+
+<StackFinderCta problem="We miss about a third of our clinic calls after 7 pm and want something that can book appointments in Hindi and English." />
+
+## What it costs, in general terms
+
+Costs fall into three buckets:
+
+1. **Per-minute usage.** Speech-to-text, the AI model, text-to-speech and telephony minutes. This is the variable cost that grows with call volume.
+2. **Number rental and telephony fees.** A monthly fee for your virtual number, plus call charges from the telephony provider.
+3. **Build and setup.** Writing the call script and instructions, connecting your calendar or CRM, testing with real callers and tuning. This is usually a one-time cost, with some ongoing maintenance.
+
+A quick way to estimate usage: say you get 600 calls a month averaging 2 minutes each. That's 1,200 minutes. Multiply by your platform's current all-in per-minute rate and you have your monthly running cost. Compare it with what those missed calls are worth.
+
+At Zaiphr, a [pilot voice agent](/services/ai-voice-agents) starts from ₹60,000 ($750), a production agent from ₹1,50,000, and a managed plan from ₹35,000/month, with call usage billed at cost.
+
+## Compliance, at a general level
+
+Voice agents touch personal data and phone networks, so a few rules apply. This is general guidance, not legal advice; check current rules or speak to a lawyer.
+
+- **Call recording consent.** Tell callers the call may be recorded and why. A line in the greeting usually does it.
+- **Outbound and DND.** TRAI's telemarketing and Do Not Disturb rules apply to promotional calls. Transactional calls (order confirmations, appointment reminders) are treated differently from marketing calls, but you still need registered numbers and correct categorisation.
+- **DPDP Act.** India's Digital Personal Data Protection Act expects you to collect only what you need, use it for the stated purpose, keep it secure and respect deletion requests. Know where your providers store recordings and transcripts.
+- **Be honest about the AI.** Don't pretend the agent is a person.
+
+## A 30-day pilot plan
+
+Pick one call type, not five. Then follow these steps.
+
+1. **Week 1: Baseline.** Count calls, missed calls, and outcomes for that call type over a normal week.
+2. **Week 1: Script.** Write the ideal conversation, the top 20 questions, and clear handover rules.
+3. **Week 2: Build and test internally.** Have your team call in with real accents, background noise and tricky questions.
+4. **Weeks 3–4: Go live on part of the traffic.** For example, after-hours calls only, or overflow when staff are busy.
+5. **Weekly reviews.** Listen to a sample of calls, fix the script and update information.
+
+Track these metrics:
+
+- **Answer rate:** share of incoming calls answered (by agent or human).
+- **Booking or conversion rate:** share of answered calls that end in the intended outcome.
+- **Handover rate:** share of calls passed to a human. Too high means the scope is wrong; too low may mean the agent is hanging on when it shouldn't.
+- **Call completion:** calls where the caller hung up mid-conversation.
+- **Caller feedback:** a one-question WhatsApp survey after the call works fine.
+
+<Callout type="note" title="Judge on outcomes">A pilot isn't a success because the agent sounds human. It's a success if more calls get answered and more of them turn into bookings, without annoying anyone.</Callout>
+
+For more examples of where this fits, see our [use cases](/use-cases).
+
+## Where to start
+
+1. **Count your missed calls this week.** Most phone systems and Exotel dashboards show this. That number is your opportunity.
+2. **Pick one call type** with predictable conversations, such as appointment booking or COD confirmation.
+3. **Write your handover rules and top 20 questions** before talking to any vendor. It'll make every demo more useful.
+
+If you'd like help scoping a pilot, [get in touch](/contact) and tell us about your call volume and languages.
+
+<ServiceCta service="ai-voice-agents" />
