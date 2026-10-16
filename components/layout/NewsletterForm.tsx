@@ -2,10 +2,12 @@
 
 import { useState, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
+import { openMailto } from "@/lib/mailto";
 
 /**
  * Daily AI digest signup.
- * TODO(phase 4): POST to /api/subscribe → Supabase `subscribers` + `leads` (source = news_digest).
+ * Interim: opens a prefilled email. TODO(phase 4): POST to /api/subscribe →
+ * Supabase `subscribers` + `leads` (source = news_digest).
  */
 export function NewsletterForm({ className }: { className?: string }) {
   const [state, setState] = useState<"idle" | "done" | "error">("idle");
@@ -13,13 +15,15 @@ export function NewsletterForm({ className }: { className?: string }) {
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const email = new FormData(e.currentTarget).get("email")?.toString() ?? "";
-    setState(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? "done" : "error");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setState("error");
+    openMailto("Subscribe me to the Zaiphr AI digest", `Please add ${email} to the daily AI digest.`);
+    setState("done");
   };
 
   if (state === "done")
     return (
       <p className="label-mono text-signature" role="status">
-        ✓ You&apos;re on the list. First digest lands tomorrow, 7 AM IST.
+        ✓ Almost there — send the email that just opened and you&apos;re on the list.
       </p>
     );
 

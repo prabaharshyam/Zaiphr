@@ -136,7 +136,7 @@ export function ServicesScroll() {
           <div className="flex items-start justify-between gap-6">
             <div>
               <Eyebrow index="01">What we build</Eyebrow>
-              <h2 id="services-heading" className="font-display-tight mt-4 text-2xl md:text-3xl">
+              <h2 id="services-heading" className="font-display-tight mt-4 text-2xl max-md:sr-only md:text-3xl">
                 Seven engines. <span className="text-muted">One studio.</span>
               </h2>
             </div>

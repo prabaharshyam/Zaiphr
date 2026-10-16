@@ -43,7 +43,7 @@ export function RevealText({
 
       let cleanupReady = () => {};
       const s = SplitText.create(el, {
-        type: split === "chars" ? "lines,chars" : split === "words" ? "lines,words" : "lines",
+        type: split === "chars" ? "lines,words,chars" : split === "words" ? "lines,words" : "lines",
         mask: "lines",
         linesClass: "split-line",
         autoSplit: true,

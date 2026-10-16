@@ -50,6 +50,7 @@
 /* ───────────────────────── Base ───────────────────────── */
 @layer base {
   html {
+    overflow-x: clip;
     background: var(--bg);
     color: var(--text);
     color-scheme: dark;
@@ -152,7 +153,7 @@ html.js-motion [data-reveal]:not(.is-revealed) {
 
 /* Film grain */
 .grain {
-  position: fixed;
+  position: absolute;
   inset: -50%;
   width: 200%;
   height: 200%;
@@ -229,3 +230,31 @@ html.js-motion [data-panel] + [data-panel] {
   opacity: 0;
   visibility: hidden;
 }
+
+/* Long-form content (case studies, blog) */
+.prose-zl {
+  font-size: 1.075rem;
+  line-height: 1.75;
+  color: color-mix(in oklab, var(--text) 82%, transparent);
+}
+.prose-zl h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--text);
+  margin: 3.5rem 0 1.25rem;
+}
+.prose-zl h2:first-child { margin-top: 0; }
+.prose-zl h3 { font-size: 1.3rem; font-weight: 600; color: var(--text); margin: 2.25rem 0 0.75rem; }
+.prose-zl p { margin: 0 0 1.25rem; }
+.prose-zl ul, .prose-zl ol { margin: 0 0 1.5rem; padding-left: 1.25rem; }
+.prose-zl ul { list-style: none; padding-left: 0; }
+.prose-zl ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.6rem; }
+.prose-zl ul li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 0.6rem; height: 1px; background: var(--signature); }
+.prose-zl ol li { margin-bottom: 0.6rem; }
+.prose-zl strong { color: var(--text); font-weight: 600; }
+.prose-zl a { color: var(--signature); text-decoration: underline; text-underline-offset: 4px; }
+.prose-zl blockquote { border-left: 2px solid var(--signature); padding-left: 1.25rem; font-style: italic; color: var(--text); margin: 2rem 0; }
+.prose-zl code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface-2); padding: 0.15em 0.4em; border-radius: 6px; }

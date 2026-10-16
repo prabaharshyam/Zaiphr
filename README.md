@@ -27,6 +27,9 @@ npm run dev                  # http://localhost:3000
 | `config/site.ts` | Company name, positioning line, email, phone, WhatsApp, Calendly, socials, currency |
 | `config/services.ts` | The 7 services: title, summary, capabilities, order, 3D form |
 | `config/navigation.ts` | Header and footer links |
+| `config/stats.ts` | Home page counters |
+| `config/process.ts` | Process timeline steps |
+| `content/work/*.mdx` | Case studies (frontmatter drives cards; body is the case study) |
 | `app/globals.css` (top) | Design tokens: colors, easing, gutters, type scale |
 
 ## Project structure
@@ -46,6 +49,18 @@ config/               editable business content
 lib/                  gsap registration, hooks, ready-signal, utils
 ```
 
+## Adding a case study
+
+1. Copy any file in `content/work/` to `content/work/<slug>.mdx` and edit the frontmatter.
+2. Put images in `public/work/<slug>/` — `cover.jpg` (16:10) is required.
+3. Set `label` to `Client Project` for real work; keep `Concept Project` / `Showcase Build` for concepts.
+
+Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (needs a local Chromium; set `CHROMIUM_PATH`).
+
+## The 3D scene
+
+`components/three/` — a single GPU particle system (`CipherCore`) that morphs between 9 point-cloud forms (`forms.ts`): core → one form per service → core. Scroll code writes `lib/scene-store.ts`; the render loop reads it. It is lazy-loaded after the preloader, scales its particle count to the device, pauses when off-screen, and falls back to a CSS core for reduced motion / no WebGL / Save-Data.
+
 ## Design system
 
 - **Palette:** near-black `#05060A` + one signature light, acid lime `#C8FF2E`, used sparingly.
@@ -57,7 +72,7 @@ lib/                  gsap registration, hooks, ready-signal, utils
 ## Build phases
 
 - [x] **1. Foundation** — tokens, fonts, layout, nav, footer, smooth scroll, cursor, transitions, preloader
-- [ ] 2. Home page with full 3D hero and scroll story
+- [x] **2. Home** — WebGL Cipher Core, 7-form services story, work gallery, process, tools/news teasers, stats, CTA
 - [ ] 3. Service pages, Work/case studies, Use Cases, About, Contact
 - [ ] 4. Supabase + leads + emails + admin
 - [ ] 5. Free tools (Competitor Analysis, Readiness Score, ROI Calculator)
