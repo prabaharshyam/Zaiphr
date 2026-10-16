@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { services } from "@/config/services";
 import { site } from "@/config/site";
-import { openMailto } from "@/lib/mailto";
+import { submitLead } from "@/lib/submit";
 import { cn } from "@/lib/utils";
 import { RevealText } from "@/components/ui/RevealText";
 import { Button } from "@/components/ui/Button";
@@ -21,12 +21,13 @@ const floating =
  */
 export function BigCta() {
   const [service, setService] = useState<string[]>([]);
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState<null | "saved" | "mailto">(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const toggle = (s: string) => setService((cur) => (cur.includes(s) ? cur.filter((x) => x !== s) : [...cur, s]));
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const name = String(f.get("name") ?? "").trim();
@@ -36,17 +37,22 @@ export function BigCta() {
       return;
     }
     setError("");
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Company: ${f.get("company") || "-"}`,
-      `Services: ${service.join(", ") || "-"}`,
-      `Budget: ${f.get("budget") || "-"}`,
-      "",
-      String(f.get("message") || ""),
-    ].join("\n");
-    openMailto(`Project brief — ${name}`, body);
-    setSent(true);
+    if (!f.get("consent")) {
+      setError("Please confirm we can contact you about this enquiry.");
+      return;
+    }
+    const company = String(f.get("company") || "");
+    const budget = String(f.get("budget") || "");
+    const message = String(f.get("message") || "");
+    const body = [`Name: ${name}`, `Email: ${email}`, `Company: ${company || "-"}`, `Services: ${service.join(", ") || "-"}`, `Budget: ${budget || "-"}`, "", message].join("\n");
+    setLoading(true);
+    const r = await submitLead(
+      { name, email, company, services: service, budget, message, source: "quick_brief", consent: true, hp: String(f.get("hp") || "") },
+      { subject: `Project brief — ${name}`, body },
+    );
+    setLoading(false);
+    if (r.status === "error") return setError(r.message);
+    setSent(r.status);
   };
 
   return (
@@ -85,9 +91,13 @@ export function BigCta() {
 
           {sent ? (
             <div className="lg:col-span-8" role="status">
-              <p className="font-display-tight text-4xl">Thank you — your email app should be open.</p>
+              <p className="font-display-tight text-4xl">
+                {sent === "saved" ? "Brief received — talk soon." : "Thank you — your email app should be open."}
+              </p>
               <p className="mt-4 text-muted">
-                Hit send and we&apos;ll be in touch within one business day. Nothing opened? Write to{" "}
+                {sent === "saved"
+                  ? "We've emailed you a confirmation and will reply within one business day. Questions? Write to "
+                  : "Hit send and we'll be in touch within one business day. Nothing opened? Write to "}
                 <a className="text-signature underline" href={`mailto:${site.email}`}>
                   {site.email}
                 </a>
@@ -151,12 +161,17 @@ export function BigCta() {
                   What are you building?
                 </label>
               </div>
+              <input type="text" name="hp" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+              <label className="flex cursor-pointer items-start gap-3 text-sm text-muted sm:col-span-2">
+                <input type="checkbox" name="consent" className="mt-0.5 h-4 w-4 accent-[var(--signature)]" />
+                <span>I agree that Zaiphr Labs may contact me about this enquiry.</span>
+              </label>
               <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs text-muted" aria-live="polite">
                   {error ? <span className="text-red-400">{error}</span> : "We only use your details to reply to you."}
                 </p>
-                <Button type="submit" size="lg">
-                  Send brief
+                <Button type="submit" size="lg" disabled={loading}>
+                  {loading ? "Sending…" : "Send brief"}
                 </Button>
               </div>
             </form>

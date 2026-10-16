@@ -20,6 +20,18 @@ npm run dev                  # http://localhost:3000
 | `npm run typecheck` | TypeScript, no emit |
 | `npm run format` | Prettier (+ Tailwind class sorting) |
 
+## Backend setup (leads, emails, admin)
+
+1. **Supabase** → SQL Editor → paste and run `supabase/migrations/0001_init.sql` (safe to re-run).
+2. **Vercel** → Project → Settings → Environment Variables → add the keys from `.env.example`
+   (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`,
+   `EMAIL_FROM`, `LEAD_NOTIFY_EMAIL`, `ADMIN_PASSWORD`, `NEXT_PUBLIC_SITE_URL`) → redeploy.
+3. Open `/admin`, sign in, and submit a test brief on `/contact`.
+
+Until Supabase is configured, every form falls back to opening a prefilled email, so no enquiry is lost.
+Leads are rate-limited (8 per IP per hour), validated with zod, protected by a honeypot and stored with a
+salted IP hash (never the raw IP).
+
 ## Where to edit things (no component changes needed)
 
 | File | Controls |
@@ -79,7 +91,7 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - [x] **1. Foundation** — tokens, fonts, layout, nav, footer, smooth scroll, cursor, transitions, preloader
 - [x] **2. Home** — WebGL Cipher Core, 7-form services story, work gallery, process, tools/news teasers, stats, CTA
 - [x] **3. Pages** — 7 service pages (3D form hero, pricing ₹/$, FAQ + JSON-LD), Work index + case studies, 24 Use Cases, About, multi-step Contact, Legal (DPDP)
-- [ ] 4. Supabase + leads + emails + admin
+- [x] **4. Leads** — Supabase schema + RLS, /api/leads + /api/subscribe (validation, honeypot, rate limit, UTM), Resend notifications + confirmations, /admin dashboard (filters, status, notes, CSV)
 - [ ] 5. Free tools (Competitor Analysis, Readiness Score, ROI Calculator)
 - [ ] 6. AI News (UI, daily pipeline, saved/auth/digest)
 - [ ] 7. Blog + 10 posts

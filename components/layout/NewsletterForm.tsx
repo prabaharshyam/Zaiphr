@@ -2,28 +2,35 @@
 
 import { useState, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
-import { openMailto } from "@/lib/mailto";
+import { subscribe } from "@/lib/submit";
 
-/**
- * Daily AI digest signup.
- * Interim: opens a prefilled email. TODO(phase 4): POST to /api/subscribe →
- * Supabase `subscribers` + `leads` (source = news_digest).
- */
+/** Daily AI digest signup → /api/subscribe (falls back to email if the backend is down). */
 export function NewsletterForm({ className }: { className?: string }) {
-  const [state, setState] = useState<"idle" | "done" | "error">("idle");
+  const [state, setState] = useState<"idle" | "loading" | "saved" | "mailto" | "error">("idle");
+  const [message, setMessage] = useState("");
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const email = new FormData(e.currentTarget).get("email")?.toString() ?? "";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setState("error");
-    openMailto("Subscribe me to the Zaiphr AI digest", `Please add ${email} to the daily AI digest.`);
-    setState("done");
+    const email = new FormData(e.currentTarget).get("email")?.toString().trim() ?? "";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setState("error");
+      setMessage("Enter a valid email address.");
+      return;
+    }
+    setState("loading");
+    const r = await subscribe(email);
+    if (r.status === "error") {
+      setState("error");
+      setMessage(r.message);
+    } else setState(r.status);
   };
 
-  if (state === "done")
+  if (state === "saved" || state === "mailto")
     return (
       <p className="label-mono text-signature" role="status">
-        ✓ Almost there — send the email that just opened and you&apos;re on the list.
+        {state === "saved"
+          ? "✓ You're on the list. The digest lands every morning."
+          : "✓ Almost there — send the email that just opened and you're on the list."}
       </p>
     );
 
@@ -45,13 +52,14 @@ export function NewsletterForm({ className }: { className?: string }) {
         />
         <button
           type="submit"
-          className="label-mono mr-1 h-10 shrink-0 rounded-full bg-signature px-4 text-signature-ink transition-shadow hover:shadow-[0_0_30px_-4px_var(--signature-glow)]"
+          disabled={state === "loading"}
+          className="label-mono mr-1 h-10 shrink-0 rounded-full bg-signature px-4 text-signature-ink transition-shadow hover:shadow-[0_0_30px_-4px_var(--signature-glow)] disabled:opacity-60"
         >
-          Subscribe
+          {state === "loading" ? "…" : "Subscribe"}
         </button>
       </div>
       <p className={cn("text-xs", state === "error" ? "text-red-400" : "text-muted")} aria-live="polite">
-        {state === "error" ? "Enter a valid email address." : "No spam. Unsubscribe anytime."}
+        {state === "error" ? message : "No spam. Unsubscribe anytime."}
       </p>
     </form>
   );

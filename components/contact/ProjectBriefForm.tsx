@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useRef, useState, type ReactNode } from "react";
 import { services } from "@/config/services";
 import { useCurrency } from "@/lib/currency";
-import { openMailto } from "@/lib/mailto";
+import { submitLead } from "@/lib/submit";
 import { cn } from "@/lib/utils";
 import { CurrencyToggle } from "@/components/ui/CurrencyToggle";
 import { Button } from "@/components/ui/Button";
@@ -60,7 +60,8 @@ export function ProjectBriefForm() {
   const [step, setStep] = useState(0);
   const [dir, setDir] = useState(1);
   const [error, setError] = useState("");
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState<null | "saved" | "mailto">(null);
+  const [loading, setLoading] = useState(false);
   const [currency, setCurrency] = useCurrency();
   const top = useRef<HTMLDivElement>(null);
   const [brief, setBrief] = useState<Brief>(() => ({
@@ -104,7 +105,7 @@ export function ProjectBriefForm() {
     top.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   };
 
-  const submit = () => {
+  const submit = async () => {
     const e = validate(4);
     if (e) return setError(e);
     const body = [
@@ -119,16 +120,36 @@ export function ProjectBriefForm() {
       "",
       brief.details,
     ].join("\n");
-    // TODO(phase 4): POST to /api/leads → Supabase + Resend notifications.
-    openMailto(`Project brief — ${brief.name}${brief.company ? ` (${brief.company})` : ""}`, body);
-    setSent(true);
+    setLoading(true);
+    const r = await submitLead(
+      {
+        name: brief.name,
+        email: brief.email,
+        phone: brief.phone,
+        company: brief.company,
+        website: brief.website,
+        services: brief.services,
+        budget: brief.budget,
+        timeline: brief.timeline,
+        message: brief.details,
+        inputs: { package: prePackage ?? undefined, useCase: preUseCase ?? undefined },
+        source: "contact_form",
+        consent: true,
+      },
+      { subject: `Project brief — ${brief.name}${brief.company ? ` (${brief.company})` : ""}`, body },
+    );
+    setLoading(false);
+    if (r.status === "error") return setError(r.message);
+    setSent(r.status);
   };
 
   if (sent)
     return (
       <div role="status" className="rounded-3xl border border-signature/40 bg-bg-2 p-8 md:p-12">
-        <p className="label-mono text-signature">Almost done</p>
-        <p className="font-display-tight mt-4 text-4xl">Your email app should be open — hit send.</p>
+        <p className="label-mono text-signature">{sent === "saved" ? "Brief received" : "Almost done"}</p>
+        <p className="font-display-tight mt-4 text-4xl">
+          {sent === "saved" ? "Thank you — we'll be in touch within one business day." : "Your email app should be open — hit send."}
+        </p>
         <p className="mt-4 max-w-lg text-muted">
           We reply within one business day. Want to skip the wait? Pick a time for a free 30-minute strategy call below.
         </p>
@@ -305,8 +326,8 @@ export function ProjectBriefForm() {
           >
             ← Back
           </button>
-          <Button type="submit" size="lg" magnetic={false}>
-            {step < 4 ? "Continue" : "Send brief"}
+          <Button type="submit" size="lg" magnetic={false} disabled={loading}>
+            {step < 4 ? "Continue" : loading ? "Sending…" : "Send brief"}
           </Button>
         </div>
       </form>
