@@ -4,7 +4,7 @@
 export const site = {
   name: "Zaiphr Labs",
   shortName: "Zaiphr",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://zaiphr.in",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.zaiphr.in",
   tagline: "AI-native engines for ambitious teams",
   positioning:
     "We build the AI-powered engines that let small teams move like big companies.",

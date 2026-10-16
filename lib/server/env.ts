@@ -12,6 +12,8 @@ export const env = {
   leadNotifyEmail: clean(process.env.LEAD_NOTIFY_EMAIL) || "shyam@zaiphr.in",
   adminPassword: clean(process.env.ADMIN_PASSWORD),
   anthropicKey: clean(process.env.ANTHROPIC_API_KEY),
+  /** STACK_FINDER_MODEL: opus (default) | sonnet | haiku. */
+  finderModel: ({ opus: "claude-opus-5-5", sonnet: "claude-sonnet-5-5", haiku: "claude-haiku-5-5" } as Record<string, string>)[clean(process.env.STACK_FINDER_MODEL).toLowerCase()] ?? "claude-opus-5-5",
   finderEffort: (["low", "medium", "high"].includes(clean(process.env.STACK_FINDER_EFFORT)) ? clean(process.env.STACK_FINDER_EFFORT) : "low") as "low" | "medium" | "high",
   ipSalt: clean(process.env.IP_HASH_SALT) || clean(process.env.SUPABASE_SERVICE_ROLE_KEY) || "zaiphr",
 };

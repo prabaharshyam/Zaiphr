@@ -8,7 +8,6 @@ import { planSchema, type FinderInput, type Plan } from "@/lib/stack-finder/type
 import { lowerLabel } from "@/lib/utils";
 import { env } from "./env";
 
-const MODEL = "claude-opus-5-5";
 
 // ───────────────────────── Prompt (static → cacheable) ─────────────────────────
 
@@ -84,14 +83,17 @@ export const hasAi = () => Boolean(env.anthropicKey);
 
 export async function analyseWithClaude(input: FinderInput): Promise<Plan> {
   client ??= new Anthropic({ apiKey: env.anthropicKey });
+  // Refusal fallback (Opus only — Haiku rejects it): if the model declines, the API retries on a fallback model.
+  const fallback = env.finderModel.startsWith("claude-opus")
+    ? { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" as const }
+    : {};
   const response = await client.beta.messages.parse({
-    model: MODEL,
+    model: env.finderModel,
     max_tokens: 16000,
-    // Refusal fallback: if the model declines, the API retries on a fallback model automatically.
-    betas: ["server-side-fallback-2026-07-01"],
-    fallbacks: "default",
+    ...fallback,
     output_config: { effort: env.finderEffort, format: betaZodOutputFormat(planSchema) },
-    system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral", ttl: "1h" } }],
+    // 5-minute cache: cheaper than 1h at low traffic; bursts of visitors still reuse it.
+    system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
     messages: [{ role: "user", content: userMessage(input) }],
   });
   if (response.stop_reason === "refusal") throw new Error("refused");

@@ -78,7 +78,7 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 
 `/tools/ai-stack-finder` — a visitor describes a business problem and gets a recommended stack picked from the catalogue in `config/ai-tools.ts`.
 
-- **With `ANTHROPIC_API_KEY`:** Claude writes a tailored plan (diagnosis, stack, workflow, costs, watch-outs) and may only pick tools from the catalogue. `STACK_FINDER_EFFORT` = `low` (default, fastest/cheapest), `medium` or `high`.
+- **With `ANTHROPIC_API_KEY`:** Claude writes a tailored plan (diagnosis, stack, workflow, costs, watch-outs) and may only pick tools from the catalogue. `STACK_FINDER_MODEL` = `opus` (default), `sonnet` or `haiku`; `STACK_FINDER_EFFORT` = `low` (default, fastest/cheapest), `medium` or `high`.
 - **Without a key** (or if the API call fails): an instant keyword matcher builds a starter stack, so the tool always works.
 - **With Supabase:** runs are stored in `tool_runs`, identical inputs are served from cache for 14 days, each IP gets 6 runs per hour, and the full plan unlocks after name + email (saved as a lead with source `tool`, plan emailed). Without a DB the full plan shows straight away.
 - **Editing the catalogue:** add or edit tools in `aiTools`; industry pages read `industryPicks`. Directory pages under `/ai-tools` rebuild from the same file.
