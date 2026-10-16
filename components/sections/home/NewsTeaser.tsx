@@ -6,11 +6,20 @@ import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
 import { Button } from "@/components/ui/Button";
 
+export interface TeaserStory {
+  id: string;
+  tag: string;
+  headline: string;
+  body: string;
+  why: string;
+  source: string;
+}
+
 /**
- * Preview of the AI News card stack. These cards explain the interaction itself
- * (no invented news) until the daily pipeline ships in Phase 6.
+ * Explainer cards shown until the first daily brief exists (no invented news).
+ * Once there is a brief, the home page passes the real top stories instead.
  */
-const cards = [
+const explainers = [
   {
     id: "a",
     tag: "How it works",
@@ -37,7 +46,9 @@ const cards = [
   },
 ];
 
-type Card = (typeof cards)[number];
+const HUES = ["from-[#1b2a0a] to-[#0a0d05]", "from-[#14161f] to-[#07080c]", "from-[#22140a] to-[#0c0805]"];
+
+type Card = { id: string; tag: string; headline: string; body: string; why: string; hue: string; source?: string };
 
 function SwipeCard({ card, onDone, depth }: { card: Card; onDone: (dir: 1 | -1) => void; depth: number }) {
   const x = useMotionValue(0);
@@ -90,7 +101,7 @@ function SwipeCard({ card, onDone, depth }: { card: Card; onDone: (dir: 1 | -1) 
           <div className="bg-grid absolute inset-0 opacity-40" aria-hidden />
           <div className="relative flex items-center justify-between">
             <span className="label-mono rounded-full bg-signature px-2.5 py-1 text-[0.6rem] text-signature-ink">{card.tag}</span>
-            <span className="label-mono text-[0.6rem] text-muted">Preview</span>
+            <span className="label-mono max-w-[50%] truncate text-[0.6rem] text-muted">{card.source ?? "Preview"}</span>
           </div>
           <h3 className="font-display-tight relative mt-auto text-[1.9rem] leading-[1.02]">{card.headline}</h3>
           <p className="relative mt-4 text-[0.95rem] leading-relaxed text-text/75">{card.body}</p>
@@ -115,8 +126,12 @@ function SwipeCard({ card, onDone, depth }: { card: Card; onDone: (dir: 1 | -1) 
   );
 }
 
-export function NewsTeaser() {
-  const [stack, setStack] = useState(cards);
+export function NewsTeaser({ stories = [] }: { stories?: TeaserStory[] }) {
+  const live = stories.length >= 3;
+  const [stack, setStack] = useState<Card[]>(() =>
+    live ? stories.map((s, i) => ({ ...s, hue: HUES[i % HUES.length] })) : explainers,
+  );
+  const total = live ? stories.length : 10;
   const [log, setLog] = useState<string>("");
   const [read, setRead] = useState(0);
 
@@ -138,8 +153,8 @@ export function NewsTeaser() {
             <span id="news-heading">All of AI, in your morning chai break.</span>
           </RevealText>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
-            30-odd stories a day from the sources that matter, each rewritten in 60 words with a founder&apos;s takeaway. Swipe
-            through it like a deck of cards.
+            The 10-odd AI stories that matter each day, picked from the labs, the tech press and India&apos;s startup media —
+            each in 60 words with a founder&apos;s takeaway. Swipe through it like a deck of cards.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button href="/news">Open today&apos;s brief</Button>
@@ -147,10 +162,10 @@ export function NewsTeaser() {
           <div className="mt-10 max-w-sm">
             <div className="label-mono flex justify-between text-muted">
               <span>Today&apos;s brief</span>
-              <span aria-live="polite">{Math.min(read, 30)} of 30 read</span>
+              <span aria-live="polite">{Math.min(read, total)} of {total} read</span>
             </div>
             <div className="mt-2 h-px bg-line">
-              <div className="h-full bg-signature transition-[width] duration-500" style={{ width: `${(Math.min(read, 30) / 30) * 100}%` }} />
+              <div className="h-full bg-signature transition-[width] duration-500" style={{ width: `${(Math.min(read, total) / total) * 100}%` }} />
             </div>
           </div>
         </div>

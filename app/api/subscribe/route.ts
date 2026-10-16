@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { attributionSchema } from "@/lib/lead-schema";
-import { db } from "@/lib/server/db";
 import { hasDb } from "@/lib/server/env";
 import { ipHash } from "@/lib/server/request";
-import { isRateLimited, notifyLead, saveLead } from "@/lib/server/leads";
+import { isRateLimited } from "@/lib/server/leads";
+import { addSubscriber } from "@/lib/server/subscribers";
 
 const schema = z.object({
   email: z.string().trim().toLowerCase().email().max(200),
@@ -23,16 +23,8 @@ export async function POST(req: Request) {
 
   const { email, attribution } = parsed.data;
   try {
-    const { data: existing } = await db().from("subscribers").select("id, unsubscribed_at").ilike("email", email).maybeSingle();
-    if (existing) {
-      if (existing.unsubscribed_at) await db().from("subscribers").update({ unsubscribed_at: null }).eq("id", existing.id);
-      return NextResponse.json({ ok: true, already: !existing.unsubscribed_at });
-    }
-    await db().from("subscribers").insert({ email, source: "news_digest" });
-    const lead = { name: email.split("@")[0], email, source: "news_digest" as const, consent: true as const, attribution };
-    const id = await saveLead(lead, { ip, userAgent: req.headers.get("user-agent") });
-    await notifyLead(lead, id);
-    return NextResponse.json({ ok: true });
+    const { already } = await addSubscriber(email, { ip, userAgent: req.headers.get("user-agent"), attribution });
+    return NextResponse.json({ ok: true, already });
   } catch (e) {
     console.error("[subscribe] failed", e);
     return NextResponse.json({ ok: false, fallback: "mailto" }, { status: 500 });

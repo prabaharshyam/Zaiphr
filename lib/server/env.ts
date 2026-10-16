@@ -15,8 +15,13 @@ export const env = {
   /** STACK_FINDER_MODEL: opus (default) | sonnet | haiku. */
   finderModel: ({ opus: "claude-opus-5-5", sonnet: "claude-sonnet-5-5", haiku: "claude-haiku-5-5" } as Record<string, string>)[clean(process.env.STACK_FINDER_MODEL).toLowerCase()] ?? "claude-opus-5-5",
   finderEffort: (["low", "medium", "high"].includes(clean(process.env.STACK_FINDER_EFFORT)) ? clean(process.env.STACK_FINDER_EFFORT) : "low") as "low" | "medium" | "high",
+  /** NEWS_MODEL: sonnet (default) | opus | haiku — writes the daily AI brief. */
+  newsModel: ({ opus: "claude-opus-5-5", sonnet: "claude-sonnet-5-5", haiku: "claude-haiku-5-5" } as Record<string, string>)[clean(process.env.NEWS_MODEL).toLowerCase()] ?? "claude-sonnet-5-5",
+  cronSecret: clean(process.env.CRON_SECRET),
+  supabaseAnonKey: clean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
   ipSalt: clean(process.env.IP_HASH_SALT) || clean(process.env.SUPABASE_SERVICE_ROLE_KEY) || "zaiphr",
 };
 
 export const hasDb = () => Boolean(env.supabaseUrl && env.supabaseServiceKey);
 export const hasEmail = () => Boolean(env.resendKey);
+export const hasAi = () => Boolean(env.anthropicKey);

@@ -83,6 +83,13 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - **With Supabase:** runs are stored in `tool_runs`, identical inputs are served from cache for 14 days, each IP gets 6 runs per hour, and the full plan unlocks after name + email (saved as a lead with source `tool`, plan emailed). Without a DB the full plan shows straight away.
 - **Editing the catalogue:** add or edit tools in `aiTools`; industry pages read `industryPicks`. Directory pages under `/ai-tools` rebuild from the same file.
 
+## AI News
+
+- **Daily run:** Vercel Cron calls `/api/cron/news` at 00:30 UTC (≈6:00 IST) with `CRON_SECRET`. It reads the feeds in `config/news-sources.ts`, drops stories already published in the last 5 days, and asks Claude (`NEWS_MODEL`, default Sonnet) to pick 8–12 stories and write a headline, 60-word summary and "why it matters". Without a key, or if the call fails, a keyword ranker uses each feed's own snippet instead.
+- **Safe to re-run:** the brief is built once per IST day and the digest is sent once per day. `/admin/news` shows recent runs, per-feed health, and has Run now / Rebuild today buttons.
+- **Digest:** goes to every active row in `subscribers` through Resend's batch API, with a per-subscriber unsubscribe link and one-click `List-Unsubscribe` headers. Resend's free plan allows 100 emails a day.
+- **Reader accounts:** `/api/auth/magic-link` mints a one-time token with the service role and emails it through Resend (no Supabase SMTP setup). `/auth/confirm` verifies it in the browser; saved stories live in `saved_items`, protected by row-level security. Needs `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+
 ## The 3D scene
 
 `components/three/` — a single GPU particle system (`CipherCore`) that morphs between 9 point-cloud forms (`forms.ts`): core → one form per service → core. Scroll code writes `lib/scene-store.ts`; the render loop reads it. It is lazy-loaded after the preloader, scales its particle count to the device, pauses when off-screen, and falls back to a CSS core for reduced motion / no WebGL / Save-Data.
@@ -102,7 +109,7 @@ Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (nee
 - [x] **3. Pages** — 7 service pages (3D form hero, pricing ₹/$, FAQ + JSON-LD), Work index + case studies, 24 Use Cases, About, multi-step Contact, Legal (DPDP)
 - [x] **4. Leads** — Supabase schema + RLS, /api/leads + /api/subscribe (validation, honeypot, rate limit, UTM), Resend notifications + confirmations, /admin dashboard (filters, status, notes, CSV)
 - [x] **5. Free tools** — AI Stack Finder (Claude-powered, with a no-key instant-match fallback, cached runs, email unlock → lead), /ai-tools directory with 22 category + 8 industry pages (JSON-LD)
-- [ ] 6. AI News (UI, daily pipeline, saved/auth/digest)
+- [x] **6. AI News** — daily pipeline (13 feeds → Claude curation → Supabase, keyword fallback), /news + archives, magic-link sign-in, saved stories, daily digest email with one-click unsubscribe, /admin/news
 - [ ] 7. Blog + 10 posts
 - [ ] 8. AI chat assistant
 - [ ] 9. SEO, performance, accessibility pass → Vercel deploy

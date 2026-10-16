@@ -9,8 +9,24 @@ import { Stats } from "@/components/sections/home/Stats";
 import { BlogHighlights } from "@/components/sections/home/BlogHighlights";
 import { BigCta } from "@/components/sections/home/BigCta";
 import { SceneLoader } from "@/components/three/SceneLoader";
+import { getLatestBrief } from "@/lib/server/news/queries";
+import { NEWS_CATEGORIES } from "@/lib/news/types";
 
-export default function HomePage() {
+export const revalidate = 600;
+
+export default async function HomePage() {
+  const { items } = await getLatestBrief();
+  const stories = items
+    .filter((i) => i.whyItMatters)
+    .slice(0, 6)
+    .map((i) => ({
+      id: i.id,
+      tag: NEWS_CATEGORIES[i.category],
+      headline: i.headline,
+      body: i.summary,
+      why: i.whyItMatters!,
+      source: i.sources[0]?.name ?? "AI News",
+    }));
   return (
     <>
       <SceneLoader />
@@ -22,7 +38,7 @@ export default function HomePage() {
       <WorkGallery />
       <Process />
       <ToolsTeaser />
-      <NewsTeaser />
+      <NewsTeaser stories={stories} />
       <Stats />
       <BlogHighlights />
       <BigCta />

@@ -7,16 +7,20 @@ interface Mail {
   subject: string;
   html: string;
   replyTo?: string;
+  headers?: Record<string, string>;
 }
+
+const API = () => process.env.RESEND_API_URL ?? "https://api.resend.com/emails";
+const payload = (m: Mail) => ({ from: env.emailFrom, to: m.to, subject: m.subject, html: m.html, reply_to: m.replyTo, headers: m.headers });
 
 /** Sends via the Resend REST API. Returns false (never throws) so email can't break lead capture. */
 export async function sendEmail(mail: Mail) {
   if (!hasEmail()) return false;
   try {
-    const res = await fetch(process.env.RESEND_API_URL ?? "https://api.resend.com/emails", {
+    const res = await fetch(API(), {
       method: "POST",
       headers: { Authorization: `Bearer ${env.resendKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from: env.emailFrom, to: mail.to, subject: mail.subject, html: mail.html, reply_to: mail.replyTo }),
+      body: JSON.stringify(payload(mail)),
     });
     if (!res.ok) console.error("[email] resend error", res.status, await res.text());
     return res.ok;
@@ -24,6 +28,27 @@ export async function sendEmail(mail: Mail) {
     console.error("[email] failed", e);
     return false;
   }
+}
+
+/** Resend batch API: up to 100 distinct emails per request. Returns how many were accepted. */
+export async function sendBatch(mails: Mail[]) {
+  if (!hasEmail() || !mails.length) return { sent: 0, failed: mails.length };
+  let sent = 0;
+  for (let i = 0; i < mails.length; i += 100) {
+    const chunk = mails.slice(i, i + 100);
+    try {
+      const res = await fetch(`${API()}/batch`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${env.resendKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify(chunk.map(payload)),
+      });
+      if (res.ok) sent += chunk.length;
+      else console.error("[email] batch error", res.status, await res.text());
+    } catch (e) {
+      console.error("[email] batch failed", e);
+    }
+  }
+  return { sent, failed: mails.length - sent };
 }
 
 const esc = (s: unknown) =>

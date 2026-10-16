@@ -58,6 +58,29 @@ export async function runDiagnostics(): Promise<Check[]> {
     ok: hasEmail() && env.resendKey.startsWith("re_"),
     detail: !hasEmail() ? "Missing — emails won't send" : env.resendKey.startsWith("re_") ? "Set ✓" : "Should start with re_",
   });
+  const anon = env.supabaseAnonKey;
+  let anonRole = "Missing — readers can't sign in to save stories";
+  if (anon.startsWith("sb_publishable_")) anonRole = "publishable key ✓";
+  else if (anon.startsWith("sb_secret_")) anonRole = "this is the SECRET key — use the publishable/anon key here";
+  else if (anon.split(".").length === 3) {
+    try {
+      const role = JSON.parse(Buffer.from(anon.split(".")[1], "base64url").toString()).role;
+      anonRole = role === "anon" ? "anon key ✓" : `"${role}" key — use the anon (public) key here`;
+    } catch {
+      anonRole = "unreadable key";
+    }
+  } else if (anon) anonRole = "unrecognised format";
+  checks.push({ label: "NEXT_PUBLIC_SUPABASE_ANON_KEY", ok: anonRole.endsWith("✓"), detail: anonRole });
+  checks.push({
+    label: "ANTHROPIC_API_KEY",
+    ok: env.anthropicKey.startsWith("sk-ant-"),
+    detail: !env.anthropicKey ? "Missing — tools use the free fallback" : env.anthropicKey.startsWith("sk-ant-") ? "Set ✓" : "Should start with sk-ant-",
+  });
+  checks.push({
+    label: "CRON_SECRET",
+    ok: env.cronSecret.length >= 16,
+    detail: !env.cronSecret ? "Missing — the daily AI News run won't start" : env.cronSecret.length >= 16 ? "Set ✓" : "Use at least 16 random characters",
+  });
   checks.push({ label: "EMAIL_FROM", ok: /@zaiphr\.in>?$/.test(env.emailFrom), detail: env.emailFrom });
   checks.push({ label: "LEAD_NOTIFY_EMAIL", ok: !!env.leadNotifyEmail, detail: env.leadNotifyEmail });
   return checks;
