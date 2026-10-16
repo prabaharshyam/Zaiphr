@@ -14,12 +14,31 @@ export const about = {
     ["Senior hands only", "The people you meet on the call are the people who build."],
     ["Privacy-first AI", "Minimal data to models, no training on your data and DPDP-aware handling."],
   ],
-  founder: {
-    // TODO: replace with your real name, title, bio and photo (public/about/founder.jpg).
-    name: "Shyam",
-    role: "Founder, Zaiphr Labs",
-    bio: "TODO: add a short founder bio — background, what you've built, and why you started Zaiphr Labs.",
-    photo: null as string | null,
+  team: {
+    headline: "A crew of builders, not a chain of handoffs.",
+    body: "We're a tight-knit group of tech nerds, creative heads and camera geeks who'd rather build than talk about building. Engineers sit next to designers, editors sit next to automation tinkerers, and everyone obsesses over the same thing: shipping products that solve real problems for startups and growing businesses. No account managers relaying messages. You work directly with the people making your thing.",
+    crews: [
+      {
+        title: "Tech nerds",
+        text: "Engineers who live in code, APIs and AI models. They build the apps, agents and automations, and make sure they actually work.",
+        tags: ["Full-stack", "AI agents", "Automation"],
+      },
+      {
+        title: "Creative heads",
+        text: "Designers, strategists and writers who make young brands look and sound like category leaders, with taste that AI can't fake.",
+        tags: ["Brand", "UI/UX", "Copy"],
+      },
+      {
+        title: "Camera geeks",
+        text: "Shooters, editors and motion artists who know exactly what makes a thumb stop scrolling, and how to get there in 48 hours.",
+        tags: ["Shoots", "Editing", "Motion"],
+      },
+      {
+        title: "Growth tinkerers",
+        text: "Performance marketers and creator wranglers who turn attention into pipeline, then measure everything to do it better next month.",
+        tags: ["Ads", "Creators", "Analytics"],
+      },
+    ],
   },
   stack: [
     { group: "AI & agents", items: ["Claude", "OpenAI", "Whisper / STT", "Neural TTS voices", "Vector search"] },

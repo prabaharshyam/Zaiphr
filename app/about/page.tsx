@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { about } from "@/config/about";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { RevealText } from "@/components/ui/RevealText";
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { founder } = about;
+  const { team } = about;
   return (
     <>
       <section className="relative overflow-hidden pt-[calc(var(--nav-h)+12vh)] pb-24">
@@ -77,30 +76,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="founder-heading" className="border-t border-line py-24 md:py-32">
-        <div className="container-x grid grid-cols-1 items-center gap-12 md:grid-cols-12">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-bg-2 md:col-span-5">
-            {founder.photo ? (
-              <Image src={founder.photo} alt={`${founder.name}, ${founder.role}`} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
-            ) : (
-              <div className="absolute inset-0 grid place-items-center">
-                <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
-                <div aria-hidden className="absolute h-2/3 w-2/3 rounded-full bg-signature/15 blur-[80px]" />
-                <div className="relative flex flex-col items-center gap-4 text-center">
-                  <LogoMark className="h-16 w-16 text-text" />
-                  <span className="label-mono text-muted">Founder photo · coming soon</span>
+      <section aria-labelledby="team-heading" className="border-t border-line py-24 md:py-32">
+        <div className="container-x">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <Eyebrow index="04">The team</Eyebrow>
+              <RevealText as="h2" className="font-display-tight mt-5 text-[clamp(2.2rem,4.2vw,4rem)]">
+                <span id="team-heading">{team.headline}</span>
+              </RevealText>
+            </div>
+            <p className="text-lg leading-relaxed text-muted lg:col-span-6 lg:col-start-7 lg:pt-12">{team.body}</p>
+          </div>
+          <ul className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {team.crews.map((c, i) => (
+              <GlassCard key={c.title} as="li" tilt className="flex min-h-[22rem] flex-col justify-between p-7">
+                <div className="flex items-start justify-between">
+                  <span className="font-display-wide text-5xl text-signature">0{i + 1}</span>
+                  <LogoMark className="h-6 w-6 text-text/30" />
                 </div>
-              </div>
-            )}
-          </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <Eyebrow index="04">Founder</Eyebrow>
-            <h2 id="founder-heading" className="font-display-wide mt-6 text-[clamp(2.6rem,5vw,4.5rem)]">
-              {founder.name}
-            </h2>
-            <p className="label-mono mt-3 text-signature">{founder.role}</p>
-            <p className="mt-8 text-lg leading-relaxed text-muted">{founder.bio}</p>
-          </div>
+                <div>
+                  <h3 className="font-display-tight text-3xl">{c.title}</h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{c.text}</p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {c.tags.map((t) => (
+                      <li key={t} className="label-mono rounded-full border border-line-strong px-2.5 py-1 text-[0.6rem]">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </GlassCard>
+            ))}
+          </ul>
         </div>
       </section>
 
