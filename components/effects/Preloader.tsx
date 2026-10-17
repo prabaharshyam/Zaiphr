@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { markReady } from "@/lib/ready";
 import { prefersReducedMotion } from "@/lib/hooks";
-import { LogoMark } from "@/components/ui/Logo";
+import { LogoMark, Wordmark } from "@/components/ui/Logo";
+import { site } from "@/config/site";
 import { ScrambleText } from "@/components/ui/ScrambleText";
 
 const KEY = "zl-preloaded";
@@ -96,9 +97,10 @@ export function Preloader() {
     >
       <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
       <div className="relative flex flex-1 flex-col items-center justify-center gap-6" data-pl-fade>
-        <LogoMark className="h-14 w-14 text-text" />
-        <div className="font-display text-2xl font-extrabold tracking-[0.02em] [font-stretch:125%] sm:text-3xl">
-          <ScrambleText text="ZAIPHR LABS" trigger="manual" play={decode} duration={1100} />
+        <LogoMark className="h-20 w-20 text-text sm:h-24 sm:w-24" />
+        <Wordmark className="h-6 text-text sm:h-8" />
+        <div className="label-mono text-[0.7rem] tracking-[0.4em] text-muted sm:text-xs">
+          <ScrambleText text={site.slogan.toUpperCase()} trigger="manual" play={decode} duration={1100} />
         </div>
       </div>
       <div className="container-x relative flex items-end justify-between pb-8" data-pl-fade>

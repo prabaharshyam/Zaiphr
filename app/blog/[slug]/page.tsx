@@ -50,7 +50,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
       datePublished: post.date,
       dateModified: post.updated ?? post.date,
       author: { "@type": "Organization", name: `${site.name} team`, url: site.url },
-      publisher: { "@type": "Organization", name: site.name, url: site.url, logo: { "@type": "ImageObject", url: `${site.url}/icon.svg` } },
+      publisher: { "@type": "Organization", name: site.name, url: site.url, logo: { "@type": "ImageObject", url: `${site.url}/icon-512.png` } },
       mainEntityOfPage: url,
       keywords: post.tags.join(", "),
       articleSection: post.category,

@@ -2,6 +2,7 @@ import { footerNav } from "@/config/navigation";
 import { services } from "@/config/services";
 import { site } from "@/config/site";
 import { TransitionLink } from "@/components/ui/TransitionLink";
+import { Wordmark } from "@/components/ui/Logo";
 import { NewsletterForm } from "./NewsletterForm";
 import { BackToTop } from "./BackToTop";
 import { FooterCta } from "./FooterCta";
@@ -63,17 +64,13 @@ export function Footer() {
       </div>
 
       {/* Oversized wordmark */}
-      <div className="relative select-none" aria-hidden>
-        <p className="font-display-wide text-center text-[19.5vw] leading-[0.78] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_var(--line-strong)]">
-          ZAIPHR
-        </p>
-        <p className="font-display-wide absolute inset-0 bg-gradient-to-b from-text/90 via-text/25 to-transparent bg-clip-text text-center text-[19.5vw] leading-[0.78] tracking-[-0.06em] text-transparent [mask-image:linear-gradient(to_bottom,black_10%,transparent_85%)]">
-          ZAIPHR
-        </p>
+      <div className="container-x relative select-none pt-4" aria-hidden>
+        <Wordmark className="h-auto w-full text-text/90 [mask-image:linear-gradient(to_bottom,black_20%,rgba(0,0,0,0.25)_100%)]" />
+        <p className="label-mono mt-6 text-center text-[0.65rem] tracking-[0.5em] text-muted sm:text-xs md:mt-8">{site.slogan}</p>
       </div>
 
       {/* Bottom bar */}
-      <div className="container-x relative flex flex-col gap-4 border-t border-line py-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
+      <div className="container-x relative mt-10 flex flex-col gap-4 border-t border-line py-6 md:mt-14 text-sm text-muted md:flex-row md:items-center md:justify-between">
         <p className="label-mono">
           © {year} {site.name} · {site.location}
         </p>

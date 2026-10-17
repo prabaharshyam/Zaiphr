@@ -3,6 +3,7 @@
  * form can morph into any other. Forms are roughly centred, ~4.4 units across.
  */
 import * as THREE from "three";
+import { MARK_PATHS } from "@/lib/brand";
 
 type Rand = () => number;
 
@@ -169,18 +170,18 @@ function core(n: number, seed = 1) {
       a.z + (b.z - a.z) * u + (c.z - a.z) * v,
     );
   }
-  // Z mark (same geometry as the SVG logo, viewBox 32)
+  // The brand mark (same geometry as the SVG logo, viewBox 661×523, centred in a square)
   sampleRaster(
     w,
     r,
     n - w.i,
     (ctx, s) => {
-      const k = s / 32;
+      const k = (s * 0.8) / 661;
       ctx.save();
+      ctx.translate(s * 0.1, (s - 523 * k) / 2);
       ctx.scale(k, k);
-      ctx.translate(0.5, 0.5);
-      ctx.fill(new Path2D("M5 6.5h19.5l2 2V11L12.2 23H27v3.5H7.5l-2-2V22L19.8 10H5z"));
-      ctx.fillRect(27, 2, 3.2, 3.2);
+      ctx.fill(new Path2D(MARK_PATHS.brackets));
+      ctx.fill(new Path2D(MARK_PATHS.slash));
       ctx.restore();
     },
     { scale: 1.9, depth: 0.35 },

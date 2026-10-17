@@ -60,8 +60,7 @@ export function layout(title: string, body: string) {
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#05060A;padding:32px 16px"><tr><td align="center">
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#0A0C12;border:1px solid #1d2029;border-radius:16px">
 <tr><td style="padding:28px 32px;border-bottom:1px solid #1d2029">
-<span style="font-weight:800;letter-spacing:.04em;font-size:16px">ZAIPHR</span><span style="color:#8A90A2;font-size:11px;letter-spacing:.14em"> LABS</span>
-<span style="display:inline-block;width:6px;height:6px;background:#C8FF2E;margin-left:6px;vertical-align:top"></span></td></tr>
+<img src="${site.url}/brand/zaiphr-email-header.png" width="187" height="20" alt="Zaiphr Labs" style="display:block;border:0;height:20px;width:187px"></td></tr>
 <tr><td style="padding:32px">
 <h1 style="margin:0 0 18px;font-size:24px;line-height:1.2;letter-spacing:-.02em">${esc(title)}</h1>
 ${body}

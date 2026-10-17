@@ -188,7 +188,7 @@ export function ChatWidget() {
         )}
       >
         <span className="relative grid h-10 w-10 place-items-center rounded-full bg-signature text-signature-ink">
-          <LogoMark className="h-5 w-5" />
+          <LogoMark mono className="h-6 w-6" />
           <span className="absolute -top-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-bg-2 bg-signature" aria-hidden />
         </span>
         <span className="text-sm font-medium">Ask Zaiphr AI</span>
@@ -204,7 +204,7 @@ export function ChatWidget() {
       >
         <header className="flex items-center gap-3 border-b border-line px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-signature text-signature-ink">
-            <LogoMark className="h-4.5 w-4.5" />
+            <LogoMark mono className="h-5 w-5" />
           </span>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium">Zaiphr AI</p>

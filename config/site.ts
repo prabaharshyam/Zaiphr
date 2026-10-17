@@ -6,6 +6,8 @@ export const site = {
   shortName: "Zaiphr",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.zaiphr.in",
   tagline: "AI-native engines for ambitious teams",
+  /** The line under the logo lockup. */
+  slogan: "Intelligence, encoded.",
   positioning:
     "We build the AI-powered engines that let small teams move like big companies.",
   description:
