@@ -45,6 +45,7 @@ ${d.faqs.map((f) => `  - Q: ${f.q} A: ${f.a}`).join("\n")}`;
 ${site.name} - ${site.tagline}. ${site.description}
 Location: ${site.location}. Email: ${site.email}. Phone/WhatsApp: ${site.phone}. Book a free 30-minute call: ${site.calendlyUrl}
 Mission: ${about.mission}
+What makes us different (taste): ${about.taste.headline} ${about.taste.body.join(" ")} ${about.taste.closing}
 Team: ${about.team.body}
 Values: ${about.values.map((v) => `${v.title} - ${v.text}`).join(" ")}
 How we work: ${about.principles.map(([t, d]) => `${t}: ${d}`).join(" ")}

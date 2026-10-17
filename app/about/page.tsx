@@ -9,13 +9,22 @@ import { Testimonials } from "@/components/sections/Testimonials";
 
 export const metadata: Metadata = pageMeta({
   title: "About",
-  description: "Zaiphr Labs is an AI-native tech studio. A crew of tech nerds, creative heads and camera geeks building the engines that let small teams move like big companies.",
+  description: "Anyone can build with AI now. Taste decides what is worth building. Zaiphr Labs is a crew of tech nerds, creative heads and camera geeks who bring the craft that makes the difference.",
   path: "/about",
   image: "/og/about.jpg",
 });
 
 export default function AboutPage() {
-  const { team } = about;
+  const { team, taste } = about;
+  // Light up the word "Taste" in the headline.
+  const [before, after] = taste.headline.split("Taste");
+  const tasteHeadline = (
+    <>
+      {before}
+      <span className="text-signature">Taste</span>
+      {after}
+    </>
+  );
   return (
     <>
       <section className="relative overflow-hidden pt-[calc(var(--nav-h)+12vh)] pb-24">
@@ -38,9 +47,60 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section aria-labelledby="taste-heading" className="relative overflow-hidden border-t border-line py-24 md:py-36">
+        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/3 h-[42vw] w-[42vw] rounded-full bg-signature/[0.07] blur-[160px]" />
+        <div className="container-x relative">
+          <Eyebrow index="02">{taste.eyebrow}</Eyebrow>
+          <RevealText id="taste-heading" as="h2" className="font-display-wide mt-8 max-w-[17ch] text-[clamp(2.3rem,6.2vw,6.5rem)] leading-[0.98]">
+            {tasteHeadline}
+          </RevealText>
+
+          <div className="mt-16 grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-10">
+            <div className="space-y-6 lg:col-span-6">
+              {taste.body.map((para, i) => (
+                <p key={i} className={i === 0 ? "text-xl leading-relaxed md:text-2xl" : "text-lg leading-relaxed text-muted"}>
+                  {para}
+                </p>
+              ))}
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <div className="label-mono grid grid-cols-2 gap-6 border-b border-line-strong pb-4 text-[0.62rem]">
+                <span className="text-muted">Easy with AI</span>
+                <span className="text-signature">Needs taste</span>
+              </div>
+              <ul>
+                {taste.contrast.map((c) => (
+                  <li key={c.easy} className="group grid grid-cols-2 gap-6 border-b border-line py-5">
+                    <span className="text-muted">{c.easy}</span>
+                    <span className="font-medium transition-colors group-hover:text-signature">{c.taste}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="label-mono mt-24 text-muted">How we practise it</h3>
+          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {taste.practices.map((p, i) => (
+              <GlassCard key={p.title} as="li" tilt className="flex flex-col gap-10 p-6">
+                <span aria-hidden data-n={`0${i + 1}`} className="label-mono text-signature before:content-[attr(data-n)]" />
+                <div>
+                  <p className="text-lg font-medium leading-snug">{p.title}</p>
+                  <p className="mt-3 text-[0.92rem] leading-relaxed text-muted">{p.text}</p>
+                </div>
+              </GlassCard>
+            ))}
+          </ul>
+
+          <RevealText as="p" className="font-display-tight mx-auto mt-24 max-w-4xl text-center text-[clamp(1.8rem,3.6vw,3.4rem)] leading-[1.1]">
+            {taste.closing}
+          </RevealText>
+        </div>
+      </section>
+
       <section aria-labelledby="values-heading" className="border-t border-line py-24 md:py-32">
         <div className="container-x">
-          <Eyebrow index="02">Values</Eyebrow>
+          <Eyebrow index="03">Values</Eyebrow>
           <h2 id="values-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.6vw,4.4rem)]">
             What we won&apos;t compromise on.
           </h2>
@@ -61,7 +121,7 @@ export default function AboutPage() {
       <section aria-labelledby="how-heading" className="border-t border-line bg-bg-2 py-24 md:py-32">
         <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Eyebrow index="03">How we work</Eyebrow>
+            <Eyebrow index="04">How we work</Eyebrow>
             <h2 id="how-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.2vw,4rem)]">
               One small, senior team. Accountable end to end.
             </h2>
@@ -81,7 +141,7 @@ export default function AboutPage() {
         <div className="container-x">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <Eyebrow index="04">The team</Eyebrow>
+              <Eyebrow index="05">The team</Eyebrow>
               <RevealText id="team-heading" as="h2" className="font-display-tight mt-5 text-[clamp(2.2rem,4.2vw,4rem)]">
                 {team.headline}
               </RevealText>
@@ -114,7 +174,7 @@ export default function AboutPage() {
 
       <section aria-labelledby="stack-heading" className="border-t border-line py-24 md:py-32">
         <div className="container-x">
-          <Eyebrow index="05">Stack</Eyebrow>
+          <Eyebrow index="06">Stack</Eyebrow>
           <h2 id="stack-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.6vw,4.4rem)]">
             The tools behind the engines.
           </h2>

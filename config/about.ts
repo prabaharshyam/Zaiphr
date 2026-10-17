@@ -40,6 +40,31 @@ export const about = {
       },
     ],
   },
+  /** The "Taste" manifesto on /about. */
+  taste: {
+    eyebrow: "Taste",
+    headline: "Anyone can build now. Taste decides what's worth building.",
+    body: [
+      "AI has made code, copy and design almost free to produce. A few prompts get you a website, an app, a logo or an ad by lunchtime. Across the industry, the people building the most-used AI products keep landing on the same word for what's left: taste.",
+      "Taste is knowing which feature to cut, which word lands, which frame holds attention for one more second, and when \"good enough\" is quietly costing you customers. It's the hundred small decisions nobody notices and everybody feels.",
+      "It's what we hire for, argue about and refuse to compromise on. We use AI to move fast. We use taste to decide where to go.",
+    ],
+    contrast: [
+      { easy: "Generate a hundred logos", taste: "Pick the one people still remember next year" },
+      { easy: "Ship a website in a day", taste: "Know why visitors leave in the first three seconds" },
+      { easy: "Write a thousand words", taste: "Find the ten that actually get read" },
+      { easy: "Build every feature", taste: "Choose the three that matter, and cut the rest" },
+      { easy: "Automate any process", taste: "Know which ones should stay human" },
+    ],
+    practices: [
+      { title: "Opinions, out loud", text: "We tell you what we'd do and why, including when your first idea isn't the strongest one." },
+      { title: "The first draft is never the work", text: "AI gives us a fast starting point. Editing, rethinking and refining is where the value is." },
+      { title: "Details are the product", text: "Spacing, timing, tone, the way a button responds. Small things add up to whether something feels premium." },
+      { title: "Study the best", text: "We pull apart great products, films and brands to understand why they work, not just what they look like." },
+      { title: "Taste with a purpose", text: "Beautiful work that doesn't convert is decoration. Everything we make has a job to do, and we measure it." },
+    ],
+    closing: "Everyone has the same tools now. What you do with them is the difference.",
+  },
   stack: [
     { group: "AI & agents", items: ["Claude", "OpenAI", "Whisper / STT", "Neural TTS voices", "Vector search"] },
     { group: "Automation", items: ["n8n", "Make", "Zapier", "WhatsApp Business API", "Twilio"] },
