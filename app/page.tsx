@@ -59,6 +59,7 @@ export default async function HomePage() {
             address: { "@type": "PostalAddress", addressCountry: "IN" },
             areaServed: ["IN", "Worldwide"],
             knowsAbout: services.map((x) => x.title),
+            sameAs: site.socials.map((x) => x.href),
             contactPoint: { "@type": "ContactPoint", contactType: "sales", email: site.email, telephone: site.phone.replace(/\s/g, ""), availableLanguage: ["English"] },
           },
           { "@context": "https://schema.org", "@type": "WebSite", "@id": `${site.url}/#website`, name: site.name, url: site.url, publisher: { "@id": `${site.url}/#org` }, inLanguage: "en-IN" },

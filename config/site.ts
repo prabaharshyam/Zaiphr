@@ -17,10 +17,10 @@ export const site = {
   location: "India · Working globally",
   currency: { default: "INR" as "INR" | "USD", usdToInr: 84 },
   socials: [
-    { label: "Instagram", href: "https://instagram.com/zaiphrlabs" },
-    { label: "LinkedIn", href: "https://linkedin.com/company/zaiphrlabs" },
-    { label: "X", href: "https://x.com/zaiphrlabs" },
-    { label: "YouTube", href: "https://youtube.com/@zaiphrlabs" },
+    { label: "Instagram", href: "https://www.instagram.com/zaiphr.ai/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/zaiphr-lab/" },
+    { label: "X", href: "https://x.com/shyamprabahar" },
+    { label: "YouTube", href: "https://www.youtube.com/@Shyamspeakz" },
   ],
 } as const;
 
