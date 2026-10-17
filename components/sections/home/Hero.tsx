@@ -15,10 +15,10 @@ export function Hero() {
 
         <h1 className="font-display-wide text-[length:var(--text-mega)]">
           <RevealText as="span" trigger="ready" className="block">
-            Build like
+            AI builds.
           </RevealText>
           <RevealText as="span" trigger="ready" delay={0.12} className="block">
-            a <span className="text-signature text-glow">giant</span>.
+            <span className="text-signature text-glow">Taste</span> decides.
           </RevealText>
         </h1>
 
