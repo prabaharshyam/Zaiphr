@@ -7,7 +7,8 @@ import { getProjects } from "@/lib/work";
 import { legalSlugs } from "@/lib/legal";
 import { getBriefDates } from "@/lib/server/news/queries";
 
-export const revalidate = 3600;
+// Rendered per request: a cached sitemap froze at build time and missed every new daily brief.
+export const dynamic = "force-dynamic";
 
 /** Every public, indexable page. Private routes (admin, auth, saved, unsubscribe) are left out on purpose. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
