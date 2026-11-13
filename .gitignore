@@ -11,3 +11,4 @@ next-env.d.ts
 /screenshots
 .mockup-tmp.html
 .blog-cover-tmp.html
+scripts/work/.cache

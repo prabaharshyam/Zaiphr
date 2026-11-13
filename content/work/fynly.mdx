@@ -7,29 +7,59 @@ service: "mobile-web-apps"
 services: ["mobile-web-apps", "ai-automations"]
 industry: "SaaS"
 year: 2026
-order: 4
+order: 6
 featured: true
 accent: "#4F46E5"
+timeline: "6 weeks (planned MVP)"
 summary: "An MVP for freelancers and small agencies: GST-ready invoices, UPI payment links, automatic reminders and a cash-flow forecast, on web and mobile."
 metrics:
   - { value: "6 weeks", label: "Planned MVP timeline, design to store" }
   - { value: "~40%", label: "Projected cut in days-to-paid via auto-reminders" }
   - { value: "1 codebase", label: "Web, iOS and Android" }
+deliverables:
+  - "Product strategy and MVP scope"
+  - "Web dashboard and mobile app"
+  - "GST invoice engine (CGST, SGST, IGST)"
+  - "UPI pay links and QR on every invoice"
+  - "AI-written payment reminders"
+  - "Cash-flow forecast"
+  - "Marketing site and pricing"
 stack: ["Next.js", "React Native (Expo)", "Supabase", "Razorpay", "Resend", "Claude"]
 ---
 
-## The challenge
+## Overview
 
-Fynly is a fictional fintech start-up. Its founders saw small agencies running invoicing out of spreadsheets: late GST math, payments chased on WhatsApp by hand, and no idea what cash would land next month.
+Fynly is a fictional invoicing product we designed and specified as a showcase build: the kind of MVP we'd take from idea to app stores for a founder. Its users are freelancers and small agencies in India who are good at their work and bad at chasing money.
 
-## Our approach
+## The problem
 
-We scoped a ruthless MVP with three jobs: create a compliant invoice in under a minute, get paid faster, and see next month's cash. Everything else went on the roadmap.
+Getting paid is the most awkward part of freelancing. Invoices go out as PDFs, GST is worked out by hand, and the follow-up is a WhatsApp message nobody wants to send. The result is weeks of unpaid work and a cash-flow surprise every month.
 
-## The solution
+## What we designed
 
-A shared design system powers a Next.js web app and an Expo mobile app on top of Supabase. Invoices carry UPI payment links, reminders escalate politely on a schedule, and a Claude-powered assistant drafts follow-ups and flags clients who pay late. The forecast view combines sent invoices with payment history.
+- **GST-ready invoices in a minute.** The tax is worked out from the client's state: CGST and SGST for the same state, IGST across states. HSN and SAC codes are remembered per client.
+- **UPI on every invoice.** A pay link and QR code that open any UPI app, with payment marked automatically when it lands.
+- **Reminders that sound like you.** Polite nudges before and after the due date, drafted by AI in the freelancer's tone and sent on WhatsApp or email with one tap.
+- **A forecast you can trust.** Expected cash for the next 90 days, based on open invoices and each client's payment habits.
+
+<Figure src="/work/fynly/invoice.jpg" alt="A GST tax invoice document with IGST applied, next to cards explaining the interstate tax rule and a payment received notification" caption="The invoice, the tax logic and the moment it gets paid." />
+
+<Insight>The best reminder is the one you didn't have to write.</Insight>
+
+## Mobile app
+
+The app is built for the moment between meetings: see who owes what, send a reminder, share a pay link. One React Native codebase covers iOS and Android, sharing logic with the web app.
+
+<Figure src="/work/fynly/mobile.jpg" alt="Three phones: invoice list with overdue filter, invoice detail with an AI-suggested reminder, and the client's UPI payment page" caption="Invoices, a suggested reminder and the client's pay page." />
+
+## Marketing site
+
+A clear promise, the product shown honestly, and pricing in rupees with a free plan.
+
+<Figure src="/work/fynly/site.jpg" alt="Fynly marketing site: 'Get paid on time, without the awkward follow-ups' above a product screenshot" caption="Marketing site." />
+
+<Duo a="/work/fynly/detail.jpg" b="/work/fynly/detail-2.jpg" altA="Phone showing the UPI payment page over a photo of a card payment at a counter" altB="Phone showing an overdue invoice with an AI reminder suggestion" caption="Client pay page and an overdue invoice." />
 
 ## Projected impact
 
-Design targets, not client results: invoice creation in under 60 seconds, fewer manual follow-ups, and a product ready for a closed beta in six weeks.
+Design targets for a showcase build, not client results: invoices sent in minutes, fewer awkward follow-ups and fewer days between "work done" and "money in".

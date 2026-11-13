@@ -68,11 +68,11 @@ lib/                  gsap registration, hooks, ready-signal, utils
 
 ## Adding a case study
 
-1. Copy any file in `content/work/` to `content/work/<slug>.mdx` and edit the frontmatter.
-2. Put images in `public/work/<slug>/` - `cover.jpg` (16:10) is required.
-3. Set `label` to `Client Project` for real work; keep `Concept Project` / `Showcase Build` for concepts.
+1. Copy any file in `content/work/` to `content/work/<slug>.mdx` and edit the frontmatter (`deliverables`, `timeline` and `live` are optional).
+2. Put images in `public/work/<slug>/`: `hero.jpg` (2000×1250) is required. In the body, place images with `<Figure>` (2000×1250) and `<Duo>` (two 1000×1250), and pull-out lines with `<Insight>`.
+3. Set `label` to `Live Project` or `Client Project` for real work (add `live` with the URL); keep `Concept Project` / `Showcase Build` for fictional brands.
 
-Concept covers are generated from HTML by `node scripts/mockups/render.mjs` (needs a local Chromium; set `CHROMIUM_PATH`).
+Portfolio imagery is rendered by `node scripts/work/render.mjs [slug...]` (add `--fresh` to retake cached screenshots). Each project in `scripts/work/projects/` defines its screens (our own HTML designs, or real pages of a live site) and the device-frame compositions. Needs network (photos, fonts, live sites) and a local Chromium (set `CHROMIUM_PATH`). Concept photography is from Unsplash under the Unsplash License.
 
 ## AI Stack Finder
 

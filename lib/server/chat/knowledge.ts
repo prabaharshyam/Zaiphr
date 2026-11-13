@@ -34,7 +34,7 @@ ${d.faqs.map((f) => `  - Q: ${f.q} A: ${f.a}`).join("\n")}`;
     .join("\n\n");
 
   const work = getProjects()
-    .map((p) => `- [${p.client}](/work/${p.slug}) (${p.label}, ${p.industry}): ${p.summary}`)
+    .map((p) => `- [${p.client}](/work/${p.slug}) (${p.label}, ${p.industry}${p.live ? `, live at ${p.live}` : ""}): ${p.summary}`)
     .join("\n");
   const posts = getPosts()
     .map((p) => `- [${p.title}](/blog/${p.slug})`)
@@ -55,7 +55,7 @@ Prices are in INR first; USD shown for international clients. Third-party usage 
 ## Services
 ${svc}
 
-## Work (pieces labelled Concept Project or Showcase Build are for fictional brands - never present them as real clients or real results)
+## Work (Live Project = a real site we designed and built, linked. Concept Project or Showcase Build = fictional brand: never present those as real clients or real results)
 ${work}
 
 ## Use-case library (/use-cases)

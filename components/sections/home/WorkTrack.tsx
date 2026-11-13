@@ -84,8 +84,8 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
           </RevealText>
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">
-          We&apos;re a new studio, so these are <span className="text-text">concept projects and showcase builds</span>{" "}
-          for fictional brands. Real thinking, real design, honest about what they are.
+          <span className="text-text">Live sites</span> we&apos;ve shipped, alongside concept projects for fictional brands.
+          Every card says which is which.
         </p>
       </div>
 
@@ -104,7 +104,7 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
               <div data-parallax className="absolute inset-y-0 -inset-x-[10%]">
                 <Image
                   src={p.cover}
-                  alt={`${p.client}: ${p.title} (concept mockup)`}
+                  alt={`${p.client}: ${p.title}${/Concept|Showcase/.test(p.label) ? " (concept design)" : ""}`}
                   fill
                   sizes="(min-width: 1024px) 50vw, 85vw"
                   className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out)] group-hover:scale-[1.04]"

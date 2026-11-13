@@ -11,6 +11,8 @@ type Size = "sm" | "md" | "lg";
 interface Props {
   children: ReactNode;
   href?: string;
+  /** Open href in a new tab as a plain link (for other sites). */
+  external?: boolean;
   onClick?: () => void;
   type?: "button" | "submit";
   variant?: Variant;
@@ -66,6 +68,7 @@ function Arrow({ size }: { size: Size }) {
 export function Button({
   children,
   href,
+  external = false,
   onClick,
   type = "button",
   variant = "primary",
@@ -102,7 +105,11 @@ export function Button({
     </>
   );
 
-  const el = href ? (
+  const el = href && external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={classes} {...aria}>
+      {inner}
+    </a>
+  ) : href ? (
     <TransitionLink href={href} className={classes} {...aria}>
       {inner}
     </TransitionLink>

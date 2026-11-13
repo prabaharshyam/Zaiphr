@@ -7,13 +7,14 @@ import type { ProjectCardData } from "@/components/work/ProjectCard";
 /**
  * Case studies live in content/work/*.mdx. Add a file to add a project -
  * frontmatter drives cards, filters and the case-study page.
- * Images go in public/work/<slug>/ (cover.jpg is required).
+ * Images go in public/work/<slug>/ (hero.jpg, 2000×1250, is required).
  */
 export interface Project {
   slug: string;
   title: string;
   client: string;
-  label: "Concept Project" | "Showcase Build" | "Client Project";
+  /** Live Project / Client Project = real, shipped work. Concept Project / Showcase Build = fictional brands. */
+  label: "Concept Project" | "Showcase Build" | "Client Project" | "Live Project";
   service: string;
   services: string[];
   industry: string;
@@ -24,6 +25,11 @@ export interface Project {
   summary: string;
   metrics: { value: string; label: string }[];
   stack: string[];
+  /** What we delivered, shown as a list on the case study. */
+  deliverables?: string[];
+  timeline?: string;
+  /** Public URL for live work. */
+  live?: string;
   cover: string;
   body: string;
 }
@@ -40,7 +46,7 @@ export function getProjects(): Project[] {
       return {
         ...(data as Omit<Project, "slug" | "cover" | "body">),
         slug,
-        cover: (data.cover as string) ?? `/work/${slug}/cover.jpg`,
+        cover: (data.cover as string) ?? `/work/${slug}/hero.jpg`,
         body: content,
       };
     })
@@ -48,6 +54,9 @@ export function getProjects(): Project[] {
 }
 
 export const getProject = (slug: string) => getProjects().find((p) => p.slug === slug);
+
+/** True for fictional-brand work, whose figures are design targets rather than results. */
+export const isConcept = (p: Pick<Project, "label">) => p.label === "Concept Project" || p.label === "Showcase Build";
 
 export const toCard = (p: Project): ProjectCardData => ({
   slug: p.slug,

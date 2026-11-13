@@ -4,36 +4,69 @@ client: "Pearlline Dental"
 slug: "pearlline-dental"
 label: "Concept Project"
 service: "ai-voice-agents"
-services: ["ai-voice-agents", "ai-automations"]
+services: ["ai-voice-agents", "ai-automations", "websites"]
 industry: "Clinics"
 year: 2026
-order: 1
+order: 3
 featured: true
 accent: "#2BB3A3"
+timeline: "5 weeks (planned)"
 summary: "A voice agent that answers every call, books cleanings and consultations into the practice calendar, and sends WhatsApp reminders, without a single missed ring."
 metrics:
   - { value: "24/7", label: "Call coverage, designed for zero missed calls" }
   - { value: "~70%", label: "Projected share of bookings handled without staff" }
   - { value: "<1s", label: "Target response latency per turn" }
+deliverables:
+  - "Voice agent in English, Hindi and Kannada"
+  - "Live calendar booking and rescheduling"
+  - "WhatsApp confirmations and reminders"
+  - "Front-desk console with live transcripts"
+  - "Escalation rules and call summaries"
+  - "Clinic website with booking flow"
+  - "Weekly performance report"
 stack: ["Voice AI (STT + LLM + TTS)", "Twilio", "Claude", "Google Calendar", "WhatsApp Business API", "n8n"]
 ---
 
+## Overview
+
+Pearlline Dental is a fictional three-chair clinic in Bengaluru. Like most clinics, it loses bookings in two places: calls that ring out while the front desk is busy with a patient, and calls that come in after closing. Pearl is a voice receptionist that picks up every one of them, books straight into the dentists' calendars and handles the follow-up on WhatsApp.
+
 ## The challenge
 
-Pearlline is a fictional four-chair dental chain in Bengaluru. Like most clinics, its front desk is busiest exactly when patients call: during treatment hours. Calls go unanswered, after-hours enquiries leak to competitors, and reception staff spend their day repeating timings, prices and directions.
+A missed call at a dental clinic is rarely a lost lead that calls back. It's a patient with a toothache who rings the next clinic on the map. Hiring a second receptionist doesn't fix evenings and Sundays, and voicemail is where bookings go to die. The brief: answer every call within two rings, in the patient's language, without ever pretending to give medical advice.
 
-## Our approach
+## How Pearl works
 
-We mapped the 12 call types that make up most inbound volume (new bookings, reschedules, pricing questions, insurance, emergencies and directions) and designed a voice persona, **Pearl**, that handles the routine ones end-to-end and hands off the rest with context.
+<Figure src="/work/pearlline-dental/flow.jpg" alt="System diagram: ring, understand intent and language, check live calendar, book, confirm on WhatsApp, remind the day before, with a clinical handoff path" caption="From first ring to filled chair, with guardrails." />
 
-- **Conversation design:** short turns, interruption handling, Hindi–English code-switching, and a confirmation step before anything is booked.
-- **Guardrails:** Pearl never gives clinical advice. Pain, swelling or bleeding triggers an immediate transfer to the on-call number.
-- **Calendar truth:** availability is read live from the practice calendar, so Pearl can't double-book a chair.
+1. **Answer.** Pearl picks up on the clinic's own number, says who she is and that the call is handled by an AI assistant.
+2. **Understand.** She works out what the caller wants (a new booking, a reschedule, an emergency or a question) and switches to English, Hindi or Kannada to match them.
+3. **Check and book.** She reads each dentist's real chair time and treatment lengths, offers the next few free slots and writes the booking into the calendar.
+4. **Confirm and remind.** A WhatsApp message with the time, map and a reschedule button goes out seconds after the call, and a reminder the day before asks the patient to confirm with a single reply.
 
-## The solution
+<Insight>Anything clinical goes to a person. Pearl books, she never diagnoses.</Insight>
 
-Calls land on a Twilio number and stream to a low-latency voice pipeline. Claude handles dialogue and tool use (check slots, book, reschedule, send a reminder), an n8n workflow writes the visit to the calendar and patient sheet, and a WhatsApp confirmation goes out within seconds. Every call is summarised for the front desk.
+## The front-desk console
+
+The team sees every call as it happens: a live transcript, the caller's intent, whether a slot is being held and a button to take over the call. The day's calendar sits alongside so staff can watch bookings land in real time.
+
+<Figure src="/work/pearlline-dental/mobile.jpg" alt="Three phones: the clinic website, the live call screen and the WhatsApp confirmation thread" caption="The patient's side: website, call and WhatsApp confirmation." />
+
+## The clinic website
+
+Bookings also come from search, so we designed a calm, clinical-but-warm website where every page leads to the same booking flow. Treatments show starting prices up front, and the hero explains that calls are answered round the clock by Pearl.
+
+<Figure src="/work/pearlline-dental/site.jpg" alt="Pearlline Dental website homepage with a modern treatment room photo and a floating live-call card" caption="Clinic website: prices up front, booking in a minute." />
+
+<Duo a="/work/pearlline-dental/detail.jpg" b="/work/pearlline-dental/detail-2.jpg" altA="Phone with the WhatsApp confirmation over a smiling patient photo" altB="Weekly report card showing calls answered, booked, after-hours and an hourly chart" caption="WhatsApp confirmation and the weekly report (illustrative data)." />
+
+## Guardrails we designed in
+
+- A disclosure line at the start of every call.
+- No diagnosis, no medical advice, and an instant transfer for pain, bleeding or anything clinical.
+- The caller can ask for a person at any point.
+- Every call logged, summarised and searchable, with consent wording reviewed for the clinic.
 
 ## Projected impact
 
-These are design targets for a concept build, not client results: answer 100% of calls including nights and Sundays, handle roughly two-thirds of bookings without staff, and free 2–3 hours of front-desk time per day.
+These are design targets for a concept, not client results: no unanswered calls, most routine bookings handled without staff, and a front desk that spends its time with patients in the chair instead of on the phone.

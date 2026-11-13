@@ -7,29 +7,55 @@ service: "websites"
 services: ["websites", "ai-automations"]
 industry: "Restaurants"
 year: 2026
-order: 9
+order: 11
 featured: true
 accent: "#F4A300"
+timeline: "6 weeks (planned)"
 summary: "A cinematic website with direct online ordering for a regional-Indian restaurant group: menus by region, table booking and kitchen automations that cut aggregator dependence."
 metrics:
   - { value: "0%", label: "Commission on direct orders, by design" }
   - { value: "8", label: "Regional menus, one ordering flow" }
   - { value: "Auto", label: "KOT, inventory alerts and review requests" }
-stack: ["Next.js", "Stripe / Razorpay", "Petpooja POS", "n8n", "WhatsApp Business API", "Google Business Profile"]
+deliverables:
+  - "Brand-led website and menu system"
+  - "Direct ordering with UPI and live tracking"
+  - "Table booking via WhatsApp"
+  - "Kitchen display and order routing"
+  - "Loyalty and review automations"
+  - "Takeaway and social assets"
+stack: ["Next.js", "Razorpay / UPI", "Petpooja POS", "n8n", "WhatsApp Business API", "Google Business Profile"]
 ---
 
-## The challenge
+## Overview
 
-Spice Route Kitchens is a fictional group of three restaurants serving dishes from eight Indian regions. Aggregators brought volume but took up to 30% of every order, and the website was a PDF menu.
+Spice Route Kitchens is a fictional restaurant group in Bengaluru and Chennai with one idea: eight regional kitchens under one roof, each run by a chef from that region. Its food is distinctive, but online it looked like every other listing on the delivery apps, and the apps took a large cut of every order.
 
-## Our approach
+## The goal
 
-We made the website the best place to order: richer than an aggregator listing, with each region's story and signature dishes. Direct ordering is rewarded with loyalty credits, and repeat customers can reorder in two taps.
+Give regulars a reason to order direct: a better experience and a better price. That meant a site that sells the story, a menu that's easier to browse than an app, and an ordering flow as quick as the apps people already know.
 
-## The solution
+## Menus by region
 
-A Next.js site with region-led menus, table reservations and direct ordering connected to the POS. n8n automations print kitchen tickets (KOTs), alert managers when stock runs low, and send a WhatsApp review request an hour after delivery.
+The menu is organised by where the dish comes from (Tamil Nadu, Kerala, Delhi, Punjab and so on) with a line on each dish's origin. Food photography leads, and every card can be added to the order in one tap.
+
+<Figure src="/work/spice-route-kitchens/menu.jpg" alt="Menu section: 'Where are we eating tonight?' with region filters and dish cards for biryani, sadya thali and butter chicken" caption="Menu by region." />
+
+<Insight>Order direct and it costs you less. The site had to make that obvious.</Insight>
+
+## Ordering and tracking
+
+Direct orders are 10% cheaper than the apps every day, paid by UPI in one tap and tracked live from the pass to the door. Table bookings take 20 seconds and are confirmed on WhatsApp.
+
+<Figure src="/work/spice-route-kitchens/mobile.jpg" alt="Three phones: the cinematic mobile homepage, the menu and the order tracking screen with UPI payment" caption="Mobile: home, menu and checkout." />
+
+## Behind the pass
+
+Every order, whether direct, dine-in or from an app, lands on one kitchen display, routed to the right regional station. The same system sends inventory alerts and a review request after delivery, and tracks the share of direct orders over time.
+
+<Figure src="/work/spice-route-kitchens/kitchen.jpg" alt="Kitchen display with order tickets in New, Cooking, Ready and Out columns, tagged by source" caption="Kitchen display: every channel in one queue (illustrative data)." />
+
+<Duo a="/work/spice-route-kitchens/detail.jpg" b="/work/spice-route-kitchens/detail-2.jpg" altA="Poster: 'Dindigul, by way of Indiranagar.' over a biryani photo" altB="Takeaway menu card: 'Eight regions. One order.' with four dishes" caption="Region-of-the-month poster and the takeaway card." />
 
 ## Projected impact
 
-Design targets, not client results: a growing share of orders moved to the commission-free channel, faster kitchen handoffs, and steadier review volume.
+Design targets for a concept, not client results: a growing share of orders placed direct, lower commission costs and regulars who come back through the restaurant's own channel.

@@ -4,32 +4,58 @@ client: "Skyhaven Realty"
 slug: "skyhaven-realty"
 label: "Concept Project"
 service: "ai-automations"
-services: ["ai-automations", "ai-voice-agents"]
+services: ["ai-automations", "websites", "media-ads"]
 industry: "Real estate"
 year: 2026
-order: 3
+order: 5
 featured: true
 accent: "#C9A227"
+timeline: "4 weeks (planned)"
 summary: "A WhatsApp assistant that qualifies property enquiries from ads in under two minutes, scores them, and drops hot leads straight into the sales team's CRM with a site-visit slot."
 metrics:
   - { value: "<2 min", label: "Designed time from ad click to qualified lead" }
   - { value: "5x", label: "Projected faster first response than manual follow-up" }
   - { value: "0", label: "Leads left untouched overnight, by design" }
+deliverables:
+  - "WhatsApp qualification assistant"
+  - "Lead scoring and routing rules"
+  - "CRM pipeline and lead summaries"
+  - "Site-visit booking from live slots"
+  - "Click-to-WhatsApp ad creatives"
+  - "Project website and brochure pages"
 stack: ["WhatsApp Business API", "Claude", "n8n", "HubSpot / Zoho CRM", "Meta Lead Ads", "Google Sheets"]
 ---
 
+## Overview
+
+Skyhaven Realty is a fictional Bengaluru developer launching a residential project in Whitefield. Its ads bring in hundreds of enquiries a week from Meta, Google, property portals and the website. The sales team can only call so many, and by the time they ring a lead from last night, a competitor already has.
+
 ## The challenge
 
-Skyhaven is a fictional mid-size developer selling 2 and 3 BHK apartments in Pune. Its Meta ads bring in hundreds of enquiries a week. Most are cold, a few are ready to buy, and the sales team spends its mornings calling everyone in the order they came in.
+Most property enquiries are window shopping. A few are buyers with a budget, a loan and a deadline. Sales teams spend their mornings calling everyone to find the few, while the serious buyers wait. The brief was to reply to every enquiry instantly, find the serious ones and put them in front of a relationship manager with a visit already booked.
 
-## Our approach
+## The conversation
 
-We designed a five-question qualification flow covering budget, configuration, timeline, financing and preferred location. It runs as a natural WhatsApp conversation rather than a form, and answers questions about amenities, possession dates and pricing from a verified project sheet.
+Every ad and form leads to one WhatsApp thread. The assistant greets the buyer with the project and asks four things, as tap-to-answer buttons rather than typing: size, budget, timeline and how they're funding it. It answers common questions (price, possession date, distance to the metro) from the approved brochure and offers live site-visit slots from the sales calendar.
 
-## The solution
+<Figure src="/work/skyhaven-realty/mobile.jpg" alt="Three phones: a click-to-WhatsApp property ad, the qualification chat and the project website" caption="Ad, chat and site: the buyer's path." />
 
-Lead-ad submissions trigger an n8n workflow that opens a WhatsApp conversation within seconds. Claude runs the dialogue, extracts structured answers and computes a lead score. Hot leads are pushed to the CRM with a summary and offered site-visit slots, warm leads enter a nurture sequence, and every lead gets a reply even at 2 AM.
+## Scoring and routing
+
+Answers and intent signals feed a 0 to 100 score. Leads above 80 go to a relationship manager in real time with a written summary, so the first call starts with "I hear you're relocating from Pune" instead of "How can I help?". Lower scores get a gentle follow-up on day 1, 3 and 7.
+
+<Figure src="/work/skyhaven-realty/flow.jpg" alt="Diagram of the lead journey: enquiry, WhatsApp qualification, scoring and routing, site visit booked" caption="Ad click to site visit, in under two minutes." />
+
+<Insight>The first call should start with what the buyer already told you.</Insight>
+
+## The website
+
+We also designed the project site the ads point to: full-bleed photography, prices and possession date up front, a RERA line in the footer and a WhatsApp button on every screen.
+
+<Figure src="/work/skyhaven-realty/site.jpg" alt="Skyhaven Residences website hero with a modern white villa and pool" caption="Project website." />
+
+<Duo a="/work/skyhaven-realty/detail.jpg" b="/work/skyhaven-realty/detail-2.jpg" altA="Brochure page with a sunlit living room and 'Light on three sides.'" altB="Phone showing the click-to-WhatsApp ad on a gold background" caption="Brochure spread and the click-to-WhatsApp ad." />
 
 ## Projected impact
 
-Design targets, not client results: every enquiry answered in under a minute, sales calls focused on the top fifth of leads, and a full audit trail of every conversation in the CRM.
+Design targets for a concept, not client results: a reply to every enquiry within seconds, any time of day, and a sales team that spends its calls on buyers who are ready to visit.

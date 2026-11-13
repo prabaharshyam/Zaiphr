@@ -8,7 +8,7 @@ import { WorkGrid } from "@/components/work/WorkGrid";
 
 export const metadata: Metadata = pageMeta({
   title: "Work",
-  description: "Concept projects and showcase builds across AI automation, voice agents, websites, apps, branding, media and influencer marketing.",
+  description: "Live builds and concept case studies across AI automation, voice agents, websites, apps, branding, media and influencer marketing.",
   path: "/work",
   image: "/og/work.jpg",
 });
@@ -25,12 +25,12 @@ export default function WorkPage() {
         </RevealText>
         <div className="mt-10 grid grid-cols-1 gap-8 border-t border-line pt-8 md:grid-cols-12">
           <p className="text-xl leading-relaxed text-muted md:col-span-7">
-            We&apos;re a new studio, so this is our thinking made visible: concept projects and showcase builds for fictional
-            brands, each with a full case study.
+            Live sites we&apos;ve designed and built, plus concept projects that show how we&apos;d solve problems for other
+            kinds of businesses. Each one has a full case study.
           </p>
           <p className="text-sm leading-relaxed text-muted md:col-span-4 md:col-start-9">
-            Every card is labelled. Metrics are design targets, never claimed client results. Real client work will appear
-            here, marked as such, as it ships.
+            Every card is labelled. Live projects link to the real site. Concept projects use fictional brands, and their
+            figures are design targets, never claimed results.
           </p>
         </div>
         <div className="mt-16">

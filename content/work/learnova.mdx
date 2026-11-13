@@ -4,32 +4,58 @@ client: "Learnova"
 slug: "learnova"
 label: "Showcase Build"
 service: "mobile-web-apps"
-services: ["mobile-web-apps", "ai-voice-agents"]
+services: ["mobile-web-apps", "ai-automations"]
 industry: "Education"
 year: 2026
-order: 8
+order: 10
 featured: false
 accent: "#7C3AED"
+timeline: "8 weeks (planned MVP)"
 summary: "An AI study companion for Class 9–12 students: step-by-step hints, voice doubt-solving in English and Hindi, and progress reports parents can read."
 metrics:
   - { value: "Step-by-step", label: "Hints first, answers last, by design" }
   - { value: "2 languages", label: "Voice doubt-solving, English + Hindi" }
   - { value: "Weekly", label: "Automated parent progress reports" }
+deliverables:
+  - "Student app for iOS and Android"
+  - "Hint engine with step checks"
+  - "Voice doubts in English, Hindi and Hinglish"
+  - "Adaptive practice and mock tests"
+  - "Parent report on web and WhatsApp"
+  - "Marketing site"
 stack: ["React Native", "Next.js", "Claude", "Speech-to-text", "Supabase", "Resend"]
 ---
 
-## The challenge
+## Overview
 
-Learnova is a fictional edtech start-up. Students already had answer apps; what they lacked was someone patient to explain why, at 11 PM, in the language they think in.
+Learnova is a fictional study app we designed as a showcase build for Class 9 to 12 students on the CBSE and ICSE boards. The idea came from a simple worry parents have about AI homework helpers: they hand over the answer, and the child learns nothing.
 
-## Our approach
+## Hints first, answers last
 
-A Socratic tutor that asks before it tells. It gives a hint, then a stronger hint, then a worked example, and only then the answer. Students can type, snap a photo or simply ask out loud.
+Learnova never opens with the solution. A student snaps a question and the app asks what they'd try first, then gives the smallest useful hint. Each step has a quick check before the next one appears. The full worked answer is available, but only after the student has had a go.
 
-## The solution
+<Insight>Stuck on a problem? Get a hint, not the answer.</Insight>
 
-A cross-platform app where Claude, with careful guardrails, drives the tutoring logic, plus a voice mode for spoken doubts. Every session is mapped to syllabus topics, so weak areas surface automatically in a weekly report for students and parents.
+<Figure src="/work/learnova/mobile.jpg" alt="Three phones: the student home with today's plan, a step-by-step factorisation hint, and a voice doubt answered in Hindi" caption="Home, hint mode and a voice doubt in Hindi." />
+
+## Doubts in your own language
+
+Many students think in Hindi and write in English. Voice doubts work in either, or both mixed, and the explanation comes back the same way, with a diagram when it helps.
+
+## Practice that adapts
+
+Daily plans are sized to the time the student has, and questions get harder as mastery grows. Before exams, board-style mock papers with timers and marking schemes take over.
+
+## A report parents can actually read
+
+Every Sunday parents get a plain-language report on WhatsApp: time studied, topics mastered, where their child is stuck and one thing they can do to help this week.
+
+<Figure src="/work/learnova/report.jpg" alt="Parent report: time studied, questions tried, topics mastered, minutes per day chart and topic progress" caption="The weekly parent report (illustrative data)." />
+
+<Figure src="/work/learnova/site.jpg" alt="Learnova site section 'A patient tutor in your pocket' with feature cards and a parents section" caption="Marketing site: how it helps, and the parents section." />
+
+<Duo a="/work/learnova/detail.jpg" b="/work/learnova/detail-2.jpg" altA="Phone showing a Hindi voice doubt over a photo of a student writing" altB="Phone showing the student home screen with a study streak" caption="Voice doubts and the daily plan." />
 
 ## Projected impact
 
-Design targets, not client results: more time spent reasoning than copying, measurable topic mastery, and parents who can see progress.
+Design targets for a showcase build, not client results: students who reach the answer themselves more often, a habit of short daily study and parents who know how it's going without asking twice.

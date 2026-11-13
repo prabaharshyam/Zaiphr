@@ -7,29 +7,57 @@ service: "websites"
 services: ["websites", "branding-marketing"]
 industry: "D2C"
 year: 2026
-order: 2
+order: 4
 featured: true
 accent: "#C66B3D"
+timeline: "6 weeks (planned)"
 summary: "A fast, editorial Shopify storefront for a skincare brand, with ritual-led navigation, ingredient storytelling and a checkout built for Indian payment habits."
 metrics:
   - { value: "<1.5s", label: "Target LCP on 4G mobile" }
   - { value: "+25%", label: "Projected lift in add-to-cart vs. a stock theme" }
   - { value: "3-tap", label: "Designed checkout with UPI first" }
+deliverables:
+  - "Storefront design system"
+  - "Ritual-led navigation and skin quiz"
+  - "Product pages with ingredient stories"
+  - "UPI-first mobile checkout with COD"
+  - "Product renders and launch social kit"
+  - "Headless Shopify build"
 stack: ["Shopify (headless)", "Next.js", "Sanity CMS", "Razorpay / UPI", "Klaviyo", "Vercel"]
 ---
 
+## Overview
+
+Noor & Dew is a fictional skincare brand from Kochi that pairs one Ayurvedic hero ingredient with one proven active in every formula. It sells almost entirely online, mostly to first-time buyers on their phones. The storefront had to explain a new brand in seconds, make choosing easy and get out of the way at checkout.
+
 ## The challenge
 
-Noor & Dew is a fictional D2C skincare brand built around clean, Ayurveda-inspired formulas. Its products are good, but its stock theme made every product look the same. Shoppers couldn't tell which routine was right for them, and mobile pages were slow.
+Skincare shoppers don't think in product types, they think in routines. A stock theme sorts by "serums" and "moisturisers" and leaves people to work out the order themselves. And in India, the checkout has to treat UPI and cash on delivery as first-class options, not afterthoughts.
 
-## Our approach
+## Shop by ritual
 
-We built the store around **rituals, not SKUs**: Morning Glow, Night Repair and Sun Days. Each ritual explains the order of use, the skin types it suits and the key actives. An ingredient glossary turns long INCI lists into plain language.
+We organised the store around three rituals (morning, evening and weekly), each with three steps. Every product page says which ritual and step it belongs to. A two-minute skin quiz builds a starter ritual with sample sizes first, so trying a new brand feels low risk.
 
-## The solution
+<Figure src="/work/noor-and-dew/product.jpg" alt="Kumkumadi Glow Oil product page with size options, payment options and delivery date" caption="Product page: ritual step, sizes, pay options and a delivery date for your pincode." />
 
-A headless Next.js storefront on top of Shopify, with Sanity for editorial content. Pages are statically generated and images are art-directed per breakpoint. Checkout leads with UPI and saves addresses for one-tap repeat orders, and abandoned-cart flows run through Klaviyo and WhatsApp.
+## Ingredient storytelling
+
+Each hero ingredient gets a plain-language note on what it does and at what percentage, next to the Ayurvedic story behind it. No clinical jargon, no miracle claims. The product renders keep the range consistent: amber glass for actives, frosted jars for creams.
+
+<Figure src="/work/noor-and-dew/range.jpg" alt="The four core products, a cream jar, two amber dropper bottles and a pump bottle, on a warm stone surface" caption="The core ritual range." />
+
+## A checkout built for Indian habits
+
+The mobile checkout puts UPI first, with one tap into GPay, PhonePe or Paytm, then cards, cash on delivery (with a small fee shown up front) and no-cost EMI. The address is pre-filled for returning customers and the delivery date is shown before payment, not after.
+
+<Figure src="/work/noor-and-dew/mobile.jpg" alt="Three phones: shop-by-ritual cards, the product page and the UPI-first checkout" caption="Mobile: rituals, product page and checkout." />
+
+<Duo a="/work/noor-and-dew/social.jpg" b="/work/noor-and-dew/social-2.jpg" altA="Launch social post: 'Glow is a habit.' over a portrait" altB="Ingredient spotlight post for the saffron Kumkumadi oil" caption="Launch social kit." />
+
+## Performance
+
+A headless build on Next.js and Vercel, with images sized per device and the hero preloaded, targets a largest contentful paint under 1.5 seconds on a mid-range Android phone over 4G. Content lives in Sanity so the brand team can publish rituals and journal stories without a developer.
 
 ## Projected impact
 
-Design targets, not client results: sub-1.5s LCP on mid-range Android phones, a clearer routine-finder path to cart, and higher repeat-purchase rates through replenishment reminders.
+Design targets for a concept, not client results: faster pages than a stock theme, fewer drop-offs between product and checkout, and a ritual structure that raises the number of products per order.

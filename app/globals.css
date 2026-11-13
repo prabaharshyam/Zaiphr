@@ -263,6 +263,12 @@ html.js-motion [data-panel] + [data-panel] {
 .prose-zl th, .prose-zl td { border-bottom: 1px solid var(--line); padding: 0.85rem 1rem 0.85rem 0; vertical-align: top; }
 .prose-zl td:first-child { color: var(--text); }
 
+/* Case studies: text in a reading column, figures break out to the container width */
+.case > :not(.case-fig) { max-width: 46rem; margin-inline: auto; }
+.case > h2 { margin-top: 5rem; }
+.case-fig { margin: 4rem 0; }
+.case-insight { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; font-size: clamp(1.6rem, 3.2vw, 2.6rem); line-height: 1.1; color: var(--text); margin: 3.5rem auto !important; }
+
 /* Print / "Download PDF" for tool reports */
 @media print {
   @page { margin: 14mm; }
