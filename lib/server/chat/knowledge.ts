@@ -34,10 +34,10 @@ ${d.faqs.map((f) => `  - Q: ${f.q} A: ${f.a}`).join("\n")}`;
     .join("\n\n");
 
   const work = getProjects()
-    .map((p) => `- ${p.client} (${p.label}, ${p.industry}) - /work/${p.slug}: ${p.summary}`)
+    .map((p) => `- [${p.client}](/work/${p.slug}) (${p.label}, ${p.industry}): ${p.summary}`)
     .join("\n");
   const posts = getPosts()
-    .map((p) => `- "${p.title}" - /blog/${p.slug}`)
+    .map((p) => `- [${p.title}](/blog/${p.slug})`)
     .join("\n");
   const cases = useCases.map((u) => `- ${u.title} (${u.industry})`).join("\n");
 

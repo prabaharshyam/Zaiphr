@@ -86,6 +86,13 @@ export function ChatWidget() {
     setOpen(false);
     setTimeout(() => launcher.current?.focus(), 0);
   }, []);
+
+  // On phones the panel covers the page, so step aside when a link in the chat navigates.
+  const shownOn = useRef(pathname);
+  useEffect(() => {
+    if (open && pathname !== shownOn.current && matchMedia("(max-width: 767px)").matches) setOpen(false);
+    shownOn.current = pathname;
+  }, [pathname, open]);
   useEffect(() => {
     if (!open) return;
     const onKey = (e: globalThis.KeyboardEvent) => e.key === "Escape" && close();
