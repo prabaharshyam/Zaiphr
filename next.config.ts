@@ -8,6 +8,8 @@ const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
 ];
 
+const imageCache = [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }];
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -15,8 +17,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
-      // Generated images and covers never change in place: cache them hard.
-      { source: "/(og|blog|work)/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }] },
+      // Generated images: cache them hard. Only image paths match (/og/x.jpg, /work/<slug>/x.jpg,
+      // /blog/<slug>/x.jpg); the /work/<slug> and /blog/<slug> pages themselves must stay fresh.
+      { source: "/og/:file", headers: imageCache },
+      { source: "/(blog|work)/:slug/:file", headers: imageCache },
     ];
   },
 };
