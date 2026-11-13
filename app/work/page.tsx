@@ -29,8 +29,8 @@ export default function WorkPage() {
             kinds of businesses. Each one has a full case study.
           </p>
           <p className="text-sm leading-relaxed text-muted md:col-span-4 md:col-start-9">
-            Every card is labelled. Live projects link to the real site. Concept projects use fictional brands, and their
-            figures are design targets, never claimed results.
+            Live projects link to the real site. Concept projects use fictional brands, and their figures are design targets,
+            never claimed results.
           </p>
         </div>
         <div className="mt-16">

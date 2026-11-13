@@ -24,9 +24,6 @@ export function ProjectCard({ p, className, sizes = "(min-width: 1024px) 45vw, 9
           sizes={sizes}
           className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out)] group-hover:scale-[1.04]"
         />
-        <span className="label-mono absolute top-4 left-4 rounded-full bg-bg/75 px-3 py-1.5 text-[0.62rem] backdrop-blur-md">
-          {p.label}
-        </span>
         <span
           aria-hidden
           className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-x-100"

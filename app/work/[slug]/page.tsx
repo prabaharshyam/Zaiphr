@@ -46,10 +46,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
   return (
     <article className="relative">
       <header className="container-x pt-[calc(var(--nav-h)+10vh)] pb-14">
-        <div className="flex flex-wrap items-center gap-3">
-          <Eyebrow>{p.client}</Eyebrow>
-          <span className="label-mono rounded-full border border-signature/50 px-2.5 py-1 text-[0.6rem] text-signature">{p.label}</span>
-        </div>
+        <Eyebrow>{p.client}</Eyebrow>
         <RevealText as="h1" trigger="ready" className="font-display-wide mt-8 max-w-[16ch] text-[length:var(--text-giga)]">
           {p.title}
         </RevealText>

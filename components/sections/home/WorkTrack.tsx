@@ -84,8 +84,8 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
           </RevealText>
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">
-          <span className="text-text">Live sites</span> we&apos;ve shipped, alongside concept projects for fictional brands.
-          Every card says which is which.
+          <span className="text-text">Live sites</span> we&apos;ve shipped, alongside concept projects that show how we&apos;d
+          solve problems for other kinds of businesses.
         </p>
       </div>
 
@@ -111,9 +111,6 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
                   priority={i === 0}
                 />
               </div>
-              <span className="label-mono absolute top-4 left-4 rounded-full bg-bg/75 px-3 py-1.5 text-[0.62rem] text-text backdrop-blur-md">
-                {p.label}
-              </span>
               <span
                 aria-hidden
                 className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-x-100"
