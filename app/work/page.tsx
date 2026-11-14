@@ -7,7 +7,7 @@ import { RevealText } from "@/components/ui/RevealText";
 import { WorkGrid } from "@/components/work/WorkGrid";
 
 export const metadata: Metadata = pageMeta({
-  title: "Work",
+  title: "Our Work: AI, Website & App Projects",
   description: "Live builds and concept case studies across AI automation, voice agents, websites, apps, branding, media and influencer marketing.",
   path: "/work",
   image: "/og/work.jpg",

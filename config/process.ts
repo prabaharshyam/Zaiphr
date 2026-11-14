@@ -36,7 +36,7 @@ export const processSteps = [
     title: "Grow",
     duration: "Ongoing",
     summary:
-      "Content, ads and creators feed the engine; we measure, tune prompts and iterate every month on what actually converts.",
+      "Content, ads and creators bring in demand; we measure, tune prompts and iterate every month on what actually converts.",
     outputs: ["Campaigns", "Optimisation", "Monthly reviews"],
   },
 ];

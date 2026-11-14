@@ -1,10 +1,10 @@
 export const about = {
   mission:
-    "Big companies have teams for everything: ops, data, design, growth, support. Small teams have ambition and not enough hours. We build the AI-powered engines that close that gap, so a team of ten can move like a team of a hundred.",
+    "Big companies have teams for everything: ops, data, design, growth, support. Small teams have ambition and not enough hours. We build the AI automations, assistants and products that close that gap, so a team of ten can move like a team of a hundred.",
   values: [
     { title: "Ship weekly", text: "Momentum beats perfect plans. You'll see something working every week, not a big reveal at the end." },
     { title: "Honest by default", text: "Clear pricing, realistic timelines, labelled concept work, and a straight answer when something isn't worth building." },
-    { title: "Systems over hacks", text: "We build engines that compound: documented, monitored and owned by you, not duct-taped growth tricks." },
+    { title: "Systems over hacks", text: "We build systems that compound: documented, monitored and owned by you, not duct-taped growth tricks." },
     { title: "Own the outcome", text: "We measure success in hours saved, leads won and revenue moved, not in deliverables shipped." },
     { title: "Taste matters", text: "AI makes average easy. We care about craft, so what we ship feels unmistakably premium." },
   ],

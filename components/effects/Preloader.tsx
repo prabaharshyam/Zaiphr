@@ -104,7 +104,7 @@ export function Preloader() {
         </div>
       </div>
       <div className="container-x relative flex items-end justify-between pb-8" data-pl-fade>
-        <span className="label-mono text-muted">Calibrating engines</span>
+        <span className="label-mono text-muted">Loading</span>
         <span className="font-mono text-5xl leading-none font-light tabular-nums sm:text-7xl">
           {String(pct).padStart(3, "0")}
           <span className="text-signature">%</span>

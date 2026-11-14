@@ -137,7 +137,7 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
           <p className="font-display-tight text-4xl md:text-5xl">
             {total} builds.
             <br />
-            <span className="text-muted">7 engines.</span>
+            <span className="text-muted">7 services.</span>
           </p>
           <Button href="/work" variant="outline">
             View all work

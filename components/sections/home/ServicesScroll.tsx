@@ -137,7 +137,7 @@ export function ServicesScroll() {
             <div>
               <Eyebrow index="01">What we build</Eyebrow>
               <h2 id="services-heading" className="font-display-tight mt-4 text-2xl max-md:sr-only md:text-3xl">
-                Seven engines. <span className="text-muted">One studio.</span>
+                Seven services. <span className="text-muted">One team.</span>
               </h2>
             </div>
             <p className="label-mono hidden text-muted tabular-nums motion-safe:block" aria-hidden>

@@ -7,8 +7,8 @@ import { RevealText } from "@/components/ui/RevealText";
 import { ServicesList } from "@/components/sections/ServicesList";
 
 export const metadata: Metadata = pageMeta({
-  title: "Services",
-  description: "AI automations, voice agents, websites, apps, branding, media and influencer marketing. Seven engines from one AI-native studio.",
+  title: "Services: AI Automation, Websites, Apps & Marketing",
+  description: "AI automation, AI voice agents, website design, mobile app development, branding, video ads and influencer marketing for startups and small businesses in India and worldwide.",
   path: "/services",
   image: "/og/services.jpg",
 });
@@ -29,10 +29,10 @@ export default function ServicesPage() {
       <div className="container-x relative">
         <Eyebrow>Services</Eyebrow>
         <RevealText as="h1" trigger="ready" className="font-display-wide mt-8 text-[length:var(--text-giga)]">
-          Seven engines.
+          Seven services.
         </RevealText>
         <RevealText as="p" split="words" trigger="ready" delay={0.3} className="mt-8 max-w-2xl text-xl leading-relaxed text-muted">
-          AI, product, brand and growth under one roof, wired together so every engine makes the others stronger.
+          AI, product, brand and growth under one roof, so your automations, website, app and marketing work together instead of in silos.
         </RevealText>
         <div className="mt-20">
           <ServicesList rows={rows} />

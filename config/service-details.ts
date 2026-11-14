@@ -269,11 +269,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       { title: "Reporting", text: "A single dashboard for spend, leads, CAC and ROAS, with monthly insights." },
     ],
     useCases: {
-      realEstate: "A project brand with naming, launch campaign, hoardings and a lead-gen ad engine.",
+      realEstate: "A project brand with naming, launch campaign, hoardings and lead-generation ads.",
       d2c: "A full brand system with packaging and a launch funnel for marketplaces and your own store.",
       clinics: "A trustworthy, modern clinic brand with local SEO and Google Ads for high-intent searches.",
       education: "Admission-season campaigns with clear outcomes-led messaging and parent-friendly creatives.",
-      saas: "Category positioning, website messaging and a LinkedIn + search demand engine.",
+      saas: "Category positioning, website messaging and LinkedIn + search campaigns that bring in demand.",
       restaurants: "A distinctive restaurant identity, menu design and Instagram-first launch.",
     },
     process: [
@@ -307,7 +307,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Long videos never get repurposed",
     ],
     solutions: [
-      "A monthly content engine with batched shoots and fast edits",
+      "A monthly content plan with batched shoots and fast edits",
       "Hook-first formats tested against real performance data",
       "A steady pipeline of fresh ad creatives in every aspect ratio",
       "One long video turned into 10–20 short assets",
@@ -343,7 +343,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     packages: [
       { name: "Content starter", inr: 40000, usd: 500, per: "month", description: "A consistent short-form presence.", features: ["12 short-form assets", "Scripts & hooks", "Captions & thumbnails", "Monthly review"] },
-      { name: "Content engine", inr: 90000, usd: 1100, per: "month", description: "Shoots, edits and ad creatives.", features: ["30 assets incl. ads", "1 shoot day / month", "3 aspect ratios", "Creative testing"], highlight: true },
+      { name: "Content + ads", inr: 90000, usd: 1100, per: "month", description: "Shoots, edits and ad creatives.", features: ["30 assets incl. ads", "1 shoot day / month", "3 aspect ratios", "Creative testing"], highlight: true },
       { name: "Ads + creative", inr: 35000, usd: 450, per: "month", description: "Media buying with creative refreshes (plus ad spend).", features: ["Meta + Google ads", "Weekly creative refresh", "Landing page tweaks", "ROAS reporting"] },
     ],
   },

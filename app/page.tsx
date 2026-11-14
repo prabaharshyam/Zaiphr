@@ -13,6 +13,7 @@ import { NewsTeaser } from "@/components/sections/home/NewsTeaser";
 import { Stats } from "@/components/sections/home/Stats";
 import { BlogHighlights } from "@/components/sections/home/BlogHighlights";
 import { BigCta } from "@/components/sections/home/BigCta";
+import { CompanyFaq } from "@/components/sections/home/CompanyFaq";
 import { SceneLoader } from "@/components/three/SceneLoader";
 import { getLatestBrief } from "@/lib/server/news/queries";
 import { getPosts } from "@/lib/blog";
@@ -50,19 +51,41 @@ export default async function HomePage() {
             "@type": ["Organization", "ProfessionalService"],
             "@id": `${site.url}/#org`,
             name: site.name,
+            alternateName: ["Zaiphr", "Zaiphr Labs India", "zaiphr.in"],
             url: site.url,
             logo: `${site.url}/icon-512.png`,
             image: `${site.url}/og/home.jpg`,
             description: site.description,
+            slogan: site.slogan,
+            foundingDate: "2026",
             email: site.email,
             telephone: site.phone.replace(/\s/g, ""),
             address: { "@type": "PostalAddress", addressCountry: "IN" },
-            areaServed: ["IN", "Worldwide"],
-            knowsAbout: services.map((x) => x.title),
+            areaServed: [{ "@type": "Country", name: "India" }, "Worldwide"],
+            priceRange: "₹₹",
+            knowsAbout: ["AI automation", "AI voice agents", "WhatsApp automation", "Website design and development", "Mobile app development", "Branding", "Video ads", "Influencer marketing", "Generative AI for small businesses"],
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Services",
+              itemListElement: services.map((x) => ({
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: x.title, description: x.summary, url: `${site.url}/services/${x.slug}` },
+              })),
+            },
             sameAs: site.socials.map((x) => x.href),
             contactPoint: { "@type": "ContactPoint", contactType: "sales", email: site.email, telephone: site.phone.replace(/\s/g, ""), availableLanguage: ["English"] },
           },
-          { "@context": "https://schema.org", "@type": "WebSite", "@id": `${site.url}/#website`, name: site.name, url: site.url, publisher: { "@id": `${site.url}/#org` }, inLanguage: "en-IN" },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": `${site.url}/#website`,
+            name: site.name,
+            alternateName: ["Zaiphr", "zaiphr.in"],
+            description: site.description,
+            url: site.url,
+            publisher: { "@id": `${site.url}/#org` },
+            inLanguage: "en-IN",
+          },
         ]}
       />
       <SceneLoader />
@@ -77,6 +100,7 @@ export default async function HomePage() {
       <NewsTeaser stories={stories} />
       <Stats />
       <BlogHighlights posts={getPosts().slice(0, 3).map((p) => ({ slug: p.slug, title: p.title, category: p.category, minutes: p.minutes, cover: p.cover }))} />
+      <CompanyFaq />
       <BigCta />
     </>
   );

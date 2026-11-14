@@ -1,5 +1,6 @@
 import "server-only";
 import { site } from "@/config/site";
+import { companyFaqs } from "@/config/faq";
 import { services } from "@/config/services";
 import { serviceDetails } from "@/config/service-details";
 import { about } from "@/config/about";
@@ -44,7 +45,10 @@ ${d.faqs.map((f) => `  - Q: ${f.q} A: ${f.a}`).join("\n")}`;
   return `## Company
 ${site.name} - ${site.tagline}. ${site.description}
 Location: ${site.location}. Email: ${site.email}. Phone/WhatsApp: ${site.phone}. Book a free 30-minute call: ${site.calendlyUrl}
+Positioning: ${site.positioning}
 Mission: ${about.mission}
+Company FAQ:
+${companyFaqs.map((f) => `  - Q: ${f.q} A: ${f.a}`).join("\n")}
 What makes us different (taste): ${about.taste.headline} ${about.taste.body.join(" ")} ${about.taste.closing}
 Team: ${about.team.body}
 Values: ${about.values.map((v) => `${v.title} - ${v.text}`).join(" ")}

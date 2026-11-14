@@ -164,7 +164,7 @@ export function Nav() {
             <div className="col-span-3 flex flex-col justify-between gap-6">
               <p className="label-mono text-muted">Capabilities / 07</p>
               <p className="font-display-tight text-3xl">
-                Seven engines.
+                Seven services.
                 <br />
                 <span className="text-muted">One studio.</span>
               </p>

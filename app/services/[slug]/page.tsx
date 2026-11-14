@@ -18,6 +18,17 @@ import { Eyebrow } from "@/components/ui/SectionHeading";
 import { TransitionLink } from "@/components/ui/TransitionLink";
 import { JsonLd } from "@/components/seo/JsonLd";
 
+/** Search-friendly titles: what people type, plus where we work. */
+const seoTitles: Record<string, string> = {
+  "ai-automations": "AI Automation Services for Small Businesses in India",
+  "ai-voice-agents": "AI Voice Agents & AI Receptionist Services in India",
+  websites: "Website Design & Development Company in India",
+  "mobile-web-apps": "Mobile & Web App Development Company in India",
+  "branding-marketing": "Branding & Digital Marketing Agency in India",
+  "media-ads": "Video Production & Ad Creative Agency in India",
+  "influencer-marketing": "Influencer Marketing Agency in India",
+};
+
 export const generateStaticParams = () => services.map((s) => ({ slug: s.slug }));
 
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
@@ -26,7 +37,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   const d = serviceDetails[slug];
   if (!s || !d) return {};
   return pageMeta({
-    title: `${s.title}: ${d.headline.replace(/\.$/, "")}`,
+    title: seoTitles[s.slug] ?? s.title,
     description: d.intro,
     path: `/services/${s.slug}`,
     image: `/og/service-${s.slug}.jpg`,
@@ -54,13 +65,24 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             "@type": "Service",
             name: service.title,
             description: detail.intro,
-            provider: { "@type": "Organization", name: site.name, url: site.url },
+            serviceType: service.title,
+            url: `${site.url}/services/${service.slug}`,
+            provider: { "@type": "Organization", "@id": `${site.url}/#org`, name: site.name, url: site.url },
             areaServed: ["IN", "Worldwide"],
             offers: detail.packages.map((p) => ({
               "@type": "Offer",
               name: p.name,
               priceSpecification: { "@type": "PriceSpecification", minPrice: p.inr, priceCurrency: "INR" },
             })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+              { "@type": "ListItem", position: 2, name: "Services", item: `${site.url}/services` },
+              { "@type": "ListItem", position: 3, name: service.title, item: `${site.url}/services/${service.slug}` },
+            ],
           },
           {
             "@context": "https://schema.org",
@@ -88,7 +110,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           <div className="container-x">
             <Eyebrow index="05">Showcase</Eyebrow>
             <h2 id="sw-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.6vw,4.4rem)]">
-              Showcase builds.
+              Related work.
             </h2>
             <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2">
               {projects.map((p) => (

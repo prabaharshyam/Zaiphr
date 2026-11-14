@@ -1,7 +1,6 @@
 import { site } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { RevealText } from "@/components/ui/RevealText";
-import { Eyebrow } from "@/components/ui/SectionHeading";
 import { HeroCore } from "./HeroCore";
 
 export function Hero() {
@@ -11,9 +10,12 @@ export function Hero() {
       <HeroCore />
 
       <div className="container-x relative flex flex-1 flex-col justify-end pb-10 md:pb-14">
-        <Eyebrow className="mb-6 md:mb-8">AI-native tech studio · Est. 2026</Eyebrow>
-
         <h1 className="font-display-wide text-[length:var(--text-mega)]">
+          {/* The small line is part of the h1, so the page's main heading says what we are in plain words. */}
+          <span className="label-mono mb-6 flex items-center gap-3 text-muted md:mb-8">
+            <span className="h-1.5 w-1.5 rounded-full bg-signature shadow-[0_0_10px_var(--signature)]" aria-hidden />
+            <span>Zaiphr Labs · AI agency for startups &amp; small businesses</span>
+          </span>
           <RevealText as="span" trigger="ready" className="block">
             AI builds.
           </RevealText>
@@ -30,7 +32,7 @@ export function Hero() {
             delay={0.35}
             className="max-w-xl text-lg leading-relaxed text-muted md:col-span-6 md:text-xl"
           >
-            {site.positioning} AI automations, voice agents, websites, apps, brand, media and creators, engineered as one system.
+            {site.positioning}
           </RevealText>
           <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
             <Button href="/contact" size="lg">

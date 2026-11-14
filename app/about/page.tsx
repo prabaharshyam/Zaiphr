@@ -8,8 +8,8 @@ import { LogoMark } from "@/components/ui/Logo";
 import { Testimonials } from "@/components/sections/Testimonials";
 
 export const metadata: Metadata = pageMeta({
-  title: "About",
-  description: "Anyone can build with AI now. Taste decides what is worth building. Zaiphr Labs is a crew of tech nerds, creative heads and camera geeks who bring the craft that makes the difference.",
+  title: "About Zaiphr Labs: an AI agency built on taste",
+  description: "Zaiphr Labs is an AI agency in India: a crew of tech nerds, creative heads and camera geeks who build AI automations, voice agents, websites, apps and marketing for startups and small businesses.",
   path: "/about",
   image: "/og/about.jpg",
 });
@@ -176,7 +176,7 @@ export default function AboutPage() {
         <div className="container-x">
           <Eyebrow index="06">Stack</Eyebrow>
           <h2 id="stack-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.6vw,4.4rem)]">
-            The tools behind the engines.
+            The tools we build with.
           </h2>
           <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
             {about.stack.map((g) => (
