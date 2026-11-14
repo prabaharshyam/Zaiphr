@@ -12,7 +12,7 @@ import path from "node:path";
 import { chromium } from "playwright-core";
 
 const [base = "http://localhost:3100", ...only] = process.argv.slice(2);
-const services = ["ai-automations", "ai-voice-agents", "websites", "mobile-web-apps", "branding-marketing", "media-ads", "influencer-marketing"];
+const services = ["ai-strategy", "ai-agents-automation", "conversational-ai", "data-knowledge-ai", "ai-product-engineering", "ai-enablement", "brand-growth"];
 const shots = {
   home: "/",
   about: "/about",
@@ -21,6 +21,7 @@ const shots = {
   work: "/work",
   "use-cases": "/use-cases",
   tools: "/tools",
+  labs: "/labs",
   "ai-stack-finder": "/tools/ai-stack-finder",
   "ai-tools": "/ai-tools",
   news: "/news",

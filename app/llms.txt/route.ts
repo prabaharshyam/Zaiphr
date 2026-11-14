@@ -1,7 +1,8 @@
 import { site } from "@/config/site";
 import { services } from "@/config/services";
 import { serviceDetails } from "@/config/service-details";
-import { companyFaqs, fromPrice } from "@/config/faq";
+import { companyFaqs } from "@/config/faq";
+import { engagements } from "@/config/engagements";
 import { getPosts } from "@/lib/blog";
 import { getProjects } from "@/lib/work";
 
@@ -18,27 +19,34 @@ ${site.positioning}
 
 - Website: ${site.url}
 - Based in: India (working with clients in India and worldwide)
-- Started: 2026
+- Founded: 2026
+- What we are: an AI consulting and engineering firm (AI Consulting & Labs)
 - Email: ${site.email}
 - Phone / WhatsApp: ${site.phone}
-- Book a free 30-minute call: ${u("/contact")}
+- Talk to an expert: ${u("/contact")}
 - Not affiliated with other companies that use the name "Zaiphr".
 
-## Services
+## Practice areas
 
 ${services
-  .map((s) => `- [${s.title}](${u(`/services/${s.slug}`)}): ${s.summary} From ${fromPrice(s.slug)}. ${serviceDetails[s.slug]?.intro ?? ""}`)
+  .map((s) => `- [${s.title}](${u(`/services/${s.slug}`)}): ${s.summary} ${serviceDetails[s.slug]?.intro ?? ""}`)
   .join("\n")}
+
+## How we engage
+
+We don't publish prices. Each engagement is scoped and priced after a discovery conversation.
+
+${engagements.map((e) => `- ${e.name} (${e.duration}): ${e.summary}`).join("\n")}
 
 ## Questions and answers
 
 ${companyFaqs.map((f) => `### ${f.q}\n${f.a}`).join("\n\n")}
 
-## Free tools
+## Labs: our own products
 
 - [AI Stack Finder](${u("/tools/ai-stack-finder")}): describe a business problem and get a recommended set of AI tools, how they connect and what they cost.
-- [AI tools directory](${u("/ai-tools")}): hand-picked AI tools for small businesses, by category and industry.
-- [AI News](${u("/news")}): a daily brief of the AI stories that matter for founders.
+- [AI tools directory](${u("/ai-tools")}): hand-picked AI tools for business teams, by category and industry.
+- [AI News](${u("/news")}): a daily brief of the AI stories that matter for business leaders.
 
 ## Work
 
@@ -46,7 +54,7 @@ ${getProjects()
   .map((p) => `- [${p.client}](${u(`/work/${p.slug}`)})${p.live ? ` (live site: ${p.live})` : " (concept project, fictional brand)"}: ${p.summary}`)
   .join("\n")}
 
-## Guides
+## Insights
 
 ${getPosts()
   .map((p) => `- [${p.title}](${u(`/blog/${p.slug}`)}): ${p.description}`)
@@ -56,7 +64,8 @@ ${getPosts()
 
 - [About](${u("/about")})
 - [Services](${u("/services")})
-- [Use cases by industry](${u("/use-cases")})
+- [Labs](${u("/labs")})
+- [Industries and use cases](${u("/use-cases")})
 - [Contact](${u("/contact")})
 `;
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });

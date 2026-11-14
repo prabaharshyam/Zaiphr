@@ -1,7 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import Link from "next/link";
 import { services } from "@/config/services";
-import { serviceDetails } from "@/config/service-details";
 import { headingId, textOf } from "@/lib/blog-shared";
 import { cn } from "@/lib/utils";
 
@@ -50,21 +49,19 @@ function StackFinderCta({ problem }: { problem: string }) {
 function ServiceCta({ service }: { service: string }) {
   const s = services.find((x) => x.slug === service);
   if (!s) return null;
-  const from = serviceDetails[s.slug]?.packages?.[0];
   return (
     <div className="my-12 rounded-3xl border border-line bg-surface p-6 md:p-8">
-      <p className="label-mono text-muted">Want it done for you?</p>
+      <p className="label-mono text-muted">Work with us</p>
       <p className="font-display-tight mt-3 text-2xl leading-tight text-text md:text-3xl">{s.title} by Zaiphr Labs</p>
       <p className="mt-3 mb-6 text-muted">
         {s.summary}
-        {from && ` From ₹${from.inr.toLocaleString("en-IN")}${from.per ? ` / ${from.per}` : ""}.`}
       </p>
       <div className="flex flex-wrap gap-3">
         <Link href={`/services/${s.slug}`} className="inline-flex h-11 items-center rounded-full bg-signature px-5 text-sm font-medium text-signature-ink no-underline">
-          See how we do it →
+          Explore the practice →
         </Link>
         <Link href="/contact" className="inline-flex h-11 items-center rounded-full border border-line-strong px-5 text-sm text-text no-underline hover:border-text">
-          Book a free call
+          Talk to an expert
         </Link>
       </div>
     </div>

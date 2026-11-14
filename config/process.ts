@@ -1,42 +1,42 @@
 export const processSteps = [
   {
     index: "01",
-    title: "Discover",
-    duration: "Week 1",
+    title: "Assess",
+    duration: "Weeks 1–3",
     summary:
-      "We map your funnel, operations and tools, then find the few places where AI or better product will move revenue or save hours.",
-    outputs: ["Audit", "Opportunity map", "Success metrics"],
+      "We work with your leadership and teams to find where AI creates value, size it honestly and agree what success means, before anything is built.",
+    outputs: ["Opportunity map", "Business cases", "Roadmap"],
   },
   {
     index: "02",
-    title: "Design",
-    duration: "Week 1–2",
+    title: "Prove",
+    duration: "Weeks 3–8",
     summary:
-      "Flows, conversation scripts, interfaces and brand, designed and prototyped so you can click, call or test before we build.",
-    outputs: ["Prototypes", "Conversation design", "Brand system"],
+      "The highest-value use case is prototyped in our labs on your real data, evaluated against agreed criteria and judged go or no-go.",
+    outputs: ["Working prototype", "Evaluation results", "Production plan"],
   },
   {
     index: "03",
     title: "Build",
-    duration: "Week 2–6",
+    duration: "Weeks 8–20",
     summary:
-      "Production-grade engineering in short sprints, with a demo every week. No black boxes: you see progress as it happens.",
-    outputs: ["Web & apps", "Agents", "Integrations"],
+      "Production engineering in short sprints with a working release each sprint: secure, integrated with your systems and observable from day one.",
+    outputs: ["Production system", "Integrations", "Security review"],
   },
   {
     index: "04",
-    title: "Automate",
-    duration: "Week 4–8",
+    title: "Adopt",
+    duration: "Alongside build",
     summary:
-      "We wire everything together (CRM, WhatsApp, calendars, payments) so leads, follow-ups and reports run on their own.",
-    outputs: ["Workflows", "Dashboards", "Alerts"],
+      "Training, playbooks and change support, so the people who'll use the system are ready the day it launches.",
+    outputs: ["Training", "Playbooks", "Adoption metrics"],
   },
   {
     index: "05",
-    title: "Grow",
+    title: "Run",
     duration: "Ongoing",
     summary:
-      "Content, ads and creators bring in demand; we measure, tune prompts and iterate every month on what actually converts.",
-    outputs: ["Campaigns", "Optimisation", "Monthly reviews"],
+      "We monitor, evaluate and improve what's live, report impact against the baseline and extend it as the business grows.",
+    outputs: ["Monitoring", "Monthly improvements", "Impact reporting"],
   },
 ];

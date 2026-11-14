@@ -6,13 +6,13 @@ export function ProblemSolution({ detail }: { detail: ServiceDetail }) {
   return (
     <section aria-labelledby="ps-heading" className="relative z-10 border-t border-line bg-bg py-24 md:py-32">
       <div className="container-x">
-        <Eyebrow index="01">Problem → solution</Eyebrow>
+        <Eyebrow index="01">Challenge → approach</Eyebrow>
         <RevealText id="ps-heading" as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
-          Sound familiar? Here&apos;s what changes.
+          Where it stalls, and how we move it forward.
         </RevealText>
         <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-2">
           <div className="bg-bg p-8 md:p-12">
-            <p className="label-mono text-muted">Today</p>
+            <p className="label-mono text-muted">The challenge</p>
             <ul className="mt-8 space-y-6">
               {detail.problems.map((p) => (
                 <li key={p} className="flex gap-4 text-lg leading-snug text-text/70">
@@ -24,7 +24,7 @@ export function ProblemSolution({ detail }: { detail: ServiceDetail }) {
           </div>
           <div className="relative bg-bg-2 p-8 md:p-12">
             <div aria-hidden className="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-signature/15 blur-[90px]" />
-            <p className="label-mono relative text-signature">With Zaiphr</p>
+            <p className="label-mono relative text-signature">Our approach</p>
             <ul className="relative mt-8 space-y-6">
               {detail.solutions.map((s) => (
                 <li key={s} className="flex gap-4 text-lg leading-snug">

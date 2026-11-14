@@ -6,9 +6,9 @@ export function ServiceProcess({ detail }: { detail: ServiceDetail }) {
   return (
     <section aria-labelledby="sp-heading" className="relative z-10 bg-bg py-24 md:py-32">
       <div className="container-x">
-        <Eyebrow index="04">Process</Eyebrow>
+        <Eyebrow index="04">Delivery</Eyebrow>
         <RevealText id="sp-heading" as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
-          How we get you there.
+          How we deliver.
         </RevealText>
         <ol className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {detail.process.map((p, i) => (

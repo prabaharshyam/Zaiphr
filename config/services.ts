@@ -1,6 +1,6 @@
 /**
- * The seven Zaiphr Labs services. Order here = order on the site.
- * `form` names the shape the 3D core morphs into for this service (Phase 2).
+ * The seven Zaiphr Labs practice areas. Order here = order on the site.
+ * `form` names the shape the 3D core morphs into for this service.
  */
 export type ServiceForm =
   | "graph"
@@ -23,75 +23,86 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: "ai-automations",
+    slug: "ai-strategy",
     index: "01",
-    title: "AI Automations",
-    short: "Automations",
+    title: "AI Strategy & Advisory",
+    short: "Strategy",
     summary:
-      "Workflows, CRM and ops automation, and AI agents that run your internal busywork while your team sleeps.",
-    form: "graph",
-    capabilities: ["Workflow automation", "CRM & ops", "Internal AI agents", "Document processing"],
-  },
-  {
-    slug: "ai-voice-agents",
-    index: "02",
-    title: "AI Voice Agents",
-    short: "Voice Agents",
-    summary:
-      "Inbound and outbound voice AI that answers, qualifies and books, plus WhatsApp and website chat agents.",
-    form: "wave",
-    capabilities: ["Inbound reception", "Outbound qualification", "WhatsApp bots", "Support agents"],
-  },
-  {
-    slug: "websites",
-    index: "03",
-    title: "Websites",
-    short: "Websites",
-    summary:
-      "High-end marketing sites, landing pages and e-commerce built to load fast and convert harder.",
-    form: "grid",
-    capabilities: ["Marketing sites", "Landing pages", "E-commerce", "CMS & SEO"],
-  },
-  {
-    slug: "mobile-web-apps",
-    index: "04",
-    title: "Mobile & Web Apps",
-    short: "Apps",
-    summary:
-      "MVPs, SaaS products and internal tools, designed, engineered and shipped in weeks, not quarters.",
-    form: "phone",
-    capabilities: ["MVPs", "SaaS products", "Internal tools", "iOS & Android"],
-  },
-  {
-    slug: "branding-marketing",
-    index: "05",
-    title: "Branding & Marketing",
-    short: "Brand",
-    summary:
-      "Identity systems, positioning and digital marketing that make a young company look inevitable.",
-    form: "glyph",
-    capabilities: ["Brand identity", "Positioning", "Digital marketing", "Performance strategy"],
-  },
-  {
-    slug: "media-ads",
-    index: "06",
-    title: "Media & Ads",
-    short: "Media",
-    summary:
-      "Short-form reels, YouTube, ad creatives and AI-assisted production. Content that stops the scroll.",
-    form: "film",
-    capabilities: ["Ad creatives", "Reels & shorts", "YouTube", "AI-assisted production"],
-  },
-  {
-    slug: "influencer-marketing",
-    index: "07",
-    title: "Influencer Marketing",
-    short: "Influencers",
-    summary:
-      "Creator discovery, campaign design and performance tracking that turns attention into revenue.",
+      "Find where AI creates real value in your business, then turn it into a prioritised, costed roadmap your leadership can act on.",
     form: "orbit",
-    capabilities: ["Creator discovery", "Campaign design", "UGC programs", "Performance tracking"],
+    capabilities: ["AI opportunity assessment", "Use-case prioritisation", "Business case & ROI", "AI operating model"],
+  },
+  {
+    slug: "ai-agents-automation",
+    index: "02",
+    title: "AI Agents & Automation",
+    short: "Agents",
+    summary:
+      "Agentic workflows and automation that take on real operational work inside the systems your teams already use.",
+    form: "graph",
+    capabilities: ["Agentic workflows", "Process automation", "Document intelligence", "Systems integration"],
+  },
+  {
+    slug: "conversational-ai",
+    index: "03",
+    title: "Conversational & Voice AI",
+    short: "Voice",
+    summary:
+      "Voice and chat agents that answer, qualify, book and resolve across phone, WhatsApp and web, in your customers' languages.",
+    form: "wave",
+    capabilities: ["Voice agents", "WhatsApp & chat agents", "Contact-centre AI", "Multilingual support"],
+  },
+  {
+    slug: "data-knowledge-ai",
+    index: "04",
+    title: "Data & Knowledge AI",
+    short: "Data",
+    summary:
+      "The data foundations and retrieval systems that let AI answer from your own knowledge, accurately and with sources.",
+    form: "grid",
+    capabilities: ["Data foundations", "Enterprise search & RAG", "Analytics & forecasting", "Model evaluation"],
+  },
+  {
+    slug: "ai-product-engineering",
+    index: "05",
+    title: "AI Product Engineering",
+    short: "Products",
+    summary:
+      "AI-native web platforms, mobile apps and digital experiences, designed and engineered to production standard.",
+    form: "phone",
+    capabilities: ["AI-native products", "Web & mobile apps", "Digital platforms", "Cloud & MLOps"],
+  },
+  {
+    slug: "ai-enablement",
+    index: "06",
+    title: "AI Enablement & Governance",
+    short: "Enablement",
+    summary:
+      "Training, adoption and responsible-AI guardrails, so your people use AI well and your AI stays safe, compliant and accountable.",
+    form: "glyph",
+    capabilities: ["Team training", "Adoption programmes", "Responsible AI", "DPDP & data privacy"],
+  },
+  {
+    slug: "brand-growth",
+    index: "07",
+    title: "AI-Powered Brand & Growth",
+    short: "Growth",
+    summary:
+      "Brand, content and growth marketing produced with AI-assisted workflows, to take what you build to market.",
+    form: "film",
+    capabilities: ["Brand & positioning", "AI-assisted content", "Performance marketing", "Creator programmes"],
   },
 ];
+
+/** Old service URLs, kept as permanent redirects so links and search results keep working. */
+export const legacyServiceSlugs: Record<string, string> = {
+  "ai-automations": "ai-agents-automation",
+  "ai-voice-agents": "conversational-ai",
+  websites: "ai-product-engineering",
+  "mobile-web-apps": "ai-product-engineering",
+  "branding-marketing": "brand-growth",
+  "media-ads": "brand-growth",
+  "influencer-marketing": "brand-growth",
+};
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);

@@ -8,8 +8,8 @@ import { LogoMark } from "@/components/ui/Logo";
 import { Testimonials } from "@/components/sections/Testimonials";
 
 export const metadata: Metadata = pageMeta({
-  title: "About Zaiphr Labs: an AI agency built on taste",
-  description: "Zaiphr Labs is an AI agency in India: a crew of tech nerds, creative heads and camera geeks who build AI automations, voice agents, websites, apps and marketing for startups and small businesses.",
+  title: "About Zaiphr Labs: AI consulting built on craft",
+  description: "Zaiphr Labs is an AI consulting and engineering firm in India: a crew of tech nerds, creative heads and camera geeks who take AI from strategy to systems that run in production.",
   path: "/about",
   image: "/og/about.jpg",
 });
@@ -33,7 +33,7 @@ export default function AboutPage() {
         <div className="container-x relative">
           <Eyebrow>About</Eyebrow>
           <RevealText as="h1" trigger="ready" className="font-display-wide mt-8 max-w-[12ch] text-[length:var(--text-giga)]">
-            A precision lab for growth.
+            AI consulting, built on craft.
           </RevealText>
         </div>
       </section>

@@ -46,7 +46,7 @@ function readPost(file: string): Post {
     updated: data.updated ? String(data.updated) : undefined,
     category: data.category as BlogCategory,
     tags: (data.tags as string[]) ?? [],
-    service: String(data.service ?? "ai-automations"),
+    service: String(data.service ?? "ai-agents-automation"),
     featured: Boolean(data.featured),
     faq: (data.faq as Post["faq"]) ?? [],
     minutes: Math.max(1, Math.round(words / 220)),

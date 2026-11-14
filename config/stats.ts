@@ -11,8 +11,8 @@ export interface Stat {
 }
 
 export const stats: Stat[] = [
-  { value: 7, label: "Services", note: "AI, product, brand and growth under one roof" },
-  { value: 20, suffix: "+", label: "AI use cases mapped", note: "Ready-to-build playbooks by industry" },
-  { value: 24, suffix: "/7", label: "Agents on duty", note: "Voice and chat agents never clock out" },
-  { value: 14, label: "Days to a first working prototype", note: "Our target for most automation builds" },
+  { value: 7, label: "Practice areas", note: "Strategy, engineering, enablement and growth in one team" },
+  { value: 3, label: "Weeks to a costed AI roadmap", note: "Our Opportunity Sprint, from kickoff to plan" },
+  { value: 6, label: "Weeks to a working prototype", note: "Labs Prototype on your own data" },
+  { value: 7, label: "Industries we design for", note: "From financial services to hospitality" },
 ];

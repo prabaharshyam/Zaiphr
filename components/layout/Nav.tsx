@@ -122,7 +122,7 @@ export function Nav() {
             <LocalTime className="hidden xl:flex" />
             <div className="hidden sm:block">
               <Button href="/contact" size="sm">
-                Start a project
+                Talk to an expert
               </Button>
             </div>
             <button
@@ -162,11 +162,11 @@ export function Nav() {
         >
           <div className="container-x grid grid-cols-12 gap-8 py-10">
             <div className="col-span-3 flex flex-col justify-between gap-6">
-              <p className="label-mono text-muted">Capabilities / 07</p>
+              <p className="label-mono text-muted">Practice areas / 07</p>
               <p className="font-display-tight text-3xl">
-                Seven services.
+                From strategy
                 <br />
-                <span className="text-muted">One studio.</span>
+                <span className="text-muted">to production.</span>
               </p>
               <TransitionLink
                 href="/services"

@@ -16,7 +16,7 @@ export function IndustryUseCases({ detail, title }: { detail: ServiceDetail; tit
         <div className="lg:col-span-5">
           <Eyebrow index="03">By industry</Eyebrow>
           <h2 id="uc-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.2vw,4rem)]">
-            {title} for your industry.
+            {title} across industries.
           </h2>
           <div role="tablist" aria-label="Industries" className="mt-10 flex flex-wrap gap-2">
             {keys.map((k) => (

@@ -64,15 +64,15 @@ export function BigCta() {
       <div className="container-x relative py-28 md:py-40">
         <RevealText id="cta-heading" as="h2" split="chars" className="font-display-wide text-[length:var(--text-giga)]">
           
-            Let&apos;s build your <span className="text-signature">unfair</span> advantage.
+            Bring us a <span className="text-signature">problem</span> worth solving.
           
         </RevealText>
 
         <div className="mt-16 grid grid-cols-1 gap-16 lg:mt-24 lg:grid-cols-12">
           <div className="flex flex-col gap-8 lg:col-span-4">
             <p className="text-lg leading-relaxed text-muted">
-              Tell us what you&apos;re building. We reply within one business day with honest thoughts, even if we&apos;re
-              not the right fit.
+              Tell us where you want AI to make a difference. A senior consultant replies within one business day, with an
+              honest view, even if we&apos;re not the right fit.
             </p>
             <div className="flex flex-col items-start gap-3">
               <Button href={site.calendlyUrl} variant="ghost">

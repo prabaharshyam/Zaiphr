@@ -135,9 +135,9 @@ export function ServicesScroll() {
         <div className="container-x relative flex min-h-[100svh] flex-col pt-[calc(var(--nav-h)+2rem)] pb-8 motion-reduce:min-h-0 motion-reduce:py-24">
           <div className="flex items-start justify-between gap-6">
             <div>
-              <Eyebrow index="01">What we build</Eyebrow>
+              <Eyebrow index="01">Practice areas</Eyebrow>
               <h2 id="services-heading" className="font-display-tight mt-4 text-2xl max-md:sr-only md:text-3xl">
-                Seven services. <span className="text-muted">One team.</span>
+                From strategy <span className="text-muted">to production.</span>
               </h2>
             </div>
             <p className="label-mono hidden text-muted tabular-nums motion-safe:block" aria-hidden>

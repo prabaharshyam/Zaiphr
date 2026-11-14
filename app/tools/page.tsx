@@ -7,7 +7,7 @@ import { RevealText } from "@/components/ui/RevealText";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = pageMeta({
-  title: "Free AI tools for founders",
+  title: "Free AI tools from Zaiphr Labs",
   description: "Free tools from Zaiphr Labs: find the right AI tools for your business problem, and browse a curated directory of AI tools by category and industry.",
   path: "/tools",
   image: "/og/tools.jpg",
@@ -20,7 +20,7 @@ export default function ToolsPage() {
       <div className="container-x relative">
         <Eyebrow>Free tools</Eyebrow>
         <RevealText as="h1" trigger="ready" className="font-display-wide mt-8 max-w-[14ch] text-[length:var(--text-giga)]">
-          Free tools for founders.
+          Free tools from our labs.
         </RevealText>
 
         <Link

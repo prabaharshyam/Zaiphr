@@ -39,13 +39,13 @@ export function ToolsTeaser() {
       />
       <div className="container-x relative grid grid-cols-1 items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <Eyebrow index="04">Free tool</Eyebrow>
+          <Eyebrow index="04">From the labs</Eyebrow>
           <RevealText id="tools-heading" as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
             Tell us the problem. Get your AI stack.
           </RevealText>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
-            There are thousands of AI tools and no time to test them. Describe what&apos;s slowing your business down and
-            the AI Stack Finder picks the right tools, shows how they connect and what it&apos;ll cost. Free.
+            Our labs built the AI Stack Finder to answer a question every team asks: which tools should we use? Describe a
+            business problem and it recommends a stack from tools we&apos;ve vetted, shows how they connect and what it costs.
           </p>
           <form onSubmit={submit} className="mt-10 max-w-xl" noValidate>
             <label htmlFor="teaser-problem" className="label-mono mb-3 block text-muted">

@@ -80,12 +80,12 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
         <div>
           <Eyebrow index="02">Selected work</Eyebrow>
           <RevealText id="work-heading" as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
-            Built to show what&apos;s possible.
+            Selected work.
           </RevealText>
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-muted">
-          <span className="text-text">Live sites</span> we&apos;ve shipped, alongside concept projects that show how we&apos;d
-          solve problems for other kinds of businesses.
+          Live products we&apos;ve designed and engineered, alongside concept work that shows how we approach problems in
+          other industries.
         </p>
       </div>
 
@@ -137,7 +137,7 @@ export function WorkTrack({ projects, total }: { projects: WorkCard[]; total: nu
           <p className="font-display-tight text-4xl md:text-5xl">
             {total} builds.
             <br />
-            <span className="text-muted">7 services.</span>
+            <span className="text-muted">7 practice areas.</span>
           </p>
           <Button href="/work" variant="outline">
             View all work

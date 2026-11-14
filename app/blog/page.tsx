@@ -10,7 +10,7 @@ import { BlogIndex } from "@/components/blog/BlogIndex";
 export const metadata: Metadata = {
   ...pageMeta({
     title: "Blog: practical playbooks on AI, automation and growth",
-    description: "Field notes for founders and small businesses on AI automation, voice agents, websites, apps, branding, video ads and influencer marketing. Practical, no fluff.",
+    description: "Perspectives from Zaiphr Labs on AI strategy, agents, automation, conversational AI, data, product engineering and adoption. Practical, evidence-led, no hype.",
     path: "/blog",
     image: "/og/blog.jpg",
   }),
@@ -45,7 +45,7 @@ export default function BlogPage() {
             Field notes.
           </RevealText>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-            Practical playbooks on AI, automation, websites and growth, written for founders and small teams who&apos;d rather do
+            Practical playbooks on AI, automation, websites and growth, written for leaders and teams who&apos;d rather do
             than read about doing.
           </p>
         </div>

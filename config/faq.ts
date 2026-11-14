@@ -1,50 +1,47 @@
 /**
- * Plain-language answers about the company itself. Shown on the home page and the About page,
- * marked up as FAQPage, and used in llms.txt, so search engines and AI assistants can quote them.
- * Prices come from the service config so they never drift.
+ * Plain-language answers about the company itself. Shown on the home page, marked up as
+ * FAQPage, and used in llms.txt and the chat assistant, so search engines and AI assistants
+ * can quote them.
  */
 import { site } from "./site";
 import { services } from "./services";
-import { serviceDetails } from "./service-details";
-
-const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
-
-/** Lowest one-off price for a service, or the lowest monthly price if it only has retainers. */
-export function fromPrice(slug: string) {
-  const pk = serviceDetails[slug]?.packages ?? [];
-  const oneOff = pk.filter((p) => !p.per);
-  const pool = oneOff.length ? oneOff : pk;
-  const min = Math.min(...pool.map((p) => p.inr));
-  return `${inr(min)}${oneOff.length ? "" : " a month"}`;
-}
+import { engagements } from "./engagements";
 
 export const companyFaqs: { q: string; a: string }[] = [
   {
     q: "What is Zaiphr Labs?",
-    a: `${site.name} (zaiphr.in) is an AI agency based in India, started in 2026. We help startups and small businesses use AI to save time and win customers: we build AI automations, AI voice agents and WhatsApp assistants, websites, mobile apps, branding and marketing.`,
+    a: `${site.name} (zaiphr.in) is an AI consulting and engineering firm based in India, founded in 2026. We help organisations find where AI creates real value, prove it quickly in our labs, and build production systems such as AI agents, automation, conversational AI, knowledge systems and AI-native products.`,
   },
   {
-    q: "What services does Zaiphr Labs offer?",
-    a: `Seven services: ${services.map((s) => s.title).join(", ")}. Most clients start with one, and we connect them so your website, automations and marketing work together.`,
+    q: "What does Zaiphr Labs do?",
+    a: `We work across seven practice areas: ${services.map((s) => s.title).join(", ")}. Engagements usually combine strategy, engineering and enablement, so what we recommend is what gets built and adopted.`,
   },
   {
-    q: "How much does Zaiphr Labs charge?",
-    a: `Every project has a fixed price agreed up front. Starting prices: ${services.map((s) => `${s.title} from ${fromPrice(s.slug)}`).join("; ")}. The final quote depends on scope. Prices for international clients are also available in US dollars.`,
+    q: "What is the 'Labs' in Zaiphr Labs?",
+    a: "Our labs are where ideas are tested before they're scaled. We prototype on real data in weeks, measure results against agreed criteria and only then recommend a production build. The labs also build our own products, such as the AI Stack Finder and our daily AI news brief.",
+  },
+  {
+    q: "How do engagements work, and how are they priced?",
+    a: `We don't publish price lists. Every engagement is scoped to your objectives and priced after a discovery conversation. Typical models: ${engagements.map((e) => `${e.name} (${e.duration})`).join(", ")}.`,
   },
   {
     q: "Who does Zaiphr Labs work with?",
-    a: "Founders, startups and small to mid-sized businesses, especially clinics, real estate, D2C and e-commerce brands, education, SaaS and restaurants. We work with clients across India and worldwide, remotely.",
+    a: "Organisations of every size, from growth-stage companies to established enterprises, across financial services, healthcare, retail and e-commerce, real estate, education, technology and hospitality. We work with clients in India and worldwide.",
   },
   {
-    q: "How long does a project take?",
-    a: "Most projects run in fixed-scope sprints of 2 to 8 weeks, and you see working progress every week. A landing page or a first automation can be live in about 2 weeks; a full app MVP takes 6 to 8 weeks.",
+    q: "How quickly can we see results?",
+    a: "An Opportunity Sprint delivers a prioritised, costed AI roadmap in 2 to 3 weeks. A Labs Prototype proves a use case on your data in 4 to 6 weeks. Production builds typically take 8 to 16 weeks, with working releases along the way.",
+  },
+  {
+    q: "How does Zaiphr Labs handle data security and responsible AI?",
+    a: "We use model tiers that don't train on your data, minimise and mask personal data, deploy in your cloud where required, and put evaluation, human oversight and audit logs around every system. We design for India's Digital Personal Data Protection Act alongside your legal team.",
   },
   {
     q: "Where is Zaiphr Labs based?",
-    a: `${site.name} is based in India and works with clients in India and other countries. You can reach the team at ${site.email}, on WhatsApp at ${site.phone}, or by booking a free 30-minute call on zaiphr.in/contact.`,
+    a: `${site.name} is based in India and works with clients in India and other countries. Reach the team at ${site.email}, on ${site.phone}, or by booking a call at zaiphr.in/contact.`,
   },
   {
     q: "Is Zaiphr Labs the same as other companies called Zaiphr?",
-    a: `No. ${site.name} at zaiphr.in is an independent AI agency in India. It is not affiliated with other businesses that use a similar name.`,
+    a: `No. ${site.name} at zaiphr.in is an independent AI consulting firm in India. It is not affiliated with other businesses that use a similar name.`,
   },
 ];

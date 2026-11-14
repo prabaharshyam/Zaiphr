@@ -22,7 +22,7 @@ import { NEWS_CATEGORIES } from "@/lib/news/types";
 export const revalidate = 600;
 
 export const metadata: Metadata = pageMeta({
-  title: `${site.name} | ${site.tagline}`,
+  title: `${site.name} | ${site.tagline}: Strategy to Production`,
   description: site.description,
   path: "/",
   image: "/og/home.jpg",
@@ -63,7 +63,7 @@ export default async function HomePage() {
             address: { "@type": "PostalAddress", addressCountry: "IN" },
             areaServed: [{ "@type": "Country", name: "India" }, "Worldwide"],
             priceRange: "₹₹",
-            knowsAbout: ["AI automation", "AI voice agents", "WhatsApp automation", "Website design and development", "Mobile app development", "Branding", "Video ads", "Influencer marketing", "Generative AI for small businesses"],
+            knowsAbout: ["AI strategy", "AI consulting", "AI agents", "Agentic AI", "Intelligent automation", "Conversational AI", "Voice AI", "Retrieval-augmented generation", "Data engineering", "AI product engineering", "Responsible AI", "AI governance", "Generative AI"],
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: "Services",

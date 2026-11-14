@@ -8,7 +8,7 @@ import { ServicesList } from "@/components/sections/ServicesList";
 
 export const metadata: Metadata = pageMeta({
   title: "Services: AI Automation, Websites, Apps & Marketing",
-  description: "AI automation, AI voice agents, website design, mobile app development, branding, video ads and influencer marketing for startups and small businesses in India and worldwide.",
+  description: "AI consulting and engineering across seven practice areas: AI strategy, agents and automation, conversational AI, data and knowledge AI, AI product engineering, enablement and governance, and growth.",
   path: "/services",
   image: "/og/services.jpg",
 });

@@ -7,7 +7,7 @@ export function Deliverables({ detail }: { detail: ServiceDetail }) {
   return (
     <section aria-labelledby="del-heading" className="relative z-10 bg-bg py-24 md:py-32">
       <div className="container-x">
-        <Eyebrow index="02">What&apos;s included</Eyebrow>
+        <Eyebrow index="02">Capabilities</Eyebrow>
         <RevealText id="del-heading" as="h2" className="font-display-tight mt-5 max-w-3xl text-[clamp(2.2rem,4.6vw,4.4rem)]">
           Everything it takes to ship it properly.
         </RevealText>

@@ -4,6 +4,7 @@
  */
 import * as THREE from "three";
 import { MARK_PATHS } from "@/lib/brand";
+import { services, type ServiceForm } from "@/config/services";
 
 type Rand = () => number;
 
@@ -540,10 +541,19 @@ export interface FormLibrary {
 /**
  * Lazy form library. Building all 9 point clouds up front blocked the main thread for a long
  * stretch on phones; now only the forms in view are built immediately and the rest are filled
- * in during idle time (see CipherCore). Order must match config/services.ts.
+ * in during idle time (see CipherCore). Forms 1–7 follow the order of config/services.ts.
  */
 export function formLibrary(n: number): FormLibrary {
-  const makers = [() => core(n), () => graph(n), () => wave(n), () => browser(n), () => phone(n), () => glyph(n), () => film(n), () => orbit(n), () => core(n, 11)];
+  const byName: Record<ServiceForm, () => Float32Array> = {
+    graph: () => graph(n),
+    wave: () => wave(n),
+    grid: () => browser(n),
+    phone: () => phone(n),
+    glyph: () => glyph(n),
+    film: () => film(n),
+    orbit: () => orbit(n),
+  };
+  const makers = [() => core(n), ...services.map((s) => byName[s.form]), () => core(n, 11)];
   const cache: (Float32Array | null)[] = makers.map(() => null);
   const r = mulberry32(99);
   const rand = new Float32Array(n);

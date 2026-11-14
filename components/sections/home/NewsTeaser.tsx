@@ -25,7 +25,7 @@ const explainers = [
     tag: "How it works",
     headline: "Today in AI, one swipe at a time",
     body: "Every morning we read the major AI sources so you don't have to, and write each story in 60 words or fewer. Swipe right to save, left to pass, or use your arrow keys.",
-    why: "Founders get the signal without the noise: about 25–40 stories a day, ranked by what matters to a business.",
+    why: "Leaders get the signal without the noise: about 25–40 stories a day, ranked by what matters to a business.",
     hue: "from-[#1b2a0a] to-[#0a0d05]",
   },
   {
@@ -38,7 +38,7 @@ const explainers = [
   },
   {
     id: "c",
-    tag: "For founders",
+    tag: "For leaders",
     headline: "Tap any card to see why it matters",
     body: "Flip a card to see one or two lines on what the story means for your business: a tool to try, a cost that just fell, or a risk to watch.",
     why: "This side of every card answers one question: what should I do with this?",
@@ -118,7 +118,7 @@ function SwipeCard({ card, onDone, depth }: { card: Card; onDone: (dir: 1 | -1) 
         </div>
         {/* back */}
         <div className="absolute inset-0 flex flex-col justify-center rounded-3xl border border-signature/40 bg-bg-2 p-8 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <p className="label-mono text-signature">Why it matters for founders</p>
+          <p className="label-mono text-signature">Why it matters for business</p>
           <p className="font-display-tight mt-5 text-2xl leading-snug">{card.why}</p>
         </div>
       </motion.div>
@@ -153,8 +153,8 @@ export function NewsTeaser({ stories = [] }: { stories?: TeaserStory[] }) {
             All of AI, in your morning chai break.
           </RevealText>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
-            The 10-odd AI stories that matter each day, picked from the labs, the tech press and India&apos;s startup media,
-            each in 60 words with a founder&apos;s takeaway. Swipe through it like a deck of cards.
+            The 10-odd AI stories that matter each day, picked from the AI labs, the tech press and India&apos;s business media,
+            each in 60 words with a business takeaway. Swipe through it like a deck of cards.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button href="/news">Open today&apos;s brief</Button>

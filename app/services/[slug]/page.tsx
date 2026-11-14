@@ -11,7 +11,7 @@ import { ProblemSolution } from "@/components/sections/service/ProblemSolution";
 import { Deliverables } from "@/components/sections/service/Deliverables";
 import { IndustryUseCases } from "@/components/sections/service/IndustryUseCases";
 import { ServiceProcess } from "@/components/sections/service/ServiceProcess";
-import { Pricing } from "@/components/sections/service/Pricing";
+import { Engagements } from "@/components/sections/service/Engagements";
 import { Faq } from "@/components/sections/service/Faq";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -20,13 +20,13 @@ import { JsonLd } from "@/components/seo/JsonLd";
 
 /** Search-friendly titles: what people type, plus where we work. */
 const seoTitles: Record<string, string> = {
-  "ai-automations": "AI Automation Services for Small Businesses in India",
-  "ai-voice-agents": "AI Voice Agents & AI Receptionist Services in India",
-  websites: "Website Design & Development Company in India",
-  "mobile-web-apps": "Mobile & Web App Development Company in India",
-  "branding-marketing": "Branding & Digital Marketing Agency in India",
-  "media-ads": "Video Production & Ad Creative Agency in India",
-  "influencer-marketing": "Influencer Marketing Agency in India",
+  "ai-strategy": "AI Strategy & Consulting Services",
+  "ai-agents-automation": "AI Agent Development & Intelligent Automation",
+  "conversational-ai": "Conversational AI & Voice Agent Development",
+  "data-knowledge-ai": "Enterprise Knowledge AI, RAG & Data Foundations",
+  "ai-product-engineering": "AI Product Engineering: Web, Mobile & Platforms",
+  "ai-enablement": "AI Training, Adoption & Responsible AI Governance",
+  "brand-growth": "AI-Powered Brand, Content & Growth Marketing",
 };
 
 export const generateStaticParams = () => services.map((s) => ({ slug: s.slug }));
@@ -69,11 +69,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             url: `${site.url}/services/${service.slug}`,
             provider: { "@type": "Organization", "@id": `${site.url}/#org`, name: site.name, url: site.url },
             areaServed: ["IN", "Worldwide"],
-            offers: detail.packages.map((p) => ({
-              "@type": "Offer",
-              name: p.name,
-              priceSpecification: { "@type": "PriceSpecification", minPrice: p.inr, priceCurrency: "INR" },
-            })),
+            category: "AI consulting",
           },
           {
             "@context": "https://schema.org",
@@ -121,7 +117,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         </section>
       )}
 
-      <Pricing packages={detail.packages} serviceSlug={service.slug} />
+      <Engagements serviceSlug={service.slug} />
 
       <section aria-labelledby="faq-heading" className="relative z-10 bg-bg py-24 md:py-32">
         <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-12">
@@ -140,7 +136,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <section className="relative z-10 border-t border-line bg-bg">
         <TransitionLink href={`/services/${next.slug}`} data-cursor="Next" className="group container-x block py-20">
           <p className="label-mono text-muted">Next service · {next.index}</p>
-          <p className="font-display-wide mt-4 text-[clamp(2.6rem,8vw,7rem)] transition-colors group-hover:text-signature">
+          <p className="font-display-wide mt-4 text-[clamp(1.8rem,8vw,7rem)] transition-colors group-hover:text-signature">
             {next.title} →
           </p>
         </TransitionLink>

@@ -54,12 +54,12 @@ export function Process() {
       <div className="container-x grid grid-cols-1 gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--nav-h)+3rem)]">
-            <Eyebrow index="03">How we work</Eyebrow>
+            <Eyebrow index="03">The Zaiphr method</Eyebrow>
             <RevealText id="process-heading" as="h2" className="font-display-tight mt-5 text-[clamp(2.4rem,4.6vw,4.8rem)]">
-              From first call to compounding growth.
+              Assess. Prove. Build. Run.
             </RevealText>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
-              Five stages, weekly demos and one team accountable for the outcome, not a relay race between agencies.
+              A proven path from opportunity to production: value is tested before it&apos;s scaled, and one team stays accountable from the first workshop to the running system.
             </p>
           </div>
         </div>

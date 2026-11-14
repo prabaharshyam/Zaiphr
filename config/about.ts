@@ -1,11 +1,11 @@
 export const about = {
   mission:
-    "Big companies have teams for everything: ops, data, design, growth, support. Small teams have ambition and not enough hours. We build the AI automations, assistants and products that close that gap, so a team of ten can move like a team of a hundred.",
+    "AI is now cheap to try and hard to get right. Most organisations have more pilots than results. We exist to close that gap: to find where AI genuinely creates value, prove it quickly, and build systems that run reliably, so AI becomes part of how the business works rather than a series of experiments.",
   values: [
     { title: "Ship weekly", text: "Momentum beats perfect plans. You'll see something working every week, not a big reveal at the end." },
-    { title: "Honest by default", text: "Clear pricing, realistic timelines, labelled concept work, and a straight answer when something isn't worth building." },
-    { title: "Systems over hacks", text: "We build systems that compound: documented, monitored and owned by you, not duct-taped growth tricks." },
-    { title: "Own the outcome", text: "We measure success in hours saved, leads won and revenue moved, not in deliverables shipped." },
+    { title: "Honest by default", text: "Clear scope, realistic timelines, labelled concept work, and a straight answer when something isn't worth building." },
+    { title: "Systems over hacks", text: "We build systems that compound: documented, monitored, governed and owned by you, not one-off experiments." },
+    { title: "Own the outcome", text: "We measure success in hours returned, costs avoided and revenue moved, not in deliverables shipped." },
     { title: "Taste matters", text: "AI makes average easy. We care about craft, so what we ship feels unmistakably premium." },
   ],
   principles: [
@@ -16,7 +16,7 @@ export const about = {
   ],
   team: {
     headline: "A crew of builders, not a chain of handoffs.",
-    body: "We're a tight-knit group of tech nerds, creative heads and camera geeks who'd rather build than talk about building. Engineers sit next to designers, editors sit next to automation tinkerers, and everyone obsesses over the same thing: shipping products that solve real problems for startups and growing businesses. No account managers relaying messages. You work directly with the people making your thing.",
+    body: "We're a tight-knit group of tech nerds, creative heads and camera geeks who'd rather build than talk about building. Engineers sit next to designers, editors sit next to automation tinkerers, and everyone obsesses over the same thing: shipping AI systems and products that solve real problems for the organisations we work with. No account managers relaying messages. You work directly with the people making your thing.",
     crews: [
       {
         title: "Tech nerds",

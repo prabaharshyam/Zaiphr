@@ -18,9 +18,9 @@ export function BlogHighlights({ posts }: { posts: HighlightPost[] }) {
       <div className="container-x">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <Eyebrow index="06">Field notes</Eyebrow>
+            <Eyebrow index="06">Insights</Eyebrow>
             <RevealText id="blog-heading" as="h2" className="font-display-tight mt-5 text-[length:var(--text-display)]">
-              Playbooks, not fluff.
+              Perspectives on applied AI.
             </RevealText>
           </div>
           <TransitionLink href="/blog" className="label-mono text-muted transition-colors hover:text-signature">

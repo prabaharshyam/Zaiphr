@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { legacyServiceSlugs } from "./config/services";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -14,6 +15,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
+  // Old service pages (pre-repositioning) point to the practice area that replaced them.
+  async redirects() {
+    return Object.entries(legacyServiceSlugs).map(([from, to]) => ({
+      source: `/services/${from}`,
+      destination: `/services/${to}`,
+      permanent: true,
+    }));
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

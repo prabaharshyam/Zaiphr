@@ -37,7 +37,7 @@ export function PagePlaceholder({
           {description}
         </RevealText>
         <div className="mt-10 flex flex-wrap items-center gap-4">
-          <Button href="/contact">Start a project</Button>
+          <Button href="/contact">Talk to an expert</Button>
           <span className="label-mono rounded-full border border-line px-3 py-1.5 text-muted">
             Full page ships in phase {phase}
           </span>

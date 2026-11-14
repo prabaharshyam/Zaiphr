@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: u("/services"), changeFrequency: "monthly", priority: 0.9 },
     ...services.map((s) => ({ url: u(`/services/${s.slug}`), changeFrequency: "monthly" as const, priority: 0.9 })),
     { url: u("/tools/ai-stack-finder"), changeFrequency: "monthly", priority: 0.9 },
+    { url: u("/labs"), changeFrequency: "monthly", priority: 0.8 },
     { url: u("/tools"), changeFrequency: "monthly", priority: 0.7 },
     { url: u("/ai-tools"), changeFrequency: "weekly", priority: 0.8 },
     ...Object.keys(toolCategories).map((c) => ({ url: u(`/ai-tools/${c}`), changeFrequency: "weekly" as const, priority: 0.7 })),

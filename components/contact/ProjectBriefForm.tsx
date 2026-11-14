@@ -12,10 +12,10 @@ import { CurrencyToggle } from "@/components/ui/CurrencyToggle";
 import { Button } from "@/components/ui/Button";
 
 const budgets = {
-  INR: ["Under ₹1L", "₹1L – 3L", "₹3L – 10L", "₹10L – 25L", "₹25L+", "Not sure yet"],
-  USD: ["Under $1.2k", "$1.2k – 3.5k", "$3.5k – 12k", "$12k – 30k", "$30k+", "Not sure yet"],
+  INR: ["Under ₹5L", "₹5L – 15L", "₹15L – 50L", "₹50L – 1Cr", "₹1Cr+", "Not decided yet"],
+  USD: ["Under $6k", "$6k – 18k", "$18k – 60k", "$60k – 120k", "$120k+", "Not decided yet"],
 };
-const timelines = ["ASAP (this month)", "1–3 months", "3–6 months", "Just exploring"];
+const timelines = ["This quarter", "Next quarter", "Within 6 months", "Exploring options"];
 const steps = ["Service", "Budget", "Timeline", "Details", "Contact"] as const;
 
 interface Brief {
@@ -151,7 +151,7 @@ export function ProjectBriefForm() {
           {sent === "saved" ? "Thank you. We'll be in touch within one business day." : "Your email app should be open. Hit send."}
         </p>
         <p className="mt-4 max-w-lg text-muted">
-          We reply within one business day. Want to skip the wait? Pick a time for a free 30-minute strategy call below.
+          We reply within one business day. Want to skip the wait? Pick a time for a 30-minute discovery call below.
         </p>
       </div>
     );
@@ -237,7 +237,7 @@ export function ProjectBriefForm() {
                 <>
                   <div className="flex flex-wrap items-end justify-between gap-4">
                     <div>
-                      <legend className="font-display-tight text-[clamp(1.8rem,3.4vw,3rem)]">What&apos;s your budget?</legend>
+                      <legend className="font-display-tight text-[clamp(1.8rem,3.4vw,3rem)]">WhatWhat&apos;s your budget?apos;s the indicative budget?</legend>
                       <p className="mt-2 text-muted">A rough range helps us suggest the right scope.</p>
                     </div>
                     <CurrencyToggle value={currency} onChange={setCurrency} />

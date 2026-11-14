@@ -5,15 +5,15 @@ export const site = {
   name: "Zaiphr Labs",
   shortName: "Zaiphr",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.zaiphr.in",
-  tagline: "AI Automation, Websites & Apps for Businesses",
+  tagline: "AI Consulting & Labs",
   /** The line under the logo lockup. */
   slogan: "Intelligence, encoded.",
   /** One sentence on what we do, in plain words. */
-  category: "AI agency for startups and small businesses",
+  category: "AI consulting and engineering firm",
   positioning:
-    "We help startups and small businesses grow with AI. We automate the busywork, set up AI assistants that answer calls and WhatsApp messages, and build the websites, apps and marketing that bring in customers.",
+    "We help organisations find where AI creates real value, prove it quickly in our labs, and build production systems that run, scale and pay back.",
   description:
-    "Zaiphr Labs is an AI agency in India. We build AI automations, AI voice agents, websites, mobile apps, branding and marketing for startups and small businesses.",
+    "Zaiphr Labs is an AI consulting and engineering firm in India. We shape AI strategy and build AI agents, automation and AI products that run in production.",
   email: "shyam@zaiphr.in",
   phone: "+91 86087 61359",
   whatsapp: "918608761359", // digits only, used for wa.me links

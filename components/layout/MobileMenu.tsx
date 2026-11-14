@@ -86,7 +86,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
       <div className={cn("container-x relative flex flex-col gap-6 pb-8")}>
         <div data-mm-item>
           <Button href="/contact" size="lg" className="w-full justify-between" magnetic={false}>
-            Start a project
+            Talk to an expert
           </Button>
         </div>
         <div data-mm-item className="label-mono flex flex-wrap gap-x-5 gap-y-2 text-muted">

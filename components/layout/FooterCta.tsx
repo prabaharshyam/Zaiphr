@@ -19,7 +19,7 @@ export function FooterCta() {
         </div>
         <div className="flex flex-col items-start justify-end gap-4 md:col-span-4 md:items-end">
           <Button href="/contact" size="lg">
-            Start a project
+            Talk to an expert
           </Button>
           <a
             href={`mailto:${site.email}`}

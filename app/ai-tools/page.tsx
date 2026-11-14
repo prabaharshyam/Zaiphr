@@ -9,8 +9,8 @@ import { Directory } from "@/components/directory/Directory";
 import { FinderCta } from "@/components/directory/FinderCta";
 
 export const metadata: Metadata = pageMeta({
-  title: "AI tools directory for small businesses",
-  description: `A curated directory of ${aiTools.length} AI and automation tools for founders and small businesses, by category and industry, with free plans and India-ready picks flagged.`,
+  title: "AI tools directory for business teams",
+  description: `A curated directory of ${aiTools.length} AI and automation tools for business teams, by category and industry, with free plans and India-ready picks flagged.`,
   path: "/ai-tools",
   image: "/og/ai-tools.jpg",
 });
@@ -25,7 +25,7 @@ export default function AiToolsPage() {
           {`${aiTools.length} AI tools worth your time.`}
         </RevealText>
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
-          Hand-picked for founders and small teams. No sponsored listings and no affiliate links: just tools we&apos;d actually recommend.
+          Hand-picked by our labs for business teams. No sponsored listings and no affiliate links: just tools we&apos;d actually recommend.
         </p>
         <nav aria-label="By industry" className="mt-10 flex flex-wrap gap-2">
           {finderIndustries.map((i) => (

@@ -173,12 +173,11 @@ export function matchWithoutAi(input: FinderInput): Plan {
 
   const topCat = picked[0]?.category ?? [...catScore.entries()].sort((a, b) => b[1] - a[1])[0][0];
   const service =
-    topCat === "voice" || topCat === "chat" ? "ai-voice-agents"
-    : topCat === "web" || topCat === "seo" ? "websites"
-    : topCat === "apps" ? "mobile-web-apps"
-    : topCat === "video" || topCat === "social" ? "media-ads"
-    : topCat === "design" ? "branding-marketing"
-    : "ai-automations";
+    topCat === "voice" || topCat === "chat" ? "conversational-ai"
+    : topCat === "web" || topCat === "apps" ? "ai-product-engineering"
+    : topCat === "documents" || topCat === "assistants" ? "data-knowledge-ai"
+    : topCat === "video" || topCat === "social" || topCat === "design" || topCat === "seo" ? "brand-growth"
+    : "ai-agents-automation";
 
   return {
     headline: `Your starter AI stack for ${lowerLabel(toolCategories[topCat])}`,

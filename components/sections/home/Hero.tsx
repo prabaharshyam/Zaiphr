@@ -14,13 +14,13 @@ export function Hero() {
           {/* The small line is part of the h1, so the page's main heading says what we are in plain words. */}
           <span className="label-mono mb-6 flex items-center gap-3 text-muted md:mb-8">
             <span className="h-1.5 w-1.5 rounded-full bg-signature shadow-[0_0_10px_var(--signature)]" aria-hidden />
-            <span>Zaiphr Labs · AI agency for startups &amp; small businesses</span>
+            <span>Zaiphr Labs · AI Consulting &amp; Labs</span>
           </span>
           <RevealText as="span" trigger="ready" className="block">
-            AI builds.
+            AI that
           </RevealText>
           <RevealText as="span" trigger="ready" delay={0.12} className="block">
-            <span className="text-signature text-glow">Taste</span> decides.
+            <span className="text-signature text-glow">delivers.</span>
           </RevealText>
         </h1>
 
@@ -36,17 +36,17 @@ export function Hero() {
           </RevealText>
           <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
             <Button href="/contact" size="lg">
-              Start a project
+              Talk to an expert
             </Button>
-            <Button href="/tools" size="lg" variant="ghost">
-              Try our free tools
+            <Button href="/labs" size="lg" variant="ghost">
+              Explore our labs
             </Button>
           </div>
         </div>
 
         <div className="label-mono mt-12 flex items-center justify-between border-t border-line pt-5 text-muted">
           <span>Scroll to explore</span>
-          <span className="hidden sm:inline">07 services · 01 studio</span>
+          <span className="hidden sm:inline">07 practice areas · 01 lab</span>
           <span className="relative block h-8 w-px overflow-hidden bg-line" aria-hidden>
             <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-cue_1.8s_var(--ease-in-out)_infinite] bg-signature" />
           </span>

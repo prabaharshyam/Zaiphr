@@ -7,8 +7,8 @@ import { RevealText } from "@/components/ui/RevealText";
 import { ProjectBriefForm } from "@/components/contact/ProjectBriefForm";
 
 export const metadata: Metadata = pageMeta({
-  title: "Contact Zaiphr Labs: book a free AI strategy call",
-  description: "Tell us what you're building. Book a free 30-minute strategy call or send a project brief to Zaiphr Labs.",
+  title: "Contact Zaiphr Labs: talk to an AI expert",
+  description: "Talk to an AI expert at Zaiphr Labs: book a 30-minute discovery call or send a brief about the problem you want AI to solve.",
   path: "/contact",
   image: "/og/contact.jpg",
 });
@@ -24,7 +24,7 @@ export default function ContactPage() {
         <div className="container-x relative">
           <Eyebrow>Contact</Eyebrow>
           <RevealText as="h1" trigger="ready" className="font-display-wide mt-8 max-w-[13ch] text-[length:var(--text-giga)]">
-            Let&apos;s build your unfair advantage.
+            Bring us a problem worth solving.
           </RevealText>
         </div>
       </section>
@@ -33,8 +33,8 @@ export default function ContactPage() {
         <div className="container-x grid grid-cols-1 gap-16 lg:grid-cols-12">
           <aside className="space-y-10 lg:col-span-4">
             <p className="text-lg leading-relaxed text-muted">
-              Tell us what you&apos;re building. We reply within one business day with honest thoughts, even if we&apos;re not
-              the right fit.
+              Tell us where you want AI to make a difference. A senior consultant replies within one business day with an
+              honest view, even if we&apos;re not the right fit.
             </p>
             <ul className="space-y-4">
               <li>
@@ -79,7 +79,7 @@ export default function ContactPage() {
         <div className="container-x">
           <Eyebrow index="→">Prefer to talk?</Eyebrow>
           <h2 id="call-heading" className="font-display-tight mt-5 text-[clamp(2.2rem,4.6vw,4.4rem)]">
-            Book a free 30-minute strategy call.
+            Book a 30-minute discovery call.
           </h2>
           <div className="mt-12 overflow-hidden rounded-3xl border border-line bg-bg">
             <iframe

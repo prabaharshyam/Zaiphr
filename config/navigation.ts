@@ -5,30 +5,31 @@ export interface NavItem {
 
 export const mainNav: NavItem[] = [
   { label: "Services", href: "/services" },
+  { label: "Industries", href: "/use-cases" },
   { label: "Work", href: "/work" },
-  { label: "Tools", href: "/tools" },
-  { label: "AI News", href: "/news" },
-  { label: "Blog", href: "/blog" },
+  { label: "Labs", href: "/labs" },
+  { label: "Insights", href: "/blog" },
   { label: "About", href: "/about" },
 ];
 
 export const footerNav: { title: string; items: NavItem[] }[] = [
   {
-    title: "Studio",
+    title: "Company",
     items: [
       { label: "About", href: "/about" },
       { label: "Work", href: "/work" },
-      { label: "Use cases", href: "/use-cases" },
+      { label: "Industries", href: "/use-cases" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Resources",
+    title: "Labs",
     items: [
-      { label: "Free tools", href: "/tools" },
+      { label: "Zaiphr Labs", href: "/labs" },
+      { label: "AI Stack Finder", href: "/tools/ai-stack-finder" },
       { label: "AI tools directory", href: "/ai-tools" },
       { label: "AI News", href: "/news" },
-      { label: "Blog", href: "/blog" },
+      { label: "Insights", href: "/blog" },
     ],
   },
   {
